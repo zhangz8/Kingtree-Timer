@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kingtree.timer.dao.TaHouseMapper;
 import com.kingtree.timer.entity.TaHouse;
+import com.kingtree.timer.service.TaHouseService;
+import com.kingtree.timer.util.PageUtil;
 
 /**
  * 21世纪房网定时任务
@@ -29,9 +30,10 @@ public class PingAnPushTimerController {
 
 	private static Logger logger = LoggerFactory.getLogger(PingAnPushTimerController.class);
 	private static SimpleDateFormat sdft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static final int PAGE_SIZE = 20;
 
 	@Resource
-	private TaHouseMapper taHouseMapper;
+	private TaHouseService taHouseService;
 
 	/**
 	 * @throws IOException
@@ -43,8 +45,16 @@ public class PingAnPushTimerController {
 	public void run() throws IOException {
 		TaHouse taHouse = new TaHouse();
 		taHouse.setTooutside(true);
-		List<TaHouse> selectBySelective = taHouseMapper.selectBySelective(taHouse, 0, 100);
-		logger.info(selectBySelective.size() + "");
+		int page = 0;
+		for (;;) {
+			List<TaHouse> taHouseList = taHouseService.get(taHouse, PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			if (taHouseList == null || taHouseList.isEmpty()) {
+				break;
+			}
+
+			logger.info("");
+			page++;
+		}
 		logger.info(sdft.format(new Date()) + "定时任务已启动...");
 	}
 

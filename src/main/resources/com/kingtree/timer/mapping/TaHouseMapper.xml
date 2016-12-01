@@ -1,0 +1,1565 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaHouseMapper">
+	<resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaHouse">
+		<id column="houseid" property="houseid" jdbcType="VARCHAR" />
+		<result column="hwid" property="hwid" jdbcType="VARCHAR" />
+		<result column="propertyno" property="propertyno" jdbcType="VARCHAR" />
+		<result column="cityname" property="cityname" jdbcType="VARCHAR" />
+		<result column="districtname" property="districtname" jdbcType="VARCHAR" />
+		<result column="piceareaid" property="piceareaid" jdbcType="VARCHAR" />
+		<result column="estid" property="estid" jdbcType="VARCHAR" />
+		<result column="buildingid" property="buildingid" jdbcType="VARCHAR" />
+		<result column="unitid" property="unitid" jdbcType="VARCHAR" />
+		<result column="roomno" property="roomno" jdbcType="VARCHAR" />
+		<result column="floor" property="floor" jdbcType="VARCHAR" />
+		<result column="floorall" property="floorall" jdbcType="VARCHAR" />
+		<result column="countf" property="countf" jdbcType="VARCHAR" />
+		<result column="countt" property="countt" jdbcType="VARCHAR" />
+		<result column="countw" property="countw" jdbcType="VARCHAR" />
+		<result column="county" property="county" jdbcType="VARCHAR" />
+		<result column="housegrade" property="housegrade" jdbcType="VARCHAR" />
+		<result column="propertyusage" property="propertyusage" jdbcType="VARCHAR" />
+		<result column="propertytype" property="propertytype" jdbcType="VARCHAR" />
+		<result column="tradetype" property="tradetype" jdbcType="VARCHAR" />
+		<result column="propertysource" property="propertysource" jdbcType="VARCHAR" />
+		<result column="tradestatus" property="tradestatus" jdbcType="VARCHAR" />
+		<result column="propertylook" property="propertylook" jdbcType="VARCHAR" />
+		<result column="keyno" property="keyno" jdbcType="VARCHAR" />
+		<result column="trustmethod" property="trustmethod" jdbcType="VARCHAR" />
+		<result column="trustdate" property="trustdate" jdbcType="TIMESTAMP" />
+		<result column="trustno" property="trustno" jdbcType="VARCHAR" />
+		<result column="handoverdate" property="handoverdate" jdbcType="TIMESTAMP" />
+		<result column="square" property="square" jdbcType="DECIMAL" />
+		<result column="squareuser" property="squareuser" jdbcType="DECIMAL" />
+		<result column="propertydirction" property="propertydirction" jdbcType="VARCHAR" />
+		<result column="completeyear" property="completeyear" jdbcType="VARCHAR" />
+		<result column="propertyoccupy" property="propertyoccupy" jdbcType="VARCHAR" />
+		<result column="propertydecoration" property="propertydecoration" jdbcType="VARCHAR" />
+		<result column="propertyown" property="propertyown" jdbcType="VARCHAR" />
+		<result column="propertycertificate" property="propertycertificate" jdbcType="VARCHAR" />
+		<result column="idcard" property="idcard" jdbcType="VARCHAR" />
+		<result column="documentsdate" property="documentsdate" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="lastfollowdate" property="lastfollowdate" jdbcType="TIMESTAMP" />
+		<result column="lastguideviewdate" property="lastguideviewdate" jdbcType="TIMESTAMP" />
+		<result column="tooutside" property="tooutside" jdbcType="BIT" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="workflowstatus" property="workflowstatus" jdbcType="VARCHAR" />
+		<result column="introauditstatus" property="introauditstatus" jdbcType="VARCHAR" />
+		<result column="regperson" property="regperson" jdbcType="VARCHAR" />
+		<result column="regdate" property="regdate" jdbcType="TIMESTAMP" />
+		<result column="modperson" property="modperson" jdbcType="VARCHAR" />
+		<result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+		<result column="flagtrashed" property="flagtrashed" jdbcType="BIT" />
+		<result column="flagdeleted" property="flagdeleted" jdbcType="BIT" />
+		<result column="delperson" property="delperson" jdbcType="VARCHAR" />
+		<result column="deldate" property="deldate" jdbcType="TIMESTAMP" />
+		<result column="photocount" property="photocount" jdbcType="INTEGER" />
+		<result column="coverphoto" property="coverphoto" jdbcType="VARCHAR" />
+		<result column="statisticshouse" property="statisticshouse" jdbcType="INTEGER" />
+		<result column="privy" property="privy" jdbcType="VARCHAR" />
+		<result column="gsempid" property="gsempid" jdbcType="VARCHAR" />
+		<result column="gsempname" property="gsempname" jdbcType="VARCHAR" />
+		<result column="gsdeptid" property="gsdeptid" jdbcType="VARCHAR" />
+		<result column="gsdeptname" property="gsdeptname" jdbcType="VARCHAR" />
+		<result column="gsreason" property="gsreason" jdbcType="VARCHAR" />
+		<result column="qualityhouse" property="qualityhouse" jdbcType="VARCHAR" />
+		<result column="length" property="length" jdbcType="VARCHAR" />
+		<result column="width" property="width" jdbcType="VARCHAR" />
+		<result column="height" property="height" jdbcType="VARCHAR" />
+		<result column="plan" property="plan" jdbcType="VARCHAR" />
+		<result column="plantcondition" property="plantcondition" jdbcType="VARCHAR" />
+		<result column="displacement" property="displacement" jdbcType="VARCHAR" />
+		<result column="position" property="position" jdbcType="VARCHAR" />
+		<result column="basementtype" property="basementtype" jdbcType="VARCHAR" />
+		<result column="industry" property="industry" jdbcType="VARCHAR" />
+		<result column="officelevel" property="officelevel" jdbcType="VARCHAR" />
+		<result column="effectiverate" property="effectiverate" jdbcType="DECIMAL" />
+		<result column="monthlyfee" property="monthlyfee" jdbcType="DECIMAL" />
+		<result column="viewnum" property="viewnum" jdbcType="INTEGER" />
+		<result column="flagrecommend" property="flagrecommend" jdbcType="BIT" />
+		<result column="turnstatus" property="turnstatus" jdbcType="VARCHAR" />
+		<result column="idcardaddr" property="idcardaddr" jdbcType="VARCHAR" />
+		<result column="propdesc" property="propdesc" jdbcType="VARCHAR" />
+		<result column="verlock" property="verlock" jdbcType="BIGINT" />
+		<result column="residentflag" property="residentflag" jdbcType="VARCHAR" />
+		<result column="privydate" property="privydate" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		houseid, hwid, propertyno, cityname, districtname, piceareaid, estid, buildingid,
+		unitid, roomno, floor, floorall, countf, countt, countw,
+		county, housegrade, propertyusage,
+		propertytype, tradetype, propertysource, tradestatus, propertylook, keyno, trustmethod,
+		trustdate, trustno,
+		handoverdate, square, squareuser, propertydirction, completeyear,
+		propertyoccupy, propertydecoration, propertyown, propertycertificate, idcard,
+		documentsdate,
+		remark, lastfollowdate, lastguideviewdate, tooutside, title, workflowstatus, introauditstatus,
+		regperson, regdate, modperson, moddate,
+		flagtrashed, flagdeleted, delperson, deldate,
+		photocount, coverphoto, statisticshouse, privy, gsempid, gsempname, gsdeptid, gsdeptname,
+		gsreason,
+		qualityhouse, length, width, height, plan, plantcondition, displacement,
+		position, basementtype, industry, officelevel, effectiverate, monthlyfee,
+		viewnum,
+		flagrecommend, turnstatus, idcardaddr, propdesc, verlock, residentflag, privydate
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ta_house
+		where houseid = #{houseid,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ta_house
+		where houseid = #{houseid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.kingtree.timer.entity.TaHouse">
+		insert into ta_house (houseid, hwid, propertyno,
+		cityname, districtname, piceareaid,
+		estid, buildingid,
+		unitid,
+		roomno, floor, floorall,
+		countf, countt, countw,
+		county, housegrade, propertyusage,
+		propertytype, tradetype, propertysource,
+		tradestatus,
+		propertylook, keyno,
+		trustmethod, trustdate, trustno,
+		handoverdate, square, squareuser,
+		propertydirction, completeyear, propertyoccupy,
+		propertydecoration, propertyown, propertycertificate,
+		idcard, documentsdate, remark,
+		lastfollowdate, lastguideviewdate,
+		tooutside, title,
+		workflowstatus,
+		introauditstatus, regperson, regdate,
+		modperson, moddate, flagtrashed,
+		flagdeleted, delperson, deldate,
+		photocount, coverphoto,
+		statisticshouse,
+		privy, gsempid, gsempname,
+		gsdeptid, gsdeptname, gsreason,
+		qualityhouse, length, width,
+		height, plan, plantcondition,
+		displacement,
+		position, basementtype,
+		industry, officelevel, effectiverate,
+		monthlyfee, viewnum, flagrecommend,
+		turnstatus, idcardaddr, propdesc,
+		verlock,
+		residentflag, privydate
+		)
+		values (#{houseid,jdbcType=VARCHAR}, #{hwid,jdbcType=VARCHAR}, #{propertyno,jdbcType=VARCHAR},
+		#{cityname,jdbcType=VARCHAR},
+		#{districtname,jdbcType=VARCHAR}, #{piceareaid,jdbcType=VARCHAR},
+		#{estid,jdbcType=VARCHAR}, #{buildingid,jdbcType=VARCHAR},
+		#{unitid,jdbcType=VARCHAR},
+		#{roomno,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, #{floorall,jdbcType=VARCHAR},
+		#{countf,jdbcType=VARCHAR},
+		#{countt,jdbcType=VARCHAR}, #{countw,jdbcType=VARCHAR},
+		#{county,jdbcType=VARCHAR}, #{housegrade,jdbcType=VARCHAR},
+		#{propertyusage,jdbcType=VARCHAR},
+		#{propertytype,jdbcType=VARCHAR}, #{tradetype,jdbcType=VARCHAR}, #{propertysource,jdbcType=VARCHAR},
+		#{tradestatus,jdbcType=VARCHAR}, #{propertylook,jdbcType=VARCHAR}, #{keyno,jdbcType=VARCHAR},
+		#{trustmethod,jdbcType=VARCHAR},
+		#{trustdate,jdbcType=TIMESTAMP}, #{trustno,jdbcType=VARCHAR},
+		#{handoverdate,jdbcType=TIMESTAMP}, #{square,jdbcType=DECIMAL},
+		#{squareuser,jdbcType=DECIMAL},
+		#{propertydirction,jdbcType=VARCHAR}, #{completeyear,jdbcType=VARCHAR}, #{propertyoccupy,jdbcType=VARCHAR},
+		#{propertydecoration,jdbcType=VARCHAR}, #{propertyown,jdbcType=VARCHAR}, #{propertycertificate,jdbcType=VARCHAR},
+		#{idcard,jdbcType=VARCHAR},
+		#{documentsdate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+		#{lastfollowdate,jdbcType=TIMESTAMP}, #{lastguideviewdate,jdbcType=TIMESTAMP},
+		#{tooutside,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{workflowstatus,jdbcType=VARCHAR},
+		#{introauditstatus,jdbcType=VARCHAR},
+		#{regperson,jdbcType=VARCHAR}, #{regdate,jdbcType=TIMESTAMP},
+		#{modperson,jdbcType=VARCHAR}, #{moddate,jdbcType=TIMESTAMP},
+		#{flagtrashed,jdbcType=BIT},
+		#{flagdeleted,jdbcType=BIT}, #{delperson,jdbcType=VARCHAR}, #{deldate,jdbcType=TIMESTAMP},
+		#{photocount,jdbcType=INTEGER}, #{coverphoto,jdbcType=VARCHAR}, #{statisticshouse,jdbcType=INTEGER},
+		#{privy,jdbcType=VARCHAR},
+		#{gsempid,jdbcType=VARCHAR}, #{gsempname,jdbcType=VARCHAR},
+		#{gsdeptid,jdbcType=VARCHAR}, #{gsdeptname,jdbcType=VARCHAR},
+		#{gsreason,jdbcType=VARCHAR},
+		#{qualityhouse,jdbcType=VARCHAR}, #{length,jdbcType=VARCHAR}, #{width,jdbcType=VARCHAR},
+		#{height,jdbcType=VARCHAR},
+		#{plan,jdbcType=VARCHAR}, #{plantcondition,jdbcType=VARCHAR},
+		#{displacement,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR},
+		#{basementtype,jdbcType=VARCHAR},
+		#{industry,jdbcType=VARCHAR}, #{officelevel,jdbcType=VARCHAR}, #{effectiverate,jdbcType=DECIMAL},
+		#{monthlyfee,jdbcType=DECIMAL}, #{viewnum,jdbcType=INTEGER}, #{flagrecommend,jdbcType=BIT},
+		#{turnstatus,jdbcType=VARCHAR},
+		#{idcardaddr,jdbcType=VARCHAR}, #{propdesc,jdbcType=VARCHAR},
+		#{verlock,jdbcType=BIGINT}, #{residentflag,jdbcType=VARCHAR},
+		#{privydate,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaHouse">
+		insert into ta_house
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="houseid != null">
+				houseid,
+			</if>
+			<if test="hwid != null">
+				hwid,
+			</if>
+			<if test="propertyno != null">
+				propertyno,
+			</if>
+			<if test="cityname != null">
+				cityname,
+			</if>
+			<if test="districtname != null">
+				districtname,
+			</if>
+			<if test="piceareaid != null">
+				piceareaid,
+			</if>
+			<if test="estid != null">
+				estid,
+			</if>
+			<if test="buildingid != null">
+				buildingid,
+			</if>
+			<if test="unitid != null">
+				unitid,
+			</if>
+			<if test="roomno != null">
+				roomno,
+			</if>
+			<if test="floor != null">
+				floor,
+			</if>
+			<if test="floorall != null">
+				floorall,
+			</if>
+			<if test="countf != null">
+				countf,
+			</if>
+			<if test="countt != null">
+				countt,
+			</if>
+			<if test="countw != null">
+				countw,
+			</if>
+			<if test="county != null">
+				county,
+			</if>
+			<if test="housegrade != null">
+				housegrade,
+			</if>
+			<if test="propertyusage != null">
+				propertyusage,
+			</if>
+			<if test="propertytype != null">
+				propertytype,
+			</if>
+			<if test="tradetype != null">
+				tradetype,
+			</if>
+			<if test="propertysource != null">
+				propertysource,
+			</if>
+			<if test="tradestatus != null">
+				tradestatus,
+			</if>
+			<if test="propertylook != null">
+				propertylook,
+			</if>
+			<if test="keyno != null">
+				keyno,
+			</if>
+			<if test="trustmethod != null">
+				trustmethod,
+			</if>
+			<if test="trustdate != null">
+				trustdate,
+			</if>
+			<if test="trustno != null">
+				trustno,
+			</if>
+			<if test="handoverdate != null">
+				handoverdate,
+			</if>
+			<if test="square != null">
+				square,
+			</if>
+			<if test="squareuser != null">
+				squareuser,
+			</if>
+			<if test="propertydirction != null">
+				propertydirction,
+			</if>
+			<if test="completeyear != null">
+				completeyear,
+			</if>
+			<if test="propertyoccupy != null">
+				propertyoccupy,
+			</if>
+			<if test="propertydecoration != null">
+				propertydecoration,
+			</if>
+			<if test="propertyown != null">
+				propertyown,
+			</if>
+			<if test="propertycertificate != null">
+				propertycertificate,
+			</if>
+			<if test="idcard != null">
+				idcard,
+			</if>
+			<if test="documentsdate != null">
+				documentsdate,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="lastfollowdate != null">
+				lastfollowdate,
+			</if>
+			<if test="lastguideviewdate != null">
+				lastguideviewdate,
+			</if>
+			<if test="tooutside != null">
+				tooutside,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="workflowstatus != null">
+				workflowstatus,
+			</if>
+			<if test="introauditstatus != null">
+				introauditstatus,
+			</if>
+			<if test="regperson != null">
+				regperson,
+			</if>
+			<if test="regdate != null">
+				regdate,
+			</if>
+			<if test="modperson != null">
+				modperson,
+			</if>
+			<if test="moddate != null">
+				moddate,
+			</if>
+			<if test="flagtrashed != null">
+				flagtrashed,
+			</if>
+			<if test="flagdeleted != null">
+				flagdeleted,
+			</if>
+			<if test="delperson != null">
+				delperson,
+			</if>
+			<if test="deldate != null">
+				deldate,
+			</if>
+			<if test="photocount != null">
+				photocount,
+			</if>
+			<if test="coverphoto != null">
+				coverphoto,
+			</if>
+			<if test="statisticshouse != null">
+				statisticshouse,
+			</if>
+			<if test="privy != null">
+				privy,
+			</if>
+			<if test="gsempid != null">
+				gsempid,
+			</if>
+			<if test="gsempname != null">
+				gsempname,
+			</if>
+			<if test="gsdeptid != null">
+				gsdeptid,
+			</if>
+			<if test="gsdeptname != null">
+				gsdeptname,
+			</if>
+			<if test="gsreason != null">
+				gsreason,
+			</if>
+			<if test="qualityhouse != null">
+				qualityhouse,
+			</if>
+			<if test="length != null">
+				length,
+			</if>
+			<if test="width != null">
+				width,
+			</if>
+			<if test="height != null">
+				height,
+			</if>
+			<if test="plan != null">
+				plan,
+			</if>
+			<if test="plantcondition != null">
+				plantcondition,
+			</if>
+			<if test="displacement != null">
+				displacement,
+			</if>
+			<if test="position != null">
+				position,
+			</if>
+			<if test="basementtype != null">
+				basementtype,
+			</if>
+			<if test="industry != null">
+				industry,
+			</if>
+			<if test="officelevel != null">
+				officelevel,
+			</if>
+			<if test="effectiverate != null">
+				effectiverate,
+			</if>
+			<if test="monthlyfee != null">
+				monthlyfee,
+			</if>
+			<if test="viewnum != null">
+				viewnum,
+			</if>
+			<if test="flagrecommend != null">
+				flagrecommend,
+			</if>
+			<if test="turnstatus != null">
+				turnstatus,
+			</if>
+			<if test="idcardaddr != null">
+				idcardaddr,
+			</if>
+			<if test="propdesc != null">
+				propdesc,
+			</if>
+			<if test="verlock != null">
+				verlock,
+			</if>
+			<if test="residentflag != null">
+				residentflag,
+			</if>
+			<if test="privydate != null">
+				privydate,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="houseid != null">
+				#{houseid,jdbcType=VARCHAR},
+			</if>
+			<if test="hwid != null">
+				#{hwid,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyno != null">
+				#{propertyno,jdbcType=VARCHAR},
+			</if>
+			<if test="cityname != null">
+				#{cityname,jdbcType=VARCHAR},
+			</if>
+			<if test="districtname != null">
+				#{districtname,jdbcType=VARCHAR},
+			</if>
+			<if test="piceareaid != null">
+				#{piceareaid,jdbcType=VARCHAR},
+			</if>
+			<if test="estid != null">
+				#{estid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingid != null">
+				#{buildingid,jdbcType=VARCHAR},
+			</if>
+			<if test="unitid != null">
+				#{unitid,jdbcType=VARCHAR},
+			</if>
+			<if test="roomno != null">
+				#{roomno,jdbcType=VARCHAR},
+			</if>
+			<if test="floor != null">
+				#{floor,jdbcType=VARCHAR},
+			</if>
+			<if test="floorall != null">
+				#{floorall,jdbcType=VARCHAR},
+			</if>
+			<if test="countf != null">
+				#{countf,jdbcType=VARCHAR},
+			</if>
+			<if test="countt != null">
+				#{countt,jdbcType=VARCHAR},
+			</if>
+			<if test="countw != null">
+				#{countw,jdbcType=VARCHAR},
+			</if>
+			<if test="county != null">
+				#{county,jdbcType=VARCHAR},
+			</if>
+			<if test="housegrade != null">
+				#{housegrade,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyusage != null">
+				#{propertyusage,jdbcType=VARCHAR},
+			</if>
+			<if test="propertytype != null">
+				#{propertytype,jdbcType=VARCHAR},
+			</if>
+			<if test="tradetype != null">
+				#{tradetype,jdbcType=VARCHAR},
+			</if>
+			<if test="propertysource != null">
+				#{propertysource,jdbcType=VARCHAR},
+			</if>
+			<if test="tradestatus != null">
+				#{tradestatus,jdbcType=VARCHAR},
+			</if>
+			<if test="propertylook != null">
+				#{propertylook,jdbcType=VARCHAR},
+			</if>
+			<if test="keyno != null">
+				#{keyno,jdbcType=VARCHAR},
+			</if>
+			<if test="trustmethod != null">
+				#{trustmethod,jdbcType=VARCHAR},
+			</if>
+			<if test="trustdate != null">
+				#{trustdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="trustno != null">
+				#{trustno,jdbcType=VARCHAR},
+			</if>
+			<if test="handoverdate != null">
+				#{handoverdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="square != null">
+				#{square,jdbcType=DECIMAL},
+			</if>
+			<if test="squareuser != null">
+				#{squareuser,jdbcType=DECIMAL},
+			</if>
+			<if test="propertydirction != null">
+				#{propertydirction,jdbcType=VARCHAR},
+			</if>
+			<if test="completeyear != null">
+				#{completeyear,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyoccupy != null">
+				#{propertyoccupy,jdbcType=VARCHAR},
+			</if>
+			<if test="propertydecoration != null">
+				#{propertydecoration,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyown != null">
+				#{propertyown,jdbcType=VARCHAR},
+			</if>
+			<if test="propertycertificate != null">
+				#{propertycertificate,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				#{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="documentsdate != null">
+				#{documentsdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="lastfollowdate != null">
+				#{lastfollowdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastguideviewdate != null">
+				#{lastguideviewdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tooutside != null">
+				#{tooutside,jdbcType=BIT},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="workflowstatus != null">
+				#{workflowstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="introauditstatus != null">
+				#{introauditstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="regperson != null">
+				#{regperson,jdbcType=VARCHAR},
+			</if>
+			<if test="regdate != null">
+				#{regdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modperson != null">
+				#{modperson,jdbcType=VARCHAR},
+			</if>
+			<if test="moddate != null">
+				#{moddate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flagtrashed != null">
+				#{flagtrashed,jdbcType=BIT},
+			</if>
+			<if test="flagdeleted != null">
+				#{flagdeleted,jdbcType=BIT},
+			</if>
+			<if test="delperson != null">
+				#{delperson,jdbcType=VARCHAR},
+			</if>
+			<if test="deldate != null">
+				#{deldate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="photocount != null">
+				#{photocount,jdbcType=INTEGER},
+			</if>
+			<if test="coverphoto != null">
+				#{coverphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="statisticshouse != null">
+				#{statisticshouse,jdbcType=INTEGER},
+			</if>
+			<if test="privy != null">
+				#{privy,jdbcType=VARCHAR},
+			</if>
+			<if test="gsempid != null">
+				#{gsempid,jdbcType=VARCHAR},
+			</if>
+			<if test="gsempname != null">
+				#{gsempname,jdbcType=VARCHAR},
+			</if>
+			<if test="gsdeptid != null">
+				#{gsdeptid,jdbcType=VARCHAR},
+			</if>
+			<if test="gsdeptname != null">
+				#{gsdeptname,jdbcType=VARCHAR},
+			</if>
+			<if test="gsreason != null">
+				#{gsreason,jdbcType=VARCHAR},
+			</if>
+			<if test="qualityhouse != null">
+				#{qualityhouse,jdbcType=VARCHAR},
+			</if>
+			<if test="length != null">
+				#{length,jdbcType=VARCHAR},
+			</if>
+			<if test="width != null">
+				#{width,jdbcType=VARCHAR},
+			</if>
+			<if test="height != null">
+				#{height,jdbcType=VARCHAR},
+			</if>
+			<if test="plan != null">
+				#{plan,jdbcType=VARCHAR},
+			</if>
+			<if test="plantcondition != null">
+				#{plantcondition,jdbcType=VARCHAR},
+			</if>
+			<if test="displacement != null">
+				#{displacement,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				#{position,jdbcType=VARCHAR},
+			</if>
+			<if test="basementtype != null">
+				#{basementtype,jdbcType=VARCHAR},
+			</if>
+			<if test="industry != null">
+				#{industry,jdbcType=VARCHAR},
+			</if>
+			<if test="officelevel != null">
+				#{officelevel,jdbcType=VARCHAR},
+			</if>
+			<if test="effectiverate != null">
+				#{effectiverate,jdbcType=DECIMAL},
+			</if>
+			<if test="monthlyfee != null">
+				#{monthlyfee,jdbcType=DECIMAL},
+			</if>
+			<if test="viewnum != null">
+				#{viewnum,jdbcType=INTEGER},
+			</if>
+			<if test="flagrecommend != null">
+				#{flagrecommend,jdbcType=BIT},
+			</if>
+			<if test="turnstatus != null">
+				#{turnstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="idcardaddr != null">
+				#{idcardaddr,jdbcType=VARCHAR},
+			</if>
+			<if test="propdesc != null">
+				#{propdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="verlock != null">
+				#{verlock,jdbcType=BIGINT},
+			</if>
+			<if test="residentflag != null">
+				#{residentflag,jdbcType=VARCHAR},
+			</if>
+			<if test="privydate != null">
+				#{privydate,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaHouse">
+		update ta_house
+		<set>
+			<if test="hwid != null">
+				hwid = #{hwid,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyno != null">
+				propertyno = #{propertyno,jdbcType=VARCHAR},
+			</if>
+			<if test="cityname != null">
+				cityname = #{cityname,jdbcType=VARCHAR},
+			</if>
+			<if test="districtname != null">
+				districtname = #{districtname,jdbcType=VARCHAR},
+			</if>
+			<if test="piceareaid != null">
+				piceareaid = #{piceareaid,jdbcType=VARCHAR},
+			</if>
+			<if test="estid != null">
+				estid = #{estid,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingid != null">
+				buildingid = #{buildingid,jdbcType=VARCHAR},
+			</if>
+			<if test="unitid != null">
+				unitid = #{unitid,jdbcType=VARCHAR},
+			</if>
+			<if test="roomno != null">
+				roomno = #{roomno,jdbcType=VARCHAR},
+			</if>
+			<if test="floor != null">
+				floor = #{floor,jdbcType=VARCHAR},
+			</if>
+			<if test="floorall != null">
+				floorall = #{floorall,jdbcType=VARCHAR},
+			</if>
+			<if test="countf != null">
+				countf = #{countf,jdbcType=VARCHAR},
+			</if>
+			<if test="countt != null">
+				countt = #{countt,jdbcType=VARCHAR},
+			</if>
+			<if test="countw != null">
+				countw = #{countw,jdbcType=VARCHAR},
+			</if>
+			<if test="county != null">
+				county = #{county,jdbcType=VARCHAR},
+			</if>
+			<if test="housegrade != null">
+				housegrade = #{housegrade,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyusage != null">
+				propertyusage = #{propertyusage,jdbcType=VARCHAR},
+			</if>
+			<if test="propertytype != null">
+				propertytype = #{propertytype,jdbcType=VARCHAR},
+			</if>
+			<if test="tradetype != null">
+				tradetype = #{tradetype,jdbcType=VARCHAR},
+			</if>
+			<if test="propertysource != null">
+				propertysource = #{propertysource,jdbcType=VARCHAR},
+			</if>
+			<if test="tradestatus != null">
+				tradestatus = #{tradestatus,jdbcType=VARCHAR},
+			</if>
+			<if test="propertylook != null">
+				propertylook = #{propertylook,jdbcType=VARCHAR},
+			</if>
+			<if test="keyno != null">
+				keyno = #{keyno,jdbcType=VARCHAR},
+			</if>
+			<if test="trustmethod != null">
+				trustmethod = #{trustmethod,jdbcType=VARCHAR},
+			</if>
+			<if test="trustdate != null">
+				trustdate = #{trustdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="trustno != null">
+				trustno = #{trustno,jdbcType=VARCHAR},
+			</if>
+			<if test="handoverdate != null">
+				handoverdate = #{handoverdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="square != null">
+				square = #{square,jdbcType=DECIMAL},
+			</if>
+			<if test="squareuser != null">
+				squareuser = #{squareuser,jdbcType=DECIMAL},
+			</if>
+			<if test="propertydirction != null">
+				propertydirction = #{propertydirction,jdbcType=VARCHAR},
+			</if>
+			<if test="completeyear != null">
+				completeyear = #{completeyear,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyoccupy != null">
+				propertyoccupy = #{propertyoccupy,jdbcType=VARCHAR},
+			</if>
+			<if test="propertydecoration != null">
+				propertydecoration = #{propertydecoration,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyown != null">
+				propertyown = #{propertyown,jdbcType=VARCHAR},
+			</if>
+			<if test="propertycertificate != null">
+				propertycertificate = #{propertycertificate,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				idcard = #{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="documentsdate != null">
+				documentsdate = #{documentsdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="lastfollowdate != null">
+				lastfollowdate = #{lastfollowdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastguideviewdate != null">
+				lastguideviewdate = #{lastguideviewdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="tooutside != null">
+				tooutside = #{tooutside,jdbcType=BIT},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="workflowstatus != null">
+				workflowstatus = #{workflowstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="introauditstatus != null">
+				introauditstatus = #{introauditstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="regperson != null">
+				regperson = #{regperson,jdbcType=VARCHAR},
+			</if>
+			<if test="regdate != null">
+				regdate = #{regdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modperson != null">
+				modperson = #{modperson,jdbcType=VARCHAR},
+			</if>
+			<if test="moddate != null">
+				moddate = #{moddate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flagtrashed != null">
+				flagtrashed = #{flagtrashed,jdbcType=BIT},
+			</if>
+			<if test="flagdeleted != null">
+				flagdeleted = #{flagdeleted,jdbcType=BIT},
+			</if>
+			<if test="delperson != null">
+				delperson = #{delperson,jdbcType=VARCHAR},
+			</if>
+			<if test="deldate != null">
+				deldate = #{deldate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="photocount != null">
+				photocount = #{photocount,jdbcType=INTEGER},
+			</if>
+			<if test="coverphoto != null">
+				coverphoto = #{coverphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="statisticshouse != null">
+				statisticshouse = #{statisticshouse,jdbcType=INTEGER},
+			</if>
+			<if test="privy != null">
+				privy = #{privy,jdbcType=VARCHAR},
+			</if>
+			<if test="gsempid != null">
+				gsempid = #{gsempid,jdbcType=VARCHAR},
+			</if>
+			<if test="gsempname != null">
+				gsempname = #{gsempname,jdbcType=VARCHAR},
+			</if>
+			<if test="gsdeptid != null">
+				gsdeptid = #{gsdeptid,jdbcType=VARCHAR},
+			</if>
+			<if test="gsdeptname != null">
+				gsdeptname = #{gsdeptname,jdbcType=VARCHAR},
+			</if>
+			<if test="gsreason != null">
+				gsreason = #{gsreason,jdbcType=VARCHAR},
+			</if>
+			<if test="qualityhouse != null">
+				qualityhouse = #{qualityhouse,jdbcType=VARCHAR},
+			</if>
+			<if test="length != null">
+				length = #{length,jdbcType=VARCHAR},
+			</if>
+			<if test="width != null">
+				width = #{width,jdbcType=VARCHAR},
+			</if>
+			<if test="height != null">
+				height = #{height,jdbcType=VARCHAR},
+			</if>
+			<if test="plan != null">
+				plan = #{plan,jdbcType=VARCHAR},
+			</if>
+			<if test="plantcondition != null">
+				plantcondition = #{plantcondition,jdbcType=VARCHAR},
+			</if>
+			<if test="displacement != null">
+				displacement = #{displacement,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				position = #{position,jdbcType=VARCHAR},
+			</if>
+			<if test="basementtype != null">
+				basementtype = #{basementtype,jdbcType=VARCHAR},
+			</if>
+			<if test="industry != null">
+				industry = #{industry,jdbcType=VARCHAR},
+			</if>
+			<if test="officelevel != null">
+				officelevel = #{officelevel,jdbcType=VARCHAR},
+			</if>
+			<if test="effectiverate != null">
+				effectiverate = #{effectiverate,jdbcType=DECIMAL},
+			</if>
+			<if test="monthlyfee != null">
+				monthlyfee = #{monthlyfee,jdbcType=DECIMAL},
+			</if>
+			<if test="viewnum != null">
+				viewnum = #{viewnum,jdbcType=INTEGER},
+			</if>
+			<if test="flagrecommend != null">
+				flagrecommend = #{flagrecommend,jdbcType=BIT},
+			</if>
+			<if test="turnstatus != null">
+				turnstatus = #{turnstatus,jdbcType=VARCHAR},
+			</if>
+			<if test="idcardaddr != null">
+				idcardaddr = #{idcardaddr,jdbcType=VARCHAR},
+			</if>
+			<if test="propdesc != null">
+				propdesc = #{propdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="verlock != null">
+				verlock = #{verlock,jdbcType=BIGINT},
+			</if>
+			<if test="residentflag != null">
+				residentflag = #{residentflag,jdbcType=VARCHAR},
+			</if>
+			<if test="privydate != null">
+				privydate = #{privydate,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where houseid = #{houseid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaHouse">
+		update ta_house
+		set hwid = #{hwid,jdbcType=VARCHAR},
+		propertyno = #{propertyno,jdbcType=VARCHAR},
+		cityname = #{cityname,jdbcType=VARCHAR},
+		districtname = #{districtname,jdbcType=VARCHAR},
+		piceareaid = #{piceareaid,jdbcType=VARCHAR},
+		estid =
+		#{estid,jdbcType=VARCHAR},
+		buildingid = #{buildingid,jdbcType=VARCHAR},
+		unitid = #{unitid,jdbcType=VARCHAR},
+		roomno = #{roomno,jdbcType=VARCHAR},
+		floor
+		= #{floor,jdbcType=VARCHAR},
+		floorall = #{floorall,jdbcType=VARCHAR},
+		countf = #{countf,jdbcType=VARCHAR},
+		countt = #{countt,jdbcType=VARCHAR},
+		countw =
+		#{countw,jdbcType=VARCHAR},
+		county = #{county,jdbcType=VARCHAR},
+		housegrade = #{housegrade,jdbcType=VARCHAR},
+		propertyusage =
+		#{propertyusage,jdbcType=VARCHAR},
+		propertytype = #{propertytype,jdbcType=VARCHAR},
+		tradetype = #{tradetype,jdbcType=VARCHAR},
+		propertysource =
+		#{propertysource,jdbcType=VARCHAR},
+		tradestatus = #{tradestatus,jdbcType=VARCHAR},
+		propertylook = #{propertylook,jdbcType=VARCHAR},
+		keyno =
+		#{keyno,jdbcType=VARCHAR},
+		trustmethod = #{trustmethod,jdbcType=VARCHAR},
+		trustdate = #{trustdate,jdbcType=TIMESTAMP},
+		trustno =
+		#{trustno,jdbcType=VARCHAR},
+		handoverdate = #{handoverdate,jdbcType=TIMESTAMP},
+		square = #{square,jdbcType=DECIMAL},
+		squareuser =
+		#{squareuser,jdbcType=DECIMAL},
+		propertydirction = #{propertydirction,jdbcType=VARCHAR},
+		completeyear = #{completeyear,jdbcType=VARCHAR},
+		propertyoccupy = #{propertyoccupy,jdbcType=VARCHAR},
+		propertydecoration = #{propertydecoration,jdbcType=VARCHAR},
+		propertyown =
+		#{propertyown,jdbcType=VARCHAR},
+		propertycertificate = #{propertycertificate,jdbcType=VARCHAR},
+		idcard = #{idcard,jdbcType=VARCHAR},
+		documentsdate =
+		#{documentsdate,jdbcType=TIMESTAMP},
+		remark = #{remark,jdbcType=VARCHAR},
+		lastfollowdate = #{lastfollowdate,jdbcType=TIMESTAMP},
+		lastguideviewdate =
+		#{lastguideviewdate,jdbcType=TIMESTAMP},
+		tooutside = #{tooutside,jdbcType=BIT},
+		title = #{title,jdbcType=VARCHAR},
+		workflowstatus =
+		#{workflowstatus,jdbcType=VARCHAR},
+		introauditstatus = #{introauditstatus,jdbcType=VARCHAR},
+		regperson = #{regperson,jdbcType=VARCHAR},
+		regdate =
+		#{regdate,jdbcType=TIMESTAMP},
+		modperson = #{modperson,jdbcType=VARCHAR},
+		moddate = #{moddate,jdbcType=TIMESTAMP},
+		flagtrashed =
+		#{flagtrashed,jdbcType=BIT},
+		flagdeleted = #{flagdeleted,jdbcType=BIT},
+		delperson = #{delperson,jdbcType=VARCHAR},
+		deldate =
+		#{deldate,jdbcType=TIMESTAMP},
+		photocount = #{photocount,jdbcType=INTEGER},
+		coverphoto = #{coverphoto,jdbcType=VARCHAR},
+		statisticshouse =
+		#{statisticshouse,jdbcType=INTEGER},
+		privy = #{privy,jdbcType=VARCHAR},
+		gsempid = #{gsempid,jdbcType=VARCHAR},
+		gsempname =
+		#{gsempname,jdbcType=VARCHAR},
+		gsdeptid = #{gsdeptid,jdbcType=VARCHAR},
+		gsdeptname = #{gsdeptname,jdbcType=VARCHAR},
+		gsreason =
+		#{gsreason,jdbcType=VARCHAR},
+		qualityhouse = #{qualityhouse,jdbcType=VARCHAR},
+		length = #{length,jdbcType=VARCHAR},
+		width = #{width,jdbcType=VARCHAR},
+		height = #{height,jdbcType=VARCHAR},
+		plan = #{plan,jdbcType=VARCHAR},
+		plantcondition = #{plantcondition,jdbcType=VARCHAR},
+		displacement =
+		#{displacement,jdbcType=VARCHAR},
+		position = #{position,jdbcType=VARCHAR},
+		basementtype = #{basementtype,jdbcType=VARCHAR},
+		industry =
+		#{industry,jdbcType=VARCHAR},
+		officelevel = #{officelevel,jdbcType=VARCHAR},
+		effectiverate = #{effectiverate,jdbcType=DECIMAL},
+		monthlyfee =
+		#{monthlyfee,jdbcType=DECIMAL},
+		viewnum = #{viewnum,jdbcType=INTEGER},
+		flagrecommend = #{flagrecommend,jdbcType=BIT},
+		turnstatus =
+		#{turnstatus,jdbcType=VARCHAR},
+		idcardaddr = #{idcardaddr,jdbcType=VARCHAR},
+		propdesc = #{propdesc,jdbcType=VARCHAR},
+		verlock =
+		#{verlock,jdbcType=BIGINT},
+		residentflag = #{residentflag,jdbcType=VARCHAR},
+		privydate = #{privydate,jdbcType=TIMESTAMP}
+		where houseid =
+		#{houseid,jdbcType=VARCHAR}
+	</update>
+	<select id="selectBySelective" resultMap="BaseResultMap">
+		select * from ta_house t where 1=1
+		<if test="taHouse.hwid != null">
+			and hwid = #{taHouse.hwid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyno != null">
+			and propertyno = #{taHouse.propertyno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.cityname != null">
+			and cityname = #{taHouse.cityname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.districtname != null">
+			and districtname = #{taHouse.districtname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.piceareaid != null">
+			and piceareaid = #{taHouse.piceareaid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.estid != null">
+			and estid = #{taHouse.estid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.buildingid != null">
+			and buildingid = #{taHouse.buildingid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.unitid != null">
+			and unitid = #{taHouse.unitid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.roomno != null">
+			and roomno = #{taHouse.roomno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.floor != null">
+			and floor = #{taHouse.floor,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.floorall != null">
+			and floorall = #{taHouse.floorall,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.countf != null">
+			and countf = #{taHouse.countf,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.countt != null">
+			and countt = #{taHouse.countt,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.countw != null">
+			and countw = #{taHouse.countw,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.county != null">
+			and county = #{taHouse.county,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.housegrade != null">
+			and housegrade = #{taHouse.housegrade,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyusage != null">
+			and propertyusage = #{taHouse.propertyusage,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertytype != null">
+			and propertytype = #{taHouse.propertytype,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.tradetype != null">
+			and tradetype = #{taHouse.tradetype,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertysource != null">
+			and propertysource = #{taHouse.propertysource,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.tradestatus != null">
+			and tradestatus = #{taHouse.tradestatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertylook != null">
+			and propertylook = #{taHouse.propertylook,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.keyno != null">
+			and keyno = #{taHouse.keyno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.trustmethod != null">
+			and trustmethod = #{taHouse.trustmethod,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.trustdate != null">
+			and trustdate = #{taHouse.trustdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.trustno != null">
+			and trustno = #{taHouse.trustno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.handoverdate != null">
+			and handoverdate = #{taHouse.handoverdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.square != null">
+			and square = #{taHouse.square,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.squareuser != null">
+			and squareuser = #{taHouse.squareuser,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.propertydirction != null">
+			and propertydirction = #{taHouse.propertydirction,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.completeyear != null">
+			and completeyear = #{taHouse.completeyear,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyoccupy != null">
+			and propertyoccupy = #{taHouse.propertyoccupy,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertydecoration != null">
+			and propertydecoration = #{taHouse.propertydecoration,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyown != null">
+			and propertyown = #{taHouse.propertyown,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertycertificate != null">
+			and propertycertificate = #{taHouse.propertycertificate,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.idcard != null">
+			and idcard = #{taHouse.idcard,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.documentsdate != null">
+			and documentsdate = #{taHouse.documentsdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.remark != null">
+			and remark = #{taHouse.remark,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.lastfollowdate != null">
+			and lastfollowdate = #{taHouse.lastfollowdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.lastguideviewdate != null">
+			and lastguideviewdate = #{taHouse.lastguideviewdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.tooutside != null">
+			and tooutside = #{taHouse.tooutside,jdbcType=BIT}
+		</if>
+		<if test="taHouse.title != null">
+			and title = #{taHouse.title,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.workflowstatus != null">
+			and workflowstatus = #{taHouse.workflowstatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.introauditstatus != null">
+			and introauditstatus = #{taHouse.introauditstatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.regperson != null">
+			and regperson = #{taHouse.regperson,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.regdate != null">
+			and regdate = #{taHouse.regdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.modperson != null">
+			and modperson = #{taHouse.modperson,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.moddate != null">
+			and moddate = #{taHouse.moddate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.flagtrashed != null">
+			and flagtrashed = #{taHouse.flagtrashed,jdbcType=BIT}
+		</if>
+		<if test="taHouse.flagdeleted != null">
+			and flagdeleted = #{taHouse.flagdeleted,jdbcType=BIT}
+		</if>
+		<if test="taHouse.delperson != null">
+			and delperson = #{taHouse.delperson,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.deldate != null">
+			and deldate = #{taHouse.deldate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.photocount != null">
+			and photocount = #{taHouse.photocount,jdbcType=INTEGER}
+		</if>
+		<if test="taHouse.coverphoto != null">
+			and coverphoto = #{taHouse.coverphoto,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.statisticshouse != null">
+			and statisticshouse = #{taHouse.statisticshouse,jdbcType=INTEGER}
+		</if>
+		<if test="taHouse.privy != null">
+			and privy = #{taHouse.privy,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsempid != null">
+			and gsempid = #{taHouse.gsempid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsempname != null">
+			and gsempname = #{taHouse.gsempname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsdeptid != null">
+			and gsdeptid = #{taHouse.gsdeptid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsdeptname != null">
+			and gsdeptname = #{taHouse.gsdeptname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsreason != null">
+			and gsreason = #{taHouse.gsreason,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.qualityhouse != null">
+			and qualityhouse = #{taHouse.qualityhouse,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.length != null">
+			and length = #{taHouse.length,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.width != null">
+			and width = #{taHouse.width,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.height != null">
+			and height = #{taHouse.height,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.plan != null">
+			and plan = #{taHouse.plan,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.plantcondition != null">
+			and plantcondition = #{taHouse.plantcondition,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.displacement != null">
+			and displacement = #{taHouse.displacement,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.position != null">
+			and position = #{taHouse.position,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.basementtype != null">
+			and basementtype = #{taHouse.basementtype,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.industry != null">
+			and industry = #{taHouse.industry,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.officelevel != null">
+			and officelevel = #{taHouse.officelevel,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.effectiverate != null">
+			and effectiverate = #{taHouse.effectiverate,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.monthlyfee != null">
+			and monthlyfee = #{taHouse.monthlyfee,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.viewnum != null">
+			and viewnum = #{taHouse.viewnum,jdbcType=INTEGER}
+		</if>
+		<if test="taHouse.flagrecommend != null">
+			and flagrecommend = #{taHouse.flagrecommend,jdbcType=BIT}
+		</if>
+		<if test="taHouse.turnstatus != null">
+			and turnstatus = #{taHouse.turnstatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.idcardaddr != null">
+			and idcardaddr = #{taHouse.idcardaddr,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propdesc != null">
+			and propdesc = #{taHouse.propdesc,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.verlock != null">
+			and verlock = #{taHouse.verlock,jdbcType=BIGINT}
+		</if>
+		<if test="taHouse.residentflag != null">
+			and residentflag = #{taHouse.residentflag,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.privydate != null">
+			and privydate = #{taHouse.privydate,jdbcType=TIMESTAMP}
+		</if>
+		limit #{start}, #{length}
+	</select>
+	<select id="countBySelective" resultType="int">
+		select count(1) from ta_house t where 1=1
+		<if test="taHouse.hwid != null">
+			and hwid = #{taHouse.hwid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyno != null">
+			and propertyno = #{taHouse.propertyno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.cityname != null">
+			and cityname = #{taHouse.cityname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.districtname != null">
+			and districtname = #{taHouse.districtname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.piceareaid != null">
+			and piceareaid = #{taHouse.piceareaid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.estid != null">
+			and estid = #{taHouse.estid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.buildingid != null">
+			and buildingid = #{taHouse.buildingid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.unitid != null">
+			and unitid = #{taHouse.unitid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.roomno != null">
+			and roomno = #{taHouse.roomno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.floor != null">
+			and floor = #{taHouse.floor,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.floorall != null">
+			and floorall = #{taHouse.floorall,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.countf != null">
+			and countf = #{taHouse.countf,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.countt != null">
+			and countt = #{taHouse.countt,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.countw != null">
+			and countw = #{taHouse.countw,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.county != null">
+			and county = #{taHouse.county,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.housegrade != null">
+			and housegrade = #{taHouse.housegrade,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyusage != null">
+			and propertyusage = #{taHouse.propertyusage,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertytype != null">
+			and propertytype = #{taHouse.propertytype,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.tradetype != null">
+			and tradetype = #{taHouse.tradetype,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertysource != null">
+			and propertysource = #{taHouse.propertysource,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.tradestatus != null">
+			and tradestatus = #{taHouse.tradestatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertylook != null">
+			and propertylook = #{taHouse.propertylook,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.keyno != null">
+			and keyno = #{taHouse.keyno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.trustmethod != null">
+			and trustmethod = #{taHouse.trustmethod,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.trustdate != null">
+			and trustdate = #{taHouse.trustdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.trustno != null">
+			and trustno = #{taHouse.trustno,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.handoverdate != null">
+			and handoverdate = #{taHouse.handoverdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.square != null">
+			and square = #{taHouse.square,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.squareuser != null">
+			and squareuser = #{taHouse.squareuser,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.propertydirction != null">
+			and propertydirction = #{taHouse.propertydirction,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.completeyear != null">
+			and completeyear = #{taHouse.completeyear,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyoccupy != null">
+			and propertyoccupy = #{taHouse.propertyoccupy,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertydecoration != null">
+			and propertydecoration = #{taHouse.propertydecoration,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertyown != null">
+			and propertyown = #{taHouse.propertyown,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propertycertificate != null">
+			and propertycertificate = #{taHouse.propertycertificate,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.idcard != null">
+			and idcard = #{taHouse.idcard,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.documentsdate != null">
+			and documentsdate = #{taHouse.documentsdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.remark != null">
+			and remark = #{taHouse.remark,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.lastfollowdate != null">
+			and lastfollowdate = #{taHouse.lastfollowdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.lastguideviewdate != null">
+			and lastguideviewdate = #{taHouse.lastguideviewdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.tooutside != null">
+			and tooutside = #{taHouse.tooutside,jdbcType=BIT}
+		</if>
+		<if test="taHouse.title != null">
+			and title = #{taHouse.title,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.workflowstatus != null">
+			and workflowstatus = #{taHouse.workflowstatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.introauditstatus != null">
+			and introauditstatus = #{taHouse.introauditstatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.regperson != null">
+			and regperson = #{taHouse.regperson,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.regdate != null">
+			and regdate = #{taHouse.regdate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.modperson != null">
+			and modperson = #{taHouse.modperson,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.moddate != null">
+			and moddate = #{taHouse.moddate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.flagtrashed != null">
+			and flagtrashed = #{taHouse.flagtrashed,jdbcType=BIT}
+		</if>
+		<if test="taHouse.flagdeleted != null">
+			and flagdeleted = #{taHouse.flagdeleted,jdbcType=BIT}
+		</if>
+		<if test="taHouse.delperson != null">
+			and delperson = #{taHouse.delperson,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.deldate != null">
+			and deldate = #{taHouse.deldate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="taHouse.photocount != null">
+			and photocount = #{taHouse.photocount,jdbcType=INTEGER}
+		</if>
+		<if test="taHouse.coverphoto != null">
+			and coverphoto = #{taHouse.coverphoto,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.statisticshouse != null">
+			and statisticshouse = #{taHouse.statisticshouse,jdbcType=INTEGER}
+		</if>
+		<if test="taHouse.privy != null">
+			and privy = #{taHouse.privy,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsempid != null">
+			and gsempid = #{taHouse.gsempid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsempname != null">
+			and gsempname = #{taHouse.gsempname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsdeptid != null">
+			and gsdeptid = #{taHouse.gsdeptid,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsdeptname != null">
+			and gsdeptname = #{taHouse.gsdeptname,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.gsreason != null">
+			and gsreason = #{taHouse.gsreason,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.qualityhouse != null">
+			and qualityhouse = #{taHouse.qualityhouse,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.length != null">
+			and length = #{taHouse.length,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.width != null">
+			and width = #{taHouse.width,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.height != null">
+			and height = #{taHouse.height,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.plan != null">
+			and plan = #{taHouse.plan,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.plantcondition != null">
+			and plantcondition = #{taHouse.plantcondition,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.displacement != null">
+			and displacement = #{taHouse.displacement,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.position != null">
+			and position = #{taHouse.position,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.basementtype != null">
+			and basementtype = #{taHouse.basementtype,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.industry != null">
+			and industry = #{taHouse.industry,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.officelevel != null">
+			and officelevel = #{taHouse.officelevel,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.effectiverate != null">
+			and effectiverate = #{taHouse.effectiverate,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.monthlyfee != null">
+			and monthlyfee = #{taHouse.monthlyfee,jdbcType=DECIMAL}
+		</if>
+		<if test="taHouse.viewnum != null">
+			and viewnum = #{taHouse.viewnum,jdbcType=INTEGER}
+		</if>
+		<if test="taHouse.flagrecommend != null">
+			and flagrecommend = #{taHouse.flagrecommend,jdbcType=BIT}
+		</if>
+		<if test="taHouse.turnstatus != null">
+			and turnstatus = #{taHouse.turnstatus,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.idcardaddr != null">
+			and idcardaddr = #{taHouse.idcardaddr,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.propdesc != null">
+			and propdesc = #{taHouse.propdesc,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.verlock != null">
+			and verlock = #{taHouse.verlock,jdbcType=BIGINT}
+		</if>
+		<if test="taHouse.residentflag != null">
+			and residentflag = #{taHouse.residentflag,jdbcType=VARCHAR}
+		</if>
+		<if test="taHouse.privydate != null">
+			and privydate = #{taHouse.privydate,jdbcType=TIMESTAMP}
+		</if>
+	</select>	
+</mapper>

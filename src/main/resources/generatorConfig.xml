@@ -31,7 +31,7 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- 要生成哪些表 -->
-		<table tableName="ta_house" domainObjectName="TaHouse" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		<table tableName="ta_house_tooutside" domainObjectName="TaHouseTooutside" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"></table>
 	</context>
 </generatorConfiguration>  

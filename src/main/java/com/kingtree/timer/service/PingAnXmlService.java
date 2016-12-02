@@ -1,7 +1,9 @@
 package com.kingtree.timer.service;
 
+import java.util.List;
 import java.util.Map;
 
+import org.dom4j.Document;
 import org.dom4j.Element;
 
 public interface PingAnXmlService {
@@ -20,6 +22,6 @@ public interface PingAnXmlService {
 
 	Element getSecondHandHousePic(Map<String, String> data);
 
-	Element getSecondHandHouseRefresh(Map<String, String> data);
+	Document getSecondHandHouseRefresh(List<Map<String, String>> data);
 
 }

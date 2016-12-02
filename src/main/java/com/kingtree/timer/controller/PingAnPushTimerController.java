@@ -47,9 +47,13 @@ public class PingAnPushTimerController {
 		taHouse.setTooutside(true);
 		int page = 0;
 		for (;;) {
-			List<TaHouse> taHouseList = taHouseService.get(taHouse, PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			List<TaHouse> taHouseList = taHouseService.getOutSide(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
 			if (taHouseList == null || taHouseList.isEmpty()) {
 				break;
+			}
+
+			for (TaHouse item : taHouseList) {
+
 			}
 
 			logger.info("");

@@ -1561,5 +1561,37 @@
 		<if test="taHouse.privydate != null">
 			and privydate = #{taHouse.privydate,jdbcType=TIMESTAMP}
 		</if>
-	</select>	
+	</select>
+	<select id="selectByTooutside" resultMap="BaseResultMap">
+		SELECT
+			<include refid="Base_Column_List" />
+		FROM
+			ta_house t
+		WHERE
+			t.tooutside = 1
+		AND t.houseid NOT IN (
+			SELECT
+				tht.houseid
+			FROM
+				ta_house_tooutside tht
+			WHERE
+				tht.is_delete = 0
+		) LIMIT #{start}, #{length}
+	</select>
+	<select id="countByTooutside" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			ta_house t
+		WHERE
+			t.tooutside = 1
+		AND t.houseid NOT IN (
+			SELECT
+				tht.houseid
+			FROM
+				ta_house_tooutside tht
+			WHERE
+				tht.is_delete = 0
+		)
+	</select>
 </mapper>

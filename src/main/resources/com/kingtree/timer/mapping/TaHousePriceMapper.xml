@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaHousePriceMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaHousePrice" >
+    <id column="hsid" property="hsid" jdbcType="VARCHAR" />
+    <result column="houseid" property="houseid" jdbcType="VARCHAR" />
+    <result column="sellprice" property="sellprice" jdbcType="DECIMAL" />
+    <result column="rentprice" property="rentprice" jdbcType="DECIMAL" />
+    <result column="pricebase" property="pricebase" jdbcType="DECIMAL" />
+    <result column="sellpricechange" property="sellpricechange" jdbcType="DECIMAL" />
+    <result column="rentpricechange" property="rentpricechange" jdbcType="DECIMAL" />
+    <result column="sellunitname" property="sellunitname" jdbcType="VARCHAR" />
+    <result column="rentunitname" property="rentunitname" jdbcType="VARCHAR" />
+    <result column="sellpriceunit" property="sellpriceunit" jdbcType="DECIMAL" />
+    <result column="rentpriceunit" property="rentpriceunit" jdbcType="DECIMAL" />
+    <result column="sellpriceline" property="sellpriceline" jdbcType="DECIMAL" />
+    <result column="rentpriceline" property="rentpriceline" jdbcType="DECIMAL" />
+    <result column="propertytax" property="propertytax" jdbcType="VARCHAR" />
+    <result column="sellpropertybuy" property="sellpropertybuy" jdbcType="VARCHAR" />
+    <result column="sellpropertycommiss" property="sellpropertycommiss" jdbcType="VARCHAR" />
+    <result column="rentpropertybuy" property="rentpropertybuy" jdbcType="VARCHAR" />
+    <result column="rentpropertycommiss" property="rentpropertycommiss" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modidate" property="modidate" jdbcType="TIMESTAMP" />
+    <result column="deldate" property="deldate" jdbcType="TIMESTAMP" />
+    <result column="ohter" property="ohter" jdbcType="VARCHAR" />
+    <result column="assignmentfee" property="assignmentfee" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hsid, houseid, sellprice, rentprice, pricebase, sellpricechange, rentpricechange, 
+    sellunitname, rentunitname, sellpriceunit, rentpriceunit, sellpriceline, rentpriceline, 
+    propertytax, sellpropertybuy, sellpropertycommiss, rentpropertybuy, rentpropertycommiss, 
+    createdate, modidate, deldate, ohter, assignmentfee
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_houseprice
+    where hsid = #{hsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_houseprice
+    where hsid = #{hsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaHousePrice" >
+    insert into ta_houseprice (hsid, houseid, sellprice, 
+      rentprice, pricebase, sellpricechange, 
+      rentpricechange, sellunitname, rentunitname, 
+      sellpriceunit, rentpriceunit, sellpriceline, 
+      rentpriceline, propertytax, sellpropertybuy, 
+      sellpropertycommiss, rentpropertybuy, rentpropertycommiss, 
+      createdate, modidate, deldate, 
+      ohter, assignmentfee)
+    values (#{hsid,jdbcType=VARCHAR}, #{houseid,jdbcType=VARCHAR}, #{sellprice,jdbcType=DECIMAL}, 
+      #{rentprice,jdbcType=DECIMAL}, #{pricebase,jdbcType=DECIMAL}, #{sellpricechange,jdbcType=DECIMAL}, 
+      #{rentpricechange,jdbcType=DECIMAL}, #{sellunitname,jdbcType=VARCHAR}, #{rentunitname,jdbcType=VARCHAR}, 
+      #{sellpriceunit,jdbcType=DECIMAL}, #{rentpriceunit,jdbcType=DECIMAL}, #{sellpriceline,jdbcType=DECIMAL}, 
+      #{rentpriceline,jdbcType=DECIMAL}, #{propertytax,jdbcType=VARCHAR}, #{sellpropertybuy,jdbcType=VARCHAR}, 
+      #{sellpropertycommiss,jdbcType=VARCHAR}, #{rentpropertybuy,jdbcType=VARCHAR}, #{rentpropertycommiss,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modidate,jdbcType=TIMESTAMP}, #{deldate,jdbcType=TIMESTAMP}, 
+      #{ohter,jdbcType=VARCHAR}, #{assignmentfee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaHousePrice" >
+    insert into ta_houseprice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hsid != null" >
+        hsid,
+      </if>
+      <if test="houseid != null" >
+        houseid,
+      </if>
+      <if test="sellprice != null" >
+        sellprice,
+      </if>
+      <if test="rentprice != null" >
+        rentprice,
+      </if>
+      <if test="pricebase != null" >
+        pricebase,
+      </if>
+      <if test="sellpricechange != null" >
+        sellpricechange,
+      </if>
+      <if test="rentpricechange != null" >
+        rentpricechange,
+      </if>
+      <if test="sellunitname != null" >
+        sellunitname,
+      </if>
+      <if test="rentunitname != null" >
+        rentunitname,
+      </if>
+      <if test="sellpriceunit != null" >
+        sellpriceunit,
+      </if>
+      <if test="rentpriceunit != null" >
+        rentpriceunit,
+      </if>
+      <if test="sellpriceline != null" >
+        sellpriceline,
+      </if>
+      <if test="rentpriceline != null" >
+        rentpriceline,
+      </if>
+      <if test="propertytax != null" >
+        propertytax,
+      </if>
+      <if test="sellpropertybuy != null" >
+        sellpropertybuy,
+      </if>
+      <if test="sellpropertycommiss != null" >
+        sellpropertycommiss,
+      </if>
+      <if test="rentpropertybuy != null" >
+        rentpropertybuy,
+      </if>
+      <if test="rentpropertycommiss != null" >
+        rentpropertycommiss,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="modidate != null" >
+        modidate,
+      </if>
+      <if test="deldate != null" >
+        deldate,
+      </if>
+      <if test="ohter != null" >
+        ohter,
+      </if>
+      <if test="assignmentfee != null" >
+        assignmentfee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hsid != null" >
+        #{hsid,jdbcType=VARCHAR},
+      </if>
+      <if test="houseid != null" >
+        #{houseid,jdbcType=VARCHAR},
+      </if>
+      <if test="sellprice != null" >
+        #{sellprice,jdbcType=DECIMAL},
+      </if>
+      <if test="rentprice != null" >
+        #{rentprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pricebase != null" >
+        #{pricebase,jdbcType=DECIMAL},
+      </if>
+      <if test="sellpricechange != null" >
+        #{sellpricechange,jdbcType=DECIMAL},
+      </if>
+      <if test="rentpricechange != null" >
+        #{rentpricechange,jdbcType=DECIMAL},
+      </if>
+      <if test="sellunitname != null" >
+        #{sellunitname,jdbcType=VARCHAR},
+      </if>
+      <if test="rentunitname != null" >
+        #{rentunitname,jdbcType=VARCHAR},
+      </if>
+      <if test="sellpriceunit != null" >
+        #{sellpriceunit,jdbcType=DECIMAL},
+      </if>
+      <if test="rentpriceunit != null" >
+        #{rentpriceunit,jdbcType=DECIMAL},
+      </if>
+      <if test="sellpriceline != null" >
+        #{sellpriceline,jdbcType=DECIMAL},
+      </if>
+      <if test="rentpriceline != null" >
+        #{rentpriceline,jdbcType=DECIMAL},
+      </if>
+      <if test="propertytax != null" >
+        #{propertytax,jdbcType=VARCHAR},
+      </if>
+      <if test="sellpropertybuy != null" >
+        #{sellpropertybuy,jdbcType=VARCHAR},
+      </if>
+      <if test="sellpropertycommiss != null" >
+        #{sellpropertycommiss,jdbcType=VARCHAR},
+      </if>
+      <if test="rentpropertybuy != null" >
+        #{rentpropertybuy,jdbcType=VARCHAR},
+      </if>
+      <if test="rentpropertycommiss != null" >
+        #{rentpropertycommiss,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modidate != null" >
+        #{modidate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deldate != null" >
+        #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ohter != null" >
+        #{ohter,jdbcType=VARCHAR},
+      </if>
+      <if test="assignmentfee != null" >
+        #{assignmentfee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaHousePrice" >
+    update ta_houseprice
+    <set >
+      <if test="houseid != null" >
+        houseid = #{houseid,jdbcType=VARCHAR},
+      </if>
+      <if test="sellprice != null" >
+        sellprice = #{sellprice,jdbcType=DECIMAL},
+      </if>
+      <if test="rentprice != null" >
+        rentprice = #{rentprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pricebase != null" >
+        pricebase = #{pricebase,jdbcType=DECIMAL},
+      </if>
+      <if test="sellpricechange != null" >
+        sellpricechange = #{sellpricechange,jdbcType=DECIMAL},
+      </if>
+      <if test="rentpricechange != null" >
+        rentpricechange = #{rentpricechange,jdbcType=DECIMAL},
+      </if>
+      <if test="sellunitname != null" >
+        sellunitname = #{sellunitname,jdbcType=VARCHAR},
+      </if>
+      <if test="rentunitname != null" >
+        rentunitname = #{rentunitname,jdbcType=VARCHAR},
+      </if>
+      <if test="sellpriceunit != null" >
+        sellpriceunit = #{sellpriceunit,jdbcType=DECIMAL},
+      </if>
+      <if test="rentpriceunit != null" >
+        rentpriceunit = #{rentpriceunit,jdbcType=DECIMAL},
+      </if>
+      <if test="sellpriceline != null" >
+        sellpriceline = #{sellpriceline,jdbcType=DECIMAL},
+      </if>
+      <if test="rentpriceline != null" >
+        rentpriceline = #{rentpriceline,jdbcType=DECIMAL},
+      </if>
+      <if test="propertytax != null" >
+        propertytax = #{propertytax,jdbcType=VARCHAR},
+      </if>
+      <if test="sellpropertybuy != null" >
+        sellpropertybuy = #{sellpropertybuy,jdbcType=VARCHAR},
+      </if>
+      <if test="sellpropertycommiss != null" >
+        sellpropertycommiss = #{sellpropertycommiss,jdbcType=VARCHAR},
+      </if>
+      <if test="rentpropertybuy != null" >
+        rentpropertybuy = #{rentpropertybuy,jdbcType=VARCHAR},
+      </if>
+      <if test="rentpropertycommiss != null" >
+        rentpropertycommiss = #{rentpropertycommiss,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modidate != null" >
+        modidate = #{modidate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deldate != null" >
+        deldate = #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ohter != null" >
+        ohter = #{ohter,jdbcType=VARCHAR},
+      </if>
+      <if test="assignmentfee != null" >
+        assignmentfee = #{assignmentfee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where hsid = #{hsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaHousePrice" >
+    update ta_houseprice
+    set houseid = #{houseid,jdbcType=VARCHAR},
+      sellprice = #{sellprice,jdbcType=DECIMAL},
+      rentprice = #{rentprice,jdbcType=DECIMAL},
+      pricebase = #{pricebase,jdbcType=DECIMAL},
+      sellpricechange = #{sellpricechange,jdbcType=DECIMAL},
+      rentpricechange = #{rentpricechange,jdbcType=DECIMAL},
+      sellunitname = #{sellunitname,jdbcType=VARCHAR},
+      rentunitname = #{rentunitname,jdbcType=VARCHAR},
+      sellpriceunit = #{sellpriceunit,jdbcType=DECIMAL},
+      rentpriceunit = #{rentpriceunit,jdbcType=DECIMAL},
+      sellpriceline = #{sellpriceline,jdbcType=DECIMAL},
+      rentpriceline = #{rentpriceline,jdbcType=DECIMAL},
+      propertytax = #{propertytax,jdbcType=VARCHAR},
+      sellpropertybuy = #{sellpropertybuy,jdbcType=VARCHAR},
+      sellpropertycommiss = #{sellpropertycommiss,jdbcType=VARCHAR},
+      rentpropertybuy = #{rentpropertybuy,jdbcType=VARCHAR},
+      rentpropertycommiss = #{rentpropertycommiss,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      modidate = #{modidate,jdbcType=TIMESTAMP},
+      deldate = #{deldate,jdbcType=TIMESTAMP},
+      ohter = #{ohter,jdbcType=VARCHAR},
+      assignmentfee = #{assignmentfee,jdbcType=DECIMAL}
+    where hsid = #{hsid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByHouseId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ta_houseprice
+    where  houseid= #{houseId,jdbcType=VARCHAR}  	
+  </select>
+</mapper>

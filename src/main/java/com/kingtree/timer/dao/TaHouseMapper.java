@@ -22,4 +22,9 @@ public interface TaHouseMapper {
 	List<TaHouse> selectBySelective(@Param("taHouse") TaHouse taHouse, @Param("start") int start, @Param("length") int length);
 
 	int countBySelective(@Param("taHouse") TaHouse taHouse);
+
+	int countByTooutside();
+
+	List<TaHouse> selectByTooutside(@Param("start") int start, @Param("length") int length);
+
 }

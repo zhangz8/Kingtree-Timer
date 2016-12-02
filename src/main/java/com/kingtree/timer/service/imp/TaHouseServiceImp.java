@@ -39,4 +39,17 @@ public class TaHouseServiceImp implements TaHouseService {
 		return taHouseMapper.countBySelective(taHouse);
 	}
 
+	@Override
+	public int countOutSide() {
+		return taHouseMapper.countByTooutside();
+	}
+
+	@Override
+	public List<TaHouse> getOutSide(int start, int length) {
+		if (start < 0 || length <= 0) {
+			return null;
+		}
+		return taHouseMapper.selectByTooutside(start, length);
+	}
+
 }

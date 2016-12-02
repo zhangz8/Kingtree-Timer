@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaEstateMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaEstate" >
+    <id column="estateid" property="estateid" jdbcType="VARCHAR" />
+    <result column="areaid" property="areaid" jdbcType="VARCHAR" />
+    <result column="estatename" property="estatename" jdbcType="VARCHAR" />
+    <result column="spell" property="spell" jdbcType="VARCHAR" />
+    <result column="propertyusage" property="propertyusage" jdbcType="VARCHAR" />
+    <result column="propertytype" property="propertytype" jdbcType="VARCHAR" />
+    <result column="estatenamea" property="estatenamea" jdbcType="VARCHAR" />
+    <result column="completeyear" property="completeyear" jdbcType="VARCHAR" />
+    <result column="ownyear" property="ownyear" jdbcType="VARCHAR" />
+    <result column="surplusownyear" property="surplusownyear" jdbcType="VARCHAR" />
+    <result column="bulidingnum" property="bulidingnum" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="addressd" property="addressd" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="mgtprice" property="mgtprice" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flaglock" property="flaglock" jdbcType="VARCHAR" />
+    <result column="buildingrule" property="buildingrule" jdbcType="VARCHAR" />
+    <result column="roomrule" property="roomrule" jdbcType="VARCHAR" />
+    <result column="roomruleex" property="roomruleex" jdbcType="VARCHAR" />
+    <result column="square" property="square" jdbcType="DECIMAL" />
+    <result column="room" property="room" jdbcType="INTEGER" />
+    <result column="framework" property="framework" jdbcType="VARCHAR" />
+    <result column="surface" property="surface" jdbcType="VARCHAR" />
+    <result column="landgrade" property="landgrade" jdbcType="VARCHAR" />
+    <result column="landno" property="landno" jdbcType="VARCHAR" />
+    <result column="devcompany" property="devcompany" jdbcType="VARCHAR" />
+    <result column="devtel" property="devtel" jdbcType="VARCHAR" />
+    <result column="mgtcompany" property="mgtcompany" jdbcType="VARCHAR" />
+    <result column="mgttel" property="mgttel" jdbcType="VARCHAR" />
+    <result column="estatenamee" property="estatenamee" jdbcType="VARCHAR" />
+    <result column="addresse" property="addresse" jdbcType="VARCHAR" />
+    <result column="transportation" property="transportation" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="hospital" property="hospital" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="otherenv" property="otherenv" jdbcType="VARCHAR" />
+    <result column="cox" property="cox" jdbcType="DECIMAL" />
+    <result column="coy" property="coy" jdbcType="DECIMAL" />
+    <result column="opendate" property="opendate" jdbcType="TIMESTAMP" />
+    <result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+    <result column="flagdeleted" property="flagdeleted" jdbcType="VARCHAR" />
+    <result column="flagtrashed" property="flagtrashed" jdbcType="VARCHAR" />
+    <result column="deldate" property="deldate" jdbcType="TIMESTAMP" />
+    <result column="delperson" property="delperson" jdbcType="VARCHAR" />
+    <result column="estatetype" property="estatetype" jdbcType="VARCHAR" />
+    <result column="estatetx" property="estatetx" jdbcType="VARCHAR" />
+    <result column="exdate" property="exdate" jdbcType="TIMESTAMP" />
+    <result column="viewflag" property="viewflag" jdbcType="VARCHAR" />
+    <result column="lockflag" property="lockflag" jdbcType="VARCHAR" />
+    <result column="floorrule" property="floorrule" jdbcType="VARCHAR" />
+    <result column="chooseroomnoflag" property="chooseroomnoflag" jdbcType="VARCHAR" />
+    <result column="newflag" property="newflag" jdbcType="VARCHAR" />
+    <result column="ringrroute" property="ringrroute" jdbcType="VARCHAR" />
+    <result column="subway" property="subway" jdbcType="VARCHAR" />
+    <result column="startnumrang" property="startnumrang" jdbcType="VARCHAR" />
+    <result column="endnumrang" property="endnumrang" jdbcType="VARCHAR" />
+    <result column="startletterrang" property="startletterrang" jdbcType="VARCHAR" />
+    <result column="endletterrang" property="endletterrang" jdbcType="VARCHAR" />
+    <result column="dutyflag" property="dutyflag" jdbcType="VARCHAR" />
+    <result column="coxmax" property="coxmax" jdbcType="DECIMAL" />
+    <result column="coymax" property="coymax" jdbcType="DECIMAL" />
+    <result column="coverphoto" property="coverphoto" jdbcType="VARCHAR" />
+    <result column="developers" property="developers" jdbcType="VARCHAR" />
+    <result column="planningarea" property="planningarea" jdbcType="DECIMAL" />
+    <result column="stall" property="stall" jdbcType="VARCHAR" />
+    <result column="plotratio" property="plotratio" jdbcType="DECIMAL" />
+    <result column="greeningrate" property="greeningrate" jdbcType="DECIMAL" />
+    <result column="pmurl" property="pmurl" jdbcType="VARCHAR" />
+    <result column="flagrecommend" property="flagrecommend" jdbcType="BIT" />
+    <result column="regperson" property="regperson" jdbcType="VARCHAR" />
+    <result column="regdate" property="regdate" jdbcType="TIMESTAMP" />
+    <result column="caradminfee" property="caradminfee" jdbcType="DECIMAL" />
+    <result column="carrent" property="carrent" jdbcType="DECIMAL" />
+    <result column="mgtunit" property="mgtunit" jdbcType="VARCHAR" />
+    <result column="launchdate" property="launchdate" jdbcType="TIMESTAMP" />
+    <result column="preferential" property="preferential" jdbcType="VARCHAR" />
+    <result column="pricemin" property="pricemin" jdbcType="DECIMAL" />
+    <result column="liftprice" property="liftprice" jdbcType="DECIMAL" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    estateid, areaid, estatename, spell, propertyusage, propertytype, estatenamea, completeyear, 
+    ownyear, surplusownyear, bulidingnum, address, addressd, price, mgtprice, remark, 
+    flaglock, buildingrule, roomrule, roomruleex, square, room, framework, surface, landgrade, 
+    landno, devcompany, devtel, mgtcompany, mgttel, estatenamee, addresse, transportation, 
+    education, hospital, bank, otherenv, cox, coy, opendate, moddate, flagdeleted, flagtrashed, 
+    deldate, delperson, estatetype, estatetx, exdate, viewflag, lockflag, floorrule, 
+    chooseroomnoflag, newflag, ringrroute, subway, startnumrang, endnumrang, startletterrang, 
+    endletterrang, dutyflag, coxmax, coymax, coverphoto, developers, planningarea, stall, 
+    plotratio, greeningrate, pmurl, flagrecommend, regperson, regdate, caradminfee, carrent, 
+    mgtunit, launchdate, preferential, pricemin, liftprice, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_estate
+    where estateid = #{estateid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_estate
+    where estateid = #{estateid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaEstate" >
+    insert into ta_estate (estateid, areaid, estatename, 
+      spell, propertyusage, propertytype, 
+      estatenamea, completeyear, ownyear, 
+      surplusownyear, bulidingnum, address, 
+      addressd, price, mgtprice, 
+      remark, flaglock, buildingrule, 
+      roomrule, roomruleex, square, 
+      room, framework, surface, 
+      landgrade, landno, devcompany, 
+      devtel, mgtcompany, mgttel, 
+      estatenamee, addresse, transportation, 
+      education, hospital, bank, 
+      otherenv, cox, coy, 
+      opendate, moddate, flagdeleted, 
+      flagtrashed, deldate, delperson, 
+      estatetype, estatetx, exdate, 
+      viewflag, lockflag, floorrule, 
+      chooseroomnoflag, newflag, ringrroute, 
+      subway, startnumrang, endnumrang, 
+      startletterrang, endletterrang, dutyflag, 
+      coxmax, coymax, coverphoto, 
+      developers, planningarea, stall, 
+      plotratio, greeningrate, pmurl, 
+      flagrecommend, regperson, regdate, 
+      caradminfee, carrent, mgtunit, 
+      launchdate, preferential, pricemin, 
+      liftprice, description)
+    values (#{estateid,jdbcType=VARCHAR}, #{areaid,jdbcType=VARCHAR}, #{estatename,jdbcType=VARCHAR}, 
+      #{spell,jdbcType=VARCHAR}, #{propertyusage,jdbcType=VARCHAR}, #{propertytype,jdbcType=VARCHAR}, 
+      #{estatenamea,jdbcType=VARCHAR}, #{completeyear,jdbcType=VARCHAR}, #{ownyear,jdbcType=VARCHAR}, 
+      #{surplusownyear,jdbcType=VARCHAR}, #{bulidingnum,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{addressd,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{mgtprice,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{flaglock,jdbcType=VARCHAR}, #{buildingrule,jdbcType=VARCHAR}, 
+      #{roomrule,jdbcType=VARCHAR}, #{roomruleex,jdbcType=VARCHAR}, #{square,jdbcType=DECIMAL}, 
+      #{room,jdbcType=INTEGER}, #{framework,jdbcType=VARCHAR}, #{surface,jdbcType=VARCHAR}, 
+      #{landgrade,jdbcType=VARCHAR}, #{landno,jdbcType=VARCHAR}, #{devcompany,jdbcType=VARCHAR}, 
+      #{devtel,jdbcType=VARCHAR}, #{mgtcompany,jdbcType=VARCHAR}, #{mgttel,jdbcType=VARCHAR}, 
+      #{estatenamee,jdbcType=VARCHAR}, #{addresse,jdbcType=VARCHAR}, #{transportation,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{hospital,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, 
+      #{otherenv,jdbcType=VARCHAR}, #{cox,jdbcType=DECIMAL}, #{coy,jdbcType=DECIMAL}, 
+      #{opendate,jdbcType=TIMESTAMP}, #{moddate,jdbcType=TIMESTAMP}, #{flagdeleted,jdbcType=VARCHAR}, 
+      #{flagtrashed,jdbcType=VARCHAR}, #{deldate,jdbcType=TIMESTAMP}, #{delperson,jdbcType=VARCHAR}, 
+      #{estatetype,jdbcType=VARCHAR}, #{estatetx,jdbcType=VARCHAR}, #{exdate,jdbcType=TIMESTAMP}, 
+      #{viewflag,jdbcType=VARCHAR}, #{lockflag,jdbcType=VARCHAR}, #{floorrule,jdbcType=VARCHAR}, 
+      #{chooseroomnoflag,jdbcType=VARCHAR}, #{newflag,jdbcType=VARCHAR}, #{ringrroute,jdbcType=VARCHAR}, 
+      #{subway,jdbcType=VARCHAR}, #{startnumrang,jdbcType=VARCHAR}, #{endnumrang,jdbcType=VARCHAR}, 
+      #{startletterrang,jdbcType=VARCHAR}, #{endletterrang,jdbcType=VARCHAR}, #{dutyflag,jdbcType=VARCHAR}, 
+      #{coxmax,jdbcType=DECIMAL}, #{coymax,jdbcType=DECIMAL}, #{coverphoto,jdbcType=VARCHAR}, 
+      #{developers,jdbcType=VARCHAR}, #{planningarea,jdbcType=DECIMAL}, #{stall,jdbcType=VARCHAR}, 
+      #{plotratio,jdbcType=DECIMAL}, #{greeningrate,jdbcType=DECIMAL}, #{pmurl,jdbcType=VARCHAR}, 
+      #{flagrecommend,jdbcType=BIT}, #{regperson,jdbcType=VARCHAR}, #{regdate,jdbcType=TIMESTAMP}, 
+      #{caradminfee,jdbcType=DECIMAL}, #{carrent,jdbcType=DECIMAL}, #{mgtunit,jdbcType=VARCHAR}, 
+      #{launchdate,jdbcType=TIMESTAMP}, #{preferential,jdbcType=VARCHAR}, #{pricemin,jdbcType=DECIMAL}, 
+      #{liftprice,jdbcType=DECIMAL}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaEstate" >
+    insert into ta_estate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="estateid != null" >
+        estateid,
+      </if>
+      <if test="areaid != null" >
+        areaid,
+      </if>
+      <if test="estatename != null" >
+        estatename,
+      </if>
+      <if test="spell != null" >
+        spell,
+      </if>
+      <if test="propertyusage != null" >
+        propertyusage,
+      </if>
+      <if test="propertytype != null" >
+        propertytype,
+      </if>
+      <if test="estatenamea != null" >
+        estatenamea,
+      </if>
+      <if test="completeyear != null" >
+        completeyear,
+      </if>
+      <if test="ownyear != null" >
+        ownyear,
+      </if>
+      <if test="surplusownyear != null" >
+        surplusownyear,
+      </if>
+      <if test="bulidingnum != null" >
+        bulidingnum,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="addressd != null" >
+        addressd,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="mgtprice != null" >
+        mgtprice,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flaglock != null" >
+        flaglock,
+      </if>
+      <if test="buildingrule != null" >
+        buildingrule,
+      </if>
+      <if test="roomrule != null" >
+        roomrule,
+      </if>
+      <if test="roomruleex != null" >
+        roomruleex,
+      </if>
+      <if test="square != null" >
+        square,
+      </if>
+      <if test="room != null" >
+        room,
+      </if>
+      <if test="framework != null" >
+        framework,
+      </if>
+      <if test="surface != null" >
+        surface,
+      </if>
+      <if test="landgrade != null" >
+        landgrade,
+      </if>
+      <if test="landno != null" >
+        landno,
+      </if>
+      <if test="devcompany != null" >
+        devcompany,
+      </if>
+      <if test="devtel != null" >
+        devtel,
+      </if>
+      <if test="mgtcompany != null" >
+        mgtcompany,
+      </if>
+      <if test="mgttel != null" >
+        mgttel,
+      </if>
+      <if test="estatenamee != null" >
+        estatenamee,
+      </if>
+      <if test="addresse != null" >
+        addresse,
+      </if>
+      <if test="transportation != null" >
+        transportation,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="hospital != null" >
+        hospital,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="otherenv != null" >
+        otherenv,
+      </if>
+      <if test="cox != null" >
+        cox,
+      </if>
+      <if test="coy != null" >
+        coy,
+      </if>
+      <if test="opendate != null" >
+        opendate,
+      </if>
+      <if test="moddate != null" >
+        moddate,
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted,
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed,
+      </if>
+      <if test="deldate != null" >
+        deldate,
+      </if>
+      <if test="delperson != null" >
+        delperson,
+      </if>
+      <if test="estatetype != null" >
+        estatetype,
+      </if>
+      <if test="estatetx != null" >
+        estatetx,
+      </if>
+      <if test="exdate != null" >
+        exdate,
+      </if>
+      <if test="viewflag != null" >
+        viewflag,
+      </if>
+      <if test="lockflag != null" >
+        lockflag,
+      </if>
+      <if test="floorrule != null" >
+        floorrule,
+      </if>
+      <if test="chooseroomnoflag != null" >
+        chooseroomnoflag,
+      </if>
+      <if test="newflag != null" >
+        newflag,
+      </if>
+      <if test="ringrroute != null" >
+        ringrroute,
+      </if>
+      <if test="subway != null" >
+        subway,
+      </if>
+      <if test="startnumrang != null" >
+        startnumrang,
+      </if>
+      <if test="endnumrang != null" >
+        endnumrang,
+      </if>
+      <if test="startletterrang != null" >
+        startletterrang,
+      </if>
+      <if test="endletterrang != null" >
+        endletterrang,
+      </if>
+      <if test="dutyflag != null" >
+        dutyflag,
+      </if>
+      <if test="coxmax != null" >
+        coxmax,
+      </if>
+      <if test="coymax != null" >
+        coymax,
+      </if>
+      <if test="coverphoto != null" >
+        coverphoto,
+      </if>
+      <if test="developers != null" >
+        developers,
+      </if>
+      <if test="planningarea != null" >
+        planningarea,
+      </if>
+      <if test="stall != null" >
+        stall,
+      </if>
+      <if test="plotratio != null" >
+        plotratio,
+      </if>
+      <if test="greeningrate != null" >
+        greeningrate,
+      </if>
+      <if test="pmurl != null" >
+        pmurl,
+      </if>
+      <if test="flagrecommend != null" >
+        flagrecommend,
+      </if>
+      <if test="regperson != null" >
+        regperson,
+      </if>
+      <if test="regdate != null" >
+        regdate,
+      </if>
+      <if test="caradminfee != null" >
+        caradminfee,
+      </if>
+      <if test="carrent != null" >
+        carrent,
+      </if>
+      <if test="mgtunit != null" >
+        mgtunit,
+      </if>
+      <if test="launchdate != null" >
+        launchdate,
+      </if>
+      <if test="preferential != null" >
+        preferential,
+      </if>
+      <if test="pricemin != null" >
+        pricemin,
+      </if>
+      <if test="liftprice != null" >
+        liftprice,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="estateid != null" >
+        #{estateid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="estatename != null" >
+        #{estatename,jdbcType=VARCHAR},
+      </if>
+      <if test="spell != null" >
+        #{spell,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyusage != null" >
+        #{propertyusage,jdbcType=VARCHAR},
+      </if>
+      <if test="propertytype != null" >
+        #{propertytype,jdbcType=VARCHAR},
+      </if>
+      <if test="estatenamea != null" >
+        #{estatenamea,jdbcType=VARCHAR},
+      </if>
+      <if test="completeyear != null" >
+        #{completeyear,jdbcType=VARCHAR},
+      </if>
+      <if test="ownyear != null" >
+        #{ownyear,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusownyear != null" >
+        #{surplusownyear,jdbcType=VARCHAR},
+      </if>
+      <if test="bulidingnum != null" >
+        #{bulidingnum,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addressd != null" >
+        #{addressd,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="mgtprice != null" >
+        #{mgtprice,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flaglock != null" >
+        #{flaglock,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingrule != null" >
+        #{buildingrule,jdbcType=VARCHAR},
+      </if>
+      <if test="roomrule != null" >
+        #{roomrule,jdbcType=VARCHAR},
+      </if>
+      <if test="roomruleex != null" >
+        #{roomruleex,jdbcType=VARCHAR},
+      </if>
+      <if test="square != null" >
+        #{square,jdbcType=DECIMAL},
+      </if>
+      <if test="room != null" >
+        #{room,jdbcType=INTEGER},
+      </if>
+      <if test="framework != null" >
+        #{framework,jdbcType=VARCHAR},
+      </if>
+      <if test="surface != null" >
+        #{surface,jdbcType=VARCHAR},
+      </if>
+      <if test="landgrade != null" >
+        #{landgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="landno != null" >
+        #{landno,jdbcType=VARCHAR},
+      </if>
+      <if test="devcompany != null" >
+        #{devcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="devtel != null" >
+        #{devtel,jdbcType=VARCHAR},
+      </if>
+      <if test="mgtcompany != null" >
+        #{mgtcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="mgttel != null" >
+        #{mgttel,jdbcType=VARCHAR},
+      </if>
+      <if test="estatenamee != null" >
+        #{estatenamee,jdbcType=VARCHAR},
+      </if>
+      <if test="addresse != null" >
+        #{addresse,jdbcType=VARCHAR},
+      </if>
+      <if test="transportation != null" >
+        #{transportation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="hospital != null" >
+        #{hospital,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="otherenv != null" >
+        #{otherenv,jdbcType=VARCHAR},
+      </if>
+      <if test="cox != null" >
+        #{cox,jdbcType=DECIMAL},
+      </if>
+      <if test="coy != null" >
+        #{coy,jdbcType=DECIMAL},
+      </if>
+      <if test="opendate != null" >
+        #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="moddate != null" >
+        #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagdeleted != null" >
+        #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="deldate != null" >
+        #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delperson != null" >
+        #{delperson,jdbcType=VARCHAR},
+      </if>
+      <if test="estatetype != null" >
+        #{estatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="estatetx != null" >
+        #{estatetx,jdbcType=VARCHAR},
+      </if>
+      <if test="exdate != null" >
+        #{exdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewflag != null" >
+        #{viewflag,jdbcType=VARCHAR},
+      </if>
+      <if test="lockflag != null" >
+        #{lockflag,jdbcType=VARCHAR},
+      </if>
+      <if test="floorrule != null" >
+        #{floorrule,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseroomnoflag != null" >
+        #{chooseroomnoflag,jdbcType=VARCHAR},
+      </if>
+      <if test="newflag != null" >
+        #{newflag,jdbcType=VARCHAR},
+      </if>
+      <if test="ringrroute != null" >
+        #{ringrroute,jdbcType=VARCHAR},
+      </if>
+      <if test="subway != null" >
+        #{subway,jdbcType=VARCHAR},
+      </if>
+      <if test="startnumrang != null" >
+        #{startnumrang,jdbcType=VARCHAR},
+      </if>
+      <if test="endnumrang != null" >
+        #{endnumrang,jdbcType=VARCHAR},
+      </if>
+      <if test="startletterrang != null" >
+        #{startletterrang,jdbcType=VARCHAR},
+      </if>
+      <if test="endletterrang != null" >
+        #{endletterrang,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyflag != null" >
+        #{dutyflag,jdbcType=VARCHAR},
+      </if>
+      <if test="coxmax != null" >
+        #{coxmax,jdbcType=DECIMAL},
+      </if>
+      <if test="coymax != null" >
+        #{coymax,jdbcType=DECIMAL},
+      </if>
+      <if test="coverphoto != null" >
+        #{coverphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="developers != null" >
+        #{developers,jdbcType=VARCHAR},
+      </if>
+      <if test="planningarea != null" >
+        #{planningarea,jdbcType=DECIMAL},
+      </if>
+      <if test="stall != null" >
+        #{stall,jdbcType=VARCHAR},
+      </if>
+      <if test="plotratio != null" >
+        #{plotratio,jdbcType=DECIMAL},
+      </if>
+      <if test="greeningrate != null" >
+        #{greeningrate,jdbcType=DECIMAL},
+      </if>
+      <if test="pmurl != null" >
+        #{pmurl,jdbcType=VARCHAR},
+      </if>
+      <if test="flagrecommend != null" >
+        #{flagrecommend,jdbcType=BIT},
+      </if>
+      <if test="regperson != null" >
+        #{regperson,jdbcType=VARCHAR},
+      </if>
+      <if test="regdate != null" >
+        #{regdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caradminfee != null" >
+        #{caradminfee,jdbcType=DECIMAL},
+      </if>
+      <if test="carrent != null" >
+        #{carrent,jdbcType=DECIMAL},
+      </if>
+      <if test="mgtunit != null" >
+        #{mgtunit,jdbcType=VARCHAR},
+      </if>
+      <if test="launchdate != null" >
+        #{launchdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preferential != null" >
+        #{preferential,jdbcType=VARCHAR},
+      </if>
+      <if test="pricemin != null" >
+        #{pricemin,jdbcType=DECIMAL},
+      </if>
+      <if test="liftprice != null" >
+        #{liftprice,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaEstate" >
+    update ta_estate
+    <set >
+      <if test="areaid != null" >
+        areaid = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="estatename != null" >
+        estatename = #{estatename,jdbcType=VARCHAR},
+      </if>
+      <if test="spell != null" >
+        spell = #{spell,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyusage != null" >
+        propertyusage = #{propertyusage,jdbcType=VARCHAR},
+      </if>
+      <if test="propertytype != null" >
+        propertytype = #{propertytype,jdbcType=VARCHAR},
+      </if>
+      <if test="estatenamea != null" >
+        estatenamea = #{estatenamea,jdbcType=VARCHAR},
+      </if>
+      <if test="completeyear != null" >
+        completeyear = #{completeyear,jdbcType=VARCHAR},
+      </if>
+      <if test="ownyear != null" >
+        ownyear = #{ownyear,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusownyear != null" >
+        surplusownyear = #{surplusownyear,jdbcType=VARCHAR},
+      </if>
+      <if test="bulidingnum != null" >
+        bulidingnum = #{bulidingnum,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addressd != null" >
+        addressd = #{addressd,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="mgtprice != null" >
+        mgtprice = #{mgtprice,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flaglock != null" >
+        flaglock = #{flaglock,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingrule != null" >
+        buildingrule = #{buildingrule,jdbcType=VARCHAR},
+      </if>
+      <if test="roomrule != null" >
+        roomrule = #{roomrule,jdbcType=VARCHAR},
+      </if>
+      <if test="roomruleex != null" >
+        roomruleex = #{roomruleex,jdbcType=VARCHAR},
+      </if>
+      <if test="square != null" >
+        square = #{square,jdbcType=DECIMAL},
+      </if>
+      <if test="room != null" >
+        room = #{room,jdbcType=INTEGER},
+      </if>
+      <if test="framework != null" >
+        framework = #{framework,jdbcType=VARCHAR},
+      </if>
+      <if test="surface != null" >
+        surface = #{surface,jdbcType=VARCHAR},
+      </if>
+      <if test="landgrade != null" >
+        landgrade = #{landgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="landno != null" >
+        landno = #{landno,jdbcType=VARCHAR},
+      </if>
+      <if test="devcompany != null" >
+        devcompany = #{devcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="devtel != null" >
+        devtel = #{devtel,jdbcType=VARCHAR},
+      </if>
+      <if test="mgtcompany != null" >
+        mgtcompany = #{mgtcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="mgttel != null" >
+        mgttel = #{mgttel,jdbcType=VARCHAR},
+      </if>
+      <if test="estatenamee != null" >
+        estatenamee = #{estatenamee,jdbcType=VARCHAR},
+      </if>
+      <if test="addresse != null" >
+        addresse = #{addresse,jdbcType=VARCHAR},
+      </if>
+      <if test="transportation != null" >
+        transportation = #{transportation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="hospital != null" >
+        hospital = #{hospital,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="otherenv != null" >
+        otherenv = #{otherenv,jdbcType=VARCHAR},
+      </if>
+      <if test="cox != null" >
+        cox = #{cox,jdbcType=DECIMAL},
+      </if>
+      <if test="coy != null" >
+        coy = #{coy,jdbcType=DECIMAL},
+      </if>
+      <if test="opendate != null" >
+        opendate = #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="moddate != null" >
+        moddate = #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="deldate != null" >
+        deldate = #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delperson != null" >
+        delperson = #{delperson,jdbcType=VARCHAR},
+      </if>
+      <if test="estatetype != null" >
+        estatetype = #{estatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="estatetx != null" >
+        estatetx = #{estatetx,jdbcType=VARCHAR},
+      </if>
+      <if test="exdate != null" >
+        exdate = #{exdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewflag != null" >
+        viewflag = #{viewflag,jdbcType=VARCHAR},
+      </if>
+      <if test="lockflag != null" >
+        lockflag = #{lockflag,jdbcType=VARCHAR},
+      </if>
+      <if test="floorrule != null" >
+        floorrule = #{floorrule,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseroomnoflag != null" >
+        chooseroomnoflag = #{chooseroomnoflag,jdbcType=VARCHAR},
+      </if>
+      <if test="newflag != null" >
+        newflag = #{newflag,jdbcType=VARCHAR},
+      </if>
+      <if test="ringrroute != null" >
+        ringrroute = #{ringrroute,jdbcType=VARCHAR},
+      </if>
+      <if test="subway != null" >
+        subway = #{subway,jdbcType=VARCHAR},
+      </if>
+      <if test="startnumrang != null" >
+        startnumrang = #{startnumrang,jdbcType=VARCHAR},
+      </if>
+      <if test="endnumrang != null" >
+        endnumrang = #{endnumrang,jdbcType=VARCHAR},
+      </if>
+      <if test="startletterrang != null" >
+        startletterrang = #{startletterrang,jdbcType=VARCHAR},
+      </if>
+      <if test="endletterrang != null" >
+        endletterrang = #{endletterrang,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyflag != null" >
+        dutyflag = #{dutyflag,jdbcType=VARCHAR},
+      </if>
+      <if test="coxmax != null" >
+        coxmax = #{coxmax,jdbcType=DECIMAL},
+      </if>
+      <if test="coymax != null" >
+        coymax = #{coymax,jdbcType=DECIMAL},
+      </if>
+      <if test="coverphoto != null" >
+        coverphoto = #{coverphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="developers != null" >
+        developers = #{developers,jdbcType=VARCHAR},
+      </if>
+      <if test="planningarea != null" >
+        planningarea = #{planningarea,jdbcType=DECIMAL},
+      </if>
+      <if test="stall != null" >
+        stall = #{stall,jdbcType=VARCHAR},
+      </if>
+      <if test="plotratio != null" >
+        plotratio = #{plotratio,jdbcType=DECIMAL},
+      </if>
+      <if test="greeningrate != null" >
+        greeningrate = #{greeningrate,jdbcType=DECIMAL},
+      </if>
+      <if test="pmurl != null" >
+        pmurl = #{pmurl,jdbcType=VARCHAR},
+      </if>
+      <if test="flagrecommend != null" >
+        flagrecommend = #{flagrecommend,jdbcType=BIT},
+      </if>
+      <if test="regperson != null" >
+        regperson = #{regperson,jdbcType=VARCHAR},
+      </if>
+      <if test="regdate != null" >
+        regdate = #{regdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caradminfee != null" >
+        caradminfee = #{caradminfee,jdbcType=DECIMAL},
+      </if>
+      <if test="carrent != null" >
+        carrent = #{carrent,jdbcType=DECIMAL},
+      </if>
+      <if test="mgtunit != null" >
+        mgtunit = #{mgtunit,jdbcType=VARCHAR},
+      </if>
+      <if test="launchdate != null" >
+        launchdate = #{launchdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preferential != null" >
+        preferential = #{preferential,jdbcType=VARCHAR},
+      </if>
+      <if test="pricemin != null" >
+        pricemin = #{pricemin,jdbcType=DECIMAL},
+      </if>
+      <if test="liftprice != null" >
+        liftprice = #{liftprice,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where estateid = #{estateid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaEstate" >
+    update ta_estate
+    set areaid = #{areaid,jdbcType=VARCHAR},
+      estatename = #{estatename,jdbcType=VARCHAR},
+      spell = #{spell,jdbcType=VARCHAR},
+      propertyusage = #{propertyusage,jdbcType=VARCHAR},
+      propertytype = #{propertytype,jdbcType=VARCHAR},
+      estatenamea = #{estatenamea,jdbcType=VARCHAR},
+      completeyear = #{completeyear,jdbcType=VARCHAR},
+      ownyear = #{ownyear,jdbcType=VARCHAR},
+      surplusownyear = #{surplusownyear,jdbcType=VARCHAR},
+      bulidingnum = #{bulidingnum,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      addressd = #{addressd,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      mgtprice = #{mgtprice,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      flaglock = #{flaglock,jdbcType=VARCHAR},
+      buildingrule = #{buildingrule,jdbcType=VARCHAR},
+      roomrule = #{roomrule,jdbcType=VARCHAR},
+      roomruleex = #{roomruleex,jdbcType=VARCHAR},
+      square = #{square,jdbcType=DECIMAL},
+      room = #{room,jdbcType=INTEGER},
+      framework = #{framework,jdbcType=VARCHAR},
+      surface = #{surface,jdbcType=VARCHAR},
+      landgrade = #{landgrade,jdbcType=VARCHAR},
+      landno = #{landno,jdbcType=VARCHAR},
+      devcompany = #{devcompany,jdbcType=VARCHAR},
+      devtel = #{devtel,jdbcType=VARCHAR},
+      mgtcompany = #{mgtcompany,jdbcType=VARCHAR},
+      mgttel = #{mgttel,jdbcType=VARCHAR},
+      estatenamee = #{estatenamee,jdbcType=VARCHAR},
+      addresse = #{addresse,jdbcType=VARCHAR},
+      transportation = #{transportation,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      hospital = #{hospital,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      otherenv = #{otherenv,jdbcType=VARCHAR},
+      cox = #{cox,jdbcType=DECIMAL},
+      coy = #{coy,jdbcType=DECIMAL},
+      opendate = #{opendate,jdbcType=TIMESTAMP},
+      moddate = #{moddate,jdbcType=TIMESTAMP},
+      flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      deldate = #{deldate,jdbcType=TIMESTAMP},
+      delperson = #{delperson,jdbcType=VARCHAR},
+      estatetype = #{estatetype,jdbcType=VARCHAR},
+      estatetx = #{estatetx,jdbcType=VARCHAR},
+      exdate = #{exdate,jdbcType=TIMESTAMP},
+      viewflag = #{viewflag,jdbcType=VARCHAR},
+      lockflag = #{lockflag,jdbcType=VARCHAR},
+      floorrule = #{floorrule,jdbcType=VARCHAR},
+      chooseroomnoflag = #{chooseroomnoflag,jdbcType=VARCHAR},
+      newflag = #{newflag,jdbcType=VARCHAR},
+      ringrroute = #{ringrroute,jdbcType=VARCHAR},
+      subway = #{subway,jdbcType=VARCHAR},
+      startnumrang = #{startnumrang,jdbcType=VARCHAR},
+      endnumrang = #{endnumrang,jdbcType=VARCHAR},
+      startletterrang = #{startletterrang,jdbcType=VARCHAR},
+      endletterrang = #{endletterrang,jdbcType=VARCHAR},
+      dutyflag = #{dutyflag,jdbcType=VARCHAR},
+      coxmax = #{coxmax,jdbcType=DECIMAL},
+      coymax = #{coymax,jdbcType=DECIMAL},
+      coverphoto = #{coverphoto,jdbcType=VARCHAR},
+      developers = #{developers,jdbcType=VARCHAR},
+      planningarea = #{planningarea,jdbcType=DECIMAL},
+      stall = #{stall,jdbcType=VARCHAR},
+      plotratio = #{plotratio,jdbcType=DECIMAL},
+      greeningrate = #{greeningrate,jdbcType=DECIMAL},
+      pmurl = #{pmurl,jdbcType=VARCHAR},
+      flagrecommend = #{flagrecommend,jdbcType=BIT},
+      regperson = #{regperson,jdbcType=VARCHAR},
+      regdate = #{regdate,jdbcType=TIMESTAMP},
+      caradminfee = #{caradminfee,jdbcType=DECIMAL},
+      carrent = #{carrent,jdbcType=DECIMAL},
+      mgtunit = #{mgtunit,jdbcType=VARCHAR},
+      launchdate = #{launchdate,jdbcType=TIMESTAMP},
+      preferential = #{preferential,jdbcType=VARCHAR},
+      pricemin = #{pricemin,jdbcType=DECIMAL},
+      liftprice = #{liftprice,jdbcType=DECIMAL},
+      description = #{description,jdbcType=VARCHAR}
+    where estateid = #{estateid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaBuildingMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaBuilding" >
+    <id column="buildingid" property="buildingid" jdbcType="VARCHAR" />
+    <result column="estateid" property="estateid" jdbcType="VARCHAR" />
+    <result column="buildingname" property="buildingname" jdbcType="VARCHAR" />
+    <result column="floorstart" property="floorstart" jdbcType="VARCHAR" />
+    <result column="floorend" property="floorend" jdbcType="VARCHAR" />
+    <result column="floorall" property="floorall" jdbcType="VARCHAR" />
+    <result column="countt" property="countt" jdbcType="VARCHAR" />
+    <result column="counth" property="counth" jdbcType="VARCHAR" />
+    <result column="cellstart" property="cellstart" jdbcType="VARCHAR" />
+    <result column="cellend" property="cellend" jdbcType="VARCHAR" />
+    <result column="cell" property="cell" jdbcType="VARCHAR" />
+    <result column="unitrules" property="unitrules" jdbcType="VARCHAR" />
+    <result column="flagdeleted" property="flagdeleted" jdbcType="VARCHAR" />
+    <result column="flagtrashed" property="flagtrashed" jdbcType="VARCHAR" />
+    <result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+    <result column="exdate" property="exdate" jdbcType="TIMESTAMP" />
+    <result column="floorrule" property="floorrule" jdbcType="VARCHAR" />
+    <result column="startfloornumrange" property="startfloornumrange" jdbcType="VARCHAR" />
+    <result column="endfloornumrange" property="endfloornumrange" jdbcType="VARCHAR" />
+    <result column="startfloorletterrange" property="startfloorletterrange" jdbcType="VARCHAR" />
+    <result column="endfloorletterrange" property="endfloorletterrange" jdbcType="VARCHAR" />
+    <result column="roomrule" property="roomrule" jdbcType="VARCHAR" />
+    <result column="startnumrange" property="startnumrange" jdbcType="VARCHAR" />
+    <result column="endnumrange" property="endnumrange" jdbcType="VARCHAR" />
+    <result column="startletterrange" property="startletterrange" jdbcType="VARCHAR" />
+    <result column="endletterrange" property="endletterrange" jdbcType="VARCHAR" />
+    <result column="useroomrule" property="useroomrule" jdbcType="TINYINT" />
+    <result column="usefloorrule" property="usefloorrule" jdbcType="TINYINT" />
+    <result column="isusermoomno" property="isusermoomno" jdbcType="TINYINT" />
+    <result column="roomvalidityrule" property="roomvalidityrule" jdbcType="VARCHAR" />
+    <result column="room" property="room" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    buildingid, estateid, buildingname, floorstart, floorend, floorall, countt, counth, 
+    cellstart, cellend, cell, unitrules, flagdeleted, flagtrashed, moddate, exdate, floorrule, 
+    startfloornumrange, endfloornumrange, startfloorletterrange, endfloorletterrange, 
+    roomrule, startnumrange, endnumrange, startletterrange, endletterrange, useroomrule, 
+    usefloorrule, isusermoomno, roomvalidityrule, room
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_building
+    where buildingid = #{buildingid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_building
+    where buildingid = #{buildingid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaBuilding" >
+    insert into ta_building (buildingid, estateid, buildingname, 
+      floorstart, floorend, floorall, 
+      countt, counth, cellstart, 
+      cellend, cell, unitrules, 
+      flagdeleted, flagtrashed, moddate, 
+      exdate, floorrule, startfloornumrange, 
+      endfloornumrange, startfloorletterrange, 
+      endfloorletterrange, roomrule, startnumrange, 
+      endnumrange, startletterrange, endletterrange, 
+      useroomrule, usefloorrule, isusermoomno, 
+      roomvalidityrule, room)
+    values (#{buildingid,jdbcType=VARCHAR}, #{estateid,jdbcType=VARCHAR}, #{buildingname,jdbcType=VARCHAR}, 
+      #{floorstart,jdbcType=VARCHAR}, #{floorend,jdbcType=VARCHAR}, #{floorall,jdbcType=VARCHAR}, 
+      #{countt,jdbcType=VARCHAR}, #{counth,jdbcType=VARCHAR}, #{cellstart,jdbcType=VARCHAR}, 
+      #{cellend,jdbcType=VARCHAR}, #{cell,jdbcType=VARCHAR}, #{unitrules,jdbcType=VARCHAR}, 
+      #{flagdeleted,jdbcType=VARCHAR}, #{flagtrashed,jdbcType=VARCHAR}, #{moddate,jdbcType=TIMESTAMP}, 
+      #{exdate,jdbcType=TIMESTAMP}, #{floorrule,jdbcType=VARCHAR}, #{startfloornumrange,jdbcType=VARCHAR}, 
+      #{endfloornumrange,jdbcType=VARCHAR}, #{startfloorletterrange,jdbcType=VARCHAR}, 
+      #{endfloorletterrange,jdbcType=VARCHAR}, #{roomrule,jdbcType=VARCHAR}, #{startnumrange,jdbcType=VARCHAR}, 
+      #{endnumrange,jdbcType=VARCHAR}, #{startletterrange,jdbcType=VARCHAR}, #{endletterrange,jdbcType=VARCHAR}, 
+      #{useroomrule,jdbcType=TINYINT}, #{usefloorrule,jdbcType=TINYINT}, #{isusermoomno,jdbcType=TINYINT}, 
+      #{roomvalidityrule,jdbcType=VARCHAR}, #{room,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaBuilding" >
+    insert into ta_building
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buildingid != null" >
+        buildingid,
+      </if>
+      <if test="estateid != null" >
+        estateid,
+      </if>
+      <if test="buildingname != null" >
+        buildingname,
+      </if>
+      <if test="floorstart != null" >
+        floorstart,
+      </if>
+      <if test="floorend != null" >
+        floorend,
+      </if>
+      <if test="floorall != null" >
+        floorall,
+      </if>
+      <if test="countt != null" >
+        countt,
+      </if>
+      <if test="counth != null" >
+        counth,
+      </if>
+      <if test="cellstart != null" >
+        cellstart,
+      </if>
+      <if test="cellend != null" >
+        cellend,
+      </if>
+      <if test="cell != null" >
+        cell,
+      </if>
+      <if test="unitrules != null" >
+        unitrules,
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted,
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed,
+      </if>
+      <if test="moddate != null" >
+        moddate,
+      </if>
+      <if test="exdate != null" >
+        exdate,
+      </if>
+      <if test="floorrule != null" >
+        floorrule,
+      </if>
+      <if test="startfloornumrange != null" >
+        startfloornumrange,
+      </if>
+      <if test="endfloornumrange != null" >
+        endfloornumrange,
+      </if>
+      <if test="startfloorletterrange != null" >
+        startfloorletterrange,
+      </if>
+      <if test="endfloorletterrange != null" >
+        endfloorletterrange,
+      </if>
+      <if test="roomrule != null" >
+        roomrule,
+      </if>
+      <if test="startnumrange != null" >
+        startnumrange,
+      </if>
+      <if test="endnumrange != null" >
+        endnumrange,
+      </if>
+      <if test="startletterrange != null" >
+        startletterrange,
+      </if>
+      <if test="endletterrange != null" >
+        endletterrange,
+      </if>
+      <if test="useroomrule != null" >
+        useroomrule,
+      </if>
+      <if test="usefloorrule != null" >
+        usefloorrule,
+      </if>
+      <if test="isusermoomno != null" >
+        isusermoomno,
+      </if>
+      <if test="roomvalidityrule != null" >
+        roomvalidityrule,
+      </if>
+      <if test="room != null" >
+        room,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buildingid != null" >
+        #{buildingid,jdbcType=VARCHAR},
+      </if>
+      <if test="estateid != null" >
+        #{estateid,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingname != null" >
+        #{buildingname,jdbcType=VARCHAR},
+      </if>
+      <if test="floorstart != null" >
+        #{floorstart,jdbcType=VARCHAR},
+      </if>
+      <if test="floorend != null" >
+        #{floorend,jdbcType=VARCHAR},
+      </if>
+      <if test="floorall != null" >
+        #{floorall,jdbcType=VARCHAR},
+      </if>
+      <if test="countt != null" >
+        #{countt,jdbcType=VARCHAR},
+      </if>
+      <if test="counth != null" >
+        #{counth,jdbcType=VARCHAR},
+      </if>
+      <if test="cellstart != null" >
+        #{cellstart,jdbcType=VARCHAR},
+      </if>
+      <if test="cellend != null" >
+        #{cellend,jdbcType=VARCHAR},
+      </if>
+      <if test="cell != null" >
+        #{cell,jdbcType=VARCHAR},
+      </if>
+      <if test="unitrules != null" >
+        #{unitrules,jdbcType=VARCHAR},
+      </if>
+      <if test="flagdeleted != null" >
+        #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exdate != null" >
+        #{exdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floorrule != null" >
+        #{floorrule,jdbcType=VARCHAR},
+      </if>
+      <if test="startfloornumrange != null" >
+        #{startfloornumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endfloornumrange != null" >
+        #{endfloornumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="startfloorletterrange != null" >
+        #{startfloorletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endfloorletterrange != null" >
+        #{endfloorletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="roomrule != null" >
+        #{roomrule,jdbcType=VARCHAR},
+      </if>
+      <if test="startnumrange != null" >
+        #{startnumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endnumrange != null" >
+        #{endnumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="startletterrange != null" >
+        #{startletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endletterrange != null" >
+        #{endletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="useroomrule != null" >
+        #{useroomrule,jdbcType=TINYINT},
+      </if>
+      <if test="usefloorrule != null" >
+        #{usefloorrule,jdbcType=TINYINT},
+      </if>
+      <if test="isusermoomno != null" >
+        #{isusermoomno,jdbcType=TINYINT},
+      </if>
+      <if test="roomvalidityrule != null" >
+        #{roomvalidityrule,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        #{room,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaBuilding" >
+    update ta_building
+    <set >
+      <if test="estateid != null" >
+        estateid = #{estateid,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingname != null" >
+        buildingname = #{buildingname,jdbcType=VARCHAR},
+      </if>
+      <if test="floorstart != null" >
+        floorstart = #{floorstart,jdbcType=VARCHAR},
+      </if>
+      <if test="floorend != null" >
+        floorend = #{floorend,jdbcType=VARCHAR},
+      </if>
+      <if test="floorall != null" >
+        floorall = #{floorall,jdbcType=VARCHAR},
+      </if>
+      <if test="countt != null" >
+        countt = #{countt,jdbcType=VARCHAR},
+      </if>
+      <if test="counth != null" >
+        counth = #{counth,jdbcType=VARCHAR},
+      </if>
+      <if test="cellstart != null" >
+        cellstart = #{cellstart,jdbcType=VARCHAR},
+      </if>
+      <if test="cellend != null" >
+        cellend = #{cellend,jdbcType=VARCHAR},
+      </if>
+      <if test="cell != null" >
+        cell = #{cell,jdbcType=VARCHAR},
+      </if>
+      <if test="unitrules != null" >
+        unitrules = #{unitrules,jdbcType=VARCHAR},
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        moddate = #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exdate != null" >
+        exdate = #{exdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floorrule != null" >
+        floorrule = #{floorrule,jdbcType=VARCHAR},
+      </if>
+      <if test="startfloornumrange != null" >
+        startfloornumrange = #{startfloornumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endfloornumrange != null" >
+        endfloornumrange = #{endfloornumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="startfloorletterrange != null" >
+        startfloorletterrange = #{startfloorletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endfloorletterrange != null" >
+        endfloorletterrange = #{endfloorletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="roomrule != null" >
+        roomrule = #{roomrule,jdbcType=VARCHAR},
+      </if>
+      <if test="startnumrange != null" >
+        startnumrange = #{startnumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endnumrange != null" >
+        endnumrange = #{endnumrange,jdbcType=VARCHAR},
+      </if>
+      <if test="startletterrange != null" >
+        startletterrange = #{startletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="endletterrange != null" >
+        endletterrange = #{endletterrange,jdbcType=VARCHAR},
+      </if>
+      <if test="useroomrule != null" >
+        useroomrule = #{useroomrule,jdbcType=TINYINT},
+      </if>
+      <if test="usefloorrule != null" >
+        usefloorrule = #{usefloorrule,jdbcType=TINYINT},
+      </if>
+      <if test="isusermoomno != null" >
+        isusermoomno = #{isusermoomno,jdbcType=TINYINT},
+      </if>
+      <if test="roomvalidityrule != null" >
+        roomvalidityrule = #{roomvalidityrule,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        room = #{room,jdbcType=INTEGER},
+      </if>
+    </set>
+    where buildingid = #{buildingid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaBuilding" >
+    update ta_building
+    set estateid = #{estateid,jdbcType=VARCHAR},
+      buildingname = #{buildingname,jdbcType=VARCHAR},
+      floorstart = #{floorstart,jdbcType=VARCHAR},
+      floorend = #{floorend,jdbcType=VARCHAR},
+      floorall = #{floorall,jdbcType=VARCHAR},
+      countt = #{countt,jdbcType=VARCHAR},
+      counth = #{counth,jdbcType=VARCHAR},
+      cellstart = #{cellstart,jdbcType=VARCHAR},
+      cellend = #{cellend,jdbcType=VARCHAR},
+      cell = #{cell,jdbcType=VARCHAR},
+      unitrules = #{unitrules,jdbcType=VARCHAR},
+      flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      moddate = #{moddate,jdbcType=TIMESTAMP},
+      exdate = #{exdate,jdbcType=TIMESTAMP},
+      floorrule = #{floorrule,jdbcType=VARCHAR},
+      startfloornumrange = #{startfloornumrange,jdbcType=VARCHAR},
+      endfloornumrange = #{endfloornumrange,jdbcType=VARCHAR},
+      startfloorletterrange = #{startfloorletterrange,jdbcType=VARCHAR},
+      endfloorletterrange = #{endfloorletterrange,jdbcType=VARCHAR},
+      roomrule = #{roomrule,jdbcType=VARCHAR},
+      startnumrange = #{startnumrange,jdbcType=VARCHAR},
+      endnumrange = #{endnumrange,jdbcType=VARCHAR},
+      startletterrange = #{startletterrange,jdbcType=VARCHAR},
+      endletterrange = #{endletterrange,jdbcType=VARCHAR},
+      useroomrule = #{useroomrule,jdbcType=TINYINT},
+      usefloorrule = #{usefloorrule,jdbcType=TINYINT},
+      isusermoomno = #{isusermoomno,jdbcType=TINYINT},
+      roomvalidityrule = #{roomvalidityrule,jdbcType=VARCHAR},
+      room = #{room,jdbcType=INTEGER}
+    where buildingid = #{buildingid,jdbcType=VARCHAR}
+  </update>
+</mapper>

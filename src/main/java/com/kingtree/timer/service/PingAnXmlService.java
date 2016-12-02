@@ -7,21 +7,21 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 
 public interface PingAnXmlService {
-
-	Element getBrokerCompany(Map<String, String> data);
-
-	Element getBrokerDepart(Map<String, String> data);
-
-	Element getBroker(Map<String, String> data);
-
-	Element getCommunity(Map<String, String> data);
-
-	Element getSecondHandHouse(Map<String, String> data);
-
-	Element getSecondHandHouseOffline(Map<String, String> data);
-
-	Element getSecondHandHousePic(Map<String, String> data);
+ 
+	Document getSecondHandHouseOffline(List<Map<String, String>> data); 
 
 	Document getSecondHandHouseRefresh(List<Map<String, String>> data);
+
+	Document getSecondHandHousePic(List<Map<String, String>> data);
+
+	Document getSecondHandHouse(List<Map<String, String>> data);
+
+	Document getCommunity(List<Map<String, String>> data);
+
+	Document getBroker(List<Map<String, String>> data);
+
+	Document getBrokerDepart(List<Map<String, String>> data);
+
+	Document getBrokerCompany(List<Map<String, String>> data);
 
 }

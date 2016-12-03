@@ -55,9 +55,14 @@ public class PingAnXmlWriterServiceImp implements PingAnXmlWriterService {
 	public File getXMLPath(String xmlName)throws IOException {
 		
 		String path = "E:/JAVA/file/"; //暂时先写该路径
-		Calendar  c = Calendar.getInstance(); 
-		String datePath = c.get(Calendar.YEAR)+"-"+c.get(Calendar.MONTH)+"-"+c.get(Calendar.DATE);//格式：2016-11-3
-		String xmlPath = path+datePath+"/"+xmlName; //格式：E:/JAVA/file/2016-11-3/SecondHandHouseList.xml
+//		Calendar  c = Calendar.getInstance(); 
+//		String datePath = c.get(Calendar.YEAR)+"-"+c.get(Calendar.MONTH)+"-"+c.get(Calendar.DATE);//格式：2016-11-3
+//		String xmlPath = path+datePath+"/"+xmlName; //格式：E:/JAVA/file/2016-11-3/SecondHandHouseList.xml
+//		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String datePath = sdf.format(new Date());
+		String xmlPath = path+datePath+"/"+xmlName;
+//	    System.out.println(xmlPath);
 		return new File(xmlPath);
 	}
 }

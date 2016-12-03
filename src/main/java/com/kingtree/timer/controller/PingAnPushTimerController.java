@@ -43,6 +43,8 @@ public class PingAnPushTimerController {
 	@Scheduled(cron = "0/60 * * * * ?")
 	@RequestMapping(value = "/run", method = { RequestMethod.GET, RequestMethod.POST })
 	public void run() throws IOException {
+		int successCount = 0;
+		int failureCount = 0;
 		TaHouse taHouse = new TaHouse();
 		taHouse.setTooutside(true);
 		int page = 0;
@@ -53,13 +55,17 @@ public class PingAnPushTimerController {
 			}
 
 			for (TaHouse item : taHouseList) {
-
+				try {
+					logger.info(item.getTitle());
+					successCount++;
+				} catch (Exception e) {
+					logger.info("{21ERROR}:" + item.getHouseid());
+					failureCount++;
+				}
 			}
-
-			logger.info("");
 			page++;
 		}
-		logger.info(sdft.format(new Date()) + "定时任务已启动...");
+		logger.info(sdft.format(new Date()) + "定时任务执行结束，SUCCESS:" + successCount + ",FAILURE:" + failureCount);
 	}
 
 }

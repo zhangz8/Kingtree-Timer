@@ -3,6 +3,9 @@ package com.kingtree.timer.service.imp;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
@@ -44,5 +47,17 @@ public class PingAnXmlWriterServiceImp implements PingAnXmlWriterService {
 		writer.flush();
 		//关闭操作
 		writer.close();
+	}
+/*
+ * 传入xml文件名，输出绝对路径
+ * */
+	@Override
+	public File getXMLPath(String xmlName)throws IOException {
+		
+		String path = "E:/JAVA/file/"; //暂时先写该路径
+		Calendar  c = Calendar.getInstance(); 
+		String datePath = c.get(Calendar.YEAR)+"-"+c.get(Calendar.MONTH)+"-"+c.get(Calendar.DATE);//格式：2016-11-3
+		String xmlPath = path+datePath+"/"+xmlName; //格式：E:/JAVA/file/2016-11-3/SecondHandHouseList.xml
+		return new File(xmlPath);
 	}
 }

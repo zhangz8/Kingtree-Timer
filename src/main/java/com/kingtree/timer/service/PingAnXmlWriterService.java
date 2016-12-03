@@ -9,5 +9,7 @@ public interface PingAnXmlWriterService {
 
 	void write(Document document) throws IOException;
 
-	void write(Document document, File file) throws IOException;
+	void write(Document document, File file) throws IOException;  
+
+	File getXMLPath(String xmlName) throws IOException;
 }

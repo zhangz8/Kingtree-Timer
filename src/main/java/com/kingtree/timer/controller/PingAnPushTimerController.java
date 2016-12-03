@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kingtree.timer.entity.TaHouse;
 import com.kingtree.timer.service.TaHouseService;
+import com.kingtree.timer.util.ConstantsUtil;
 import com.kingtree.timer.util.PageUtil;
 
 /**
@@ -59,7 +60,7 @@ public class PingAnPushTimerController {
 					logger.info(item.getTitle());
 					successCount++;
 				} catch (Exception e) {
-					logger.info("{21ERROR}:" + item.getHouseid());
+					logger.info(ConstantsUtil.ERROR_WITH_BRACE + item.getHouseid());
 					failureCount++;
 				}
 			}

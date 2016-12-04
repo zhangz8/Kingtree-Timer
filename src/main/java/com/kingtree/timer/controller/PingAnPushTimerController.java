@@ -60,7 +60,7 @@ public class PingAnPushTimerController {
 					logger.info(item.getTitle());
 					successCount++;
 				} catch (Exception e) {
-					logger.info(ConstantsUtil.ERROR_WITH_BRACE + item.getHouseid());
+					logger.info(ConstantsUtil.ERROR + item.getHouseid());
 					failureCount++;
 				}
 			}

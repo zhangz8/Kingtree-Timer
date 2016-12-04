@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<second_hand_house_pic_list xmlns="http://www.pinganfang.com/second_hand_house_pics">
+    <second_hand_house_pic>
+        <image_id>233322323</image_id>
+        <pic_type>1</pic_type>
+        <url>http://www.google.com/some.jpg</url>
+        <house_id>1</house_id>
+    </second_hand_house_pic>
+    <second_hand_house_pic>
+        <image_id>3222</image_id>
+        <pic_type>2</pic_type>
+        <url>http://www.google.co.jp/another.gif</url>
+        <house_id>2</house_id>
+    </second_hand_house_pic>
+</second_hand_house_pic_list>

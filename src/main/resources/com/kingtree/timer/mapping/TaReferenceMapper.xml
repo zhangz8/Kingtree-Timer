@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaReferenceMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaReference" >
+    <id column="refid" property="refid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="refname" property="refname" jdbcType="VARCHAR" />
+    <result column="refnamecn" property="refnamecn" jdbcType="VARCHAR" />
+    <result column="itemno" property="itemno" jdbcType="VARCHAR" />
+    <result column="itemvalue" property="itemvalue" jdbcType="VARCHAR" />
+    <result column="iteminfo" property="iteminfo" jdbcType="VARCHAR" />
+    <result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+    <result column="flagtrashed" property="flagtrashed" jdbcType="VARCHAR" />
+    <result column="flagdeleted" property="flagdeleted" jdbcType="VARCHAR" />
+    <result column="flagallowmod" property="flagallowmod" jdbcType="VARCHAR" />
+    <result column="flagallowdel" property="flagallowdel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    refid, pid, refname, refnamecn, itemno, itemvalue, iteminfo, moddate, flagtrashed, 
+    flagdeleted, flagallowmod, flagallowdel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_reference
+    where refid = #{refid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_reference
+    where refid = #{refid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaReference" >
+    insert into ta_reference (refid, pid, refname, 
+      refnamecn, itemno, itemvalue, 
+      iteminfo, moddate, flagtrashed, 
+      flagdeleted, flagallowmod, flagallowdel
+      )
+    values (#{refid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{refname,jdbcType=VARCHAR}, 
+      #{refnamecn,jdbcType=VARCHAR}, #{itemno,jdbcType=VARCHAR}, #{itemvalue,jdbcType=VARCHAR}, 
+      #{iteminfo,jdbcType=VARCHAR}, #{moddate,jdbcType=TIMESTAMP}, #{flagtrashed,jdbcType=VARCHAR}, 
+      #{flagdeleted,jdbcType=VARCHAR}, #{flagallowmod,jdbcType=VARCHAR}, #{flagallowdel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaReference" >
+    insert into ta_reference
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="refid != null" >
+        refid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="refname != null" >
+        refname,
+      </if>
+      <if test="refnamecn != null" >
+        refnamecn,
+      </if>
+      <if test="itemno != null" >
+        itemno,
+      </if>
+      <if test="itemvalue != null" >
+        itemvalue,
+      </if>
+      <if test="iteminfo != null" >
+        iteminfo,
+      </if>
+      <if test="moddate != null" >
+        moddate,
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed,
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted,
+      </if>
+      <if test="flagallowmod != null" >
+        flagallowmod,
+      </if>
+      <if test="flagallowdel != null" >
+        flagallowdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="refid != null" >
+        #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="refname != null" >
+        #{refname,jdbcType=VARCHAR},
+      </if>
+      <if test="refnamecn != null" >
+        #{refnamecn,jdbcType=VARCHAR},
+      </if>
+      <if test="itemno != null" >
+        #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemvalue != null" >
+        #{itemvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="iteminfo != null" >
+        #{iteminfo,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagtrashed != null" >
+        #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="flagdeleted != null" >
+        #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagallowmod != null" >
+        #{flagallowmod,jdbcType=VARCHAR},
+      </if>
+      <if test="flagallowdel != null" >
+        #{flagallowdel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaReference" >
+    update ta_reference
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="refname != null" >
+        refname = #{refname,jdbcType=VARCHAR},
+      </if>
+      <if test="refnamecn != null" >
+        refnamecn = #{refnamecn,jdbcType=VARCHAR},
+      </if>
+      <if test="itemno != null" >
+        itemno = #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemvalue != null" >
+        itemvalue = #{itemvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="iteminfo != null" >
+        iteminfo = #{iteminfo,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        moddate = #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagallowmod != null" >
+        flagallowmod = #{flagallowmod,jdbcType=VARCHAR},
+      </if>
+      <if test="flagallowdel != null" >
+        flagallowdel = #{flagallowdel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where refid = #{refid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaReference" >
+    update ta_reference
+    set pid = #{pid,jdbcType=VARCHAR},
+      refname = #{refname,jdbcType=VARCHAR},
+      refnamecn = #{refnamecn,jdbcType=VARCHAR},
+      itemno = #{itemno,jdbcType=VARCHAR},
+      itemvalue = #{itemvalue,jdbcType=VARCHAR},
+      iteminfo = #{iteminfo,jdbcType=VARCHAR},
+      moddate = #{moddate,jdbcType=TIMESTAMP},
+      flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      flagallowmod = #{flagallowmod,jdbcType=VARCHAR},
+      flagallowdel = #{flagallowdel,jdbcType=VARCHAR}
+    where refid = #{refid,jdbcType=VARCHAR}
+  </update>
+</mapper>

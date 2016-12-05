@@ -16,4 +16,8 @@ public class ConstantsUtil {
 	public static final String FAILURE = "FAILURE";
 
 	public static final String OK = "OK";
+
+	public static final String HOST_NAME = "http://zjinghong.hzlysoft.cn/";
+
+	public static final String IMAGE_SERVER = HOST_NAME + "upload/uploadfile/pic/web/";
 }

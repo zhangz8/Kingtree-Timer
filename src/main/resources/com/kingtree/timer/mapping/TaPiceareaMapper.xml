@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaPiceareaMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaPicearea" >
+    <id column="areaid" property="areaid" jdbcType="VARCHAR" />
+    <result column="dsid" property="dsid" jdbcType="VARCHAR" />
+    <result column="areano" property="areano" jdbcType="VARCHAR" />
+    <result column="areaname" property="areaname" jdbcType="VARCHAR" />
+    <result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+    <result column="flagdeleted" property="flagdeleted" jdbcType="VARCHAR" />
+    <result column="flagtrashed" property="flagtrashed" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="dxdate" property="dxdate" jdbcType="TIMESTAMP" />
+    <result column="lngx" property="lngx" jdbcType="DOUBLE" />
+    <result column="laty" property="laty" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    areaid, dsid, areano, areaname, moddate, flagdeleted, flagtrashed, remark, dxdate, 
+    lngx, laty
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_picearea
+    where areaid = #{areaid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_picearea
+    where areaid = #{areaid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaPicearea" >
+    insert into ta_picearea (areaid, dsid, areano, 
+      areaname, moddate, flagdeleted, 
+      flagtrashed, remark, dxdate, 
+      lngx, laty)
+    values (#{areaid,jdbcType=VARCHAR}, #{dsid,jdbcType=VARCHAR}, #{areano,jdbcType=VARCHAR}, 
+      #{areaname,jdbcType=VARCHAR}, #{moddate,jdbcType=TIMESTAMP}, #{flagdeleted,jdbcType=VARCHAR}, 
+      #{flagtrashed,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{dxdate,jdbcType=TIMESTAMP}, 
+      #{lngx,jdbcType=DOUBLE}, #{laty,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaPicearea" >
+    insert into ta_picearea
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="areaid != null" >
+        areaid,
+      </if>
+      <if test="dsid != null" >
+        dsid,
+      </if>
+      <if test="areano != null" >
+        areano,
+      </if>
+      <if test="areaname != null" >
+        areaname,
+      </if>
+      <if test="moddate != null" >
+        moddate,
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted,
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="dxdate != null" >
+        dxdate,
+      </if>
+      <if test="lngx != null" >
+        lngx,
+      </if>
+      <if test="laty != null" >
+        laty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="dsid != null" >
+        #{dsid,jdbcType=VARCHAR},
+      </if>
+      <if test="areano != null" >
+        #{areano,jdbcType=VARCHAR},
+      </if>
+      <if test="areaname != null" >
+        #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagdeleted != null" >
+        #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dxdate != null" >
+        #{dxdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lngx != null" >
+        #{lngx,jdbcType=DOUBLE},
+      </if>
+      <if test="laty != null" >
+        #{laty,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaPicearea" >
+    update ta_picearea
+    <set >
+      <if test="dsid != null" >
+        dsid = #{dsid,jdbcType=VARCHAR},
+      </if>
+      <if test="areano != null" >
+        areano = #{areano,jdbcType=VARCHAR},
+      </if>
+      <if test="areaname != null" >
+        areaname = #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        moddate = #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dxdate != null" >
+        dxdate = #{dxdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lngx != null" >
+        lngx = #{lngx,jdbcType=DOUBLE},
+      </if>
+      <if test="laty != null" >
+        laty = #{laty,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where areaid = #{areaid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaPicearea" >
+    update ta_picearea
+    set dsid = #{dsid,jdbcType=VARCHAR},
+      areano = #{areano,jdbcType=VARCHAR},
+      areaname = #{areaname,jdbcType=VARCHAR},
+      moddate = #{moddate,jdbcType=TIMESTAMP},
+      flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      dxdate = #{dxdate,jdbcType=TIMESTAMP},
+      lngx = #{lngx,jdbcType=DOUBLE},
+      laty = #{laty,jdbcType=DOUBLE}
+    where areaid = #{areaid,jdbcType=VARCHAR}
+  </update>
+</mapper>

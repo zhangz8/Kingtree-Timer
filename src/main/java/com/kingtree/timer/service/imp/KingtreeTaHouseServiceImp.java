@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.kingtree.timer.dao.TaHouseMapper;
 import com.kingtree.timer.entity.TaHouse;
-import com.kingtree.timer.service.TaHouseService;
+import com.kingtree.timer.service.KingtreeTaHouseService;
 
 /**
  * 房源服务类
@@ -18,7 +19,7 @@ import com.kingtree.timer.service.TaHouseService;
  * @date 2016-12-01
  */
 @Service
-public class TaHouseServiceImp implements TaHouseService {
+public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 
 	@Resource
 	private TaHouseMapper taHouseMapper;
@@ -50,6 +51,14 @@ public class TaHouseServiceImp implements TaHouseService {
 			return null;
 		}
 		return taHouseMapper.selectByTooutside(start, length);
+	}
+
+	@Override
+	public TaHouse get(String houseId) {
+		if (StringUtils.isBlank(houseId)) {
+			return null;
+		}
+		return taHouseMapper.selectByPrimaryKey(houseId);
 	}
 
 }

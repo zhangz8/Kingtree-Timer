@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kingtree.timer.entity.TaHouse;
 
-public interface TaHouseService {
+public interface KingtreeTaHouseService {
 
 	List<TaHouse> get(TaHouse taHouse, int start, int length);
 
@@ -25,4 +25,6 @@ public interface TaHouseService {
 	 * @return
 	 */
 	List<TaHouse> getOutSide(int start, int length);
+
+	TaHouse get(String houseId);
 }

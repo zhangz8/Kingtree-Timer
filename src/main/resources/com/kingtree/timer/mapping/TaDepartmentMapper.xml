@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaDepartment" >
+    <id column="deptid" property="deptid" jdbcType="VARCHAR" />
+    <result column="cityid" property="cityid" jdbcType="VARCHAR" />
+    <result column="dsid" property="dsid" jdbcType="VARCHAR" />
+    <result column="piceareaid" property="piceareaid" jdbcType="VARCHAR" />
+    <result column="deptno" property="deptno" jdbcType="VARCHAR" />
+    <result column="depmanid" property="depmanid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="depname" property="depname" jdbcType="VARCHAR" />
+    <result column="layer" property="layer" jdbcType="VARCHAR" />
+    <result column="tepttype" property="tepttype" jdbcType="VARCHAR" />
+    <result column="flagsale" property="flagsale" jdbcType="VARCHAR" />
+    <result column="header" property="header" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="deptgroup" property="deptgroup" jdbcType="VARCHAR" />
+    <result column="depttype" property="depttype" jdbcType="VARCHAR" />
+    <result column="brokerno" property="brokerno" jdbcType="VARCHAR" />
+    <result column="spell" property="spell" jdbcType="VARCHAR" />
+    <result column="flagdeleted" property="flagdeleted" jdbcType="VARCHAR" />
+    <result column="flagtrashed" property="flagtrashed" jdbcType="VARCHAR" />
+    <result column="deldate" property="deldate" jdbcType="TIMESTAMP" />
+    <result column="delperson" property="delperson" jdbcType="VARCHAR" />
+    <result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+    <result column="briefintroduction" property="briefintroduction" jdbcType="VARCHAR" />
+    <result column="numberdigits" property="numberdigits" jdbcType="DECIMAL" />
+    <result column="notype" property="notype" jdbcType="VARCHAR" />
+    <result column="deptnature" property="deptnature" jdbcType="VARCHAR" />
+    <result column="exdate" property="exdate" jdbcType="TIMESTAMP" />
+    <result column="softname" property="softname" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="manifesto" property="manifesto" jdbcType="VARCHAR" />
+    <result column="deptman" property="deptman" jdbcType="DECIMAL" />
+    <result column="sn" property="sn" jdbcType="INTEGER" />
+    <result column="cox" property="cox" jdbcType="DECIMAL" />
+    <result column="coy" property="coy" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    deptid, cityid, dsid, piceareaid, deptno, depmanid, pid, depname, layer, tepttype, 
+    flagsale, header, tel, address, deptgroup, depttype, brokerno, spell, flagdeleted, 
+    flagtrashed, deldate, delperson, moddate, briefintroduction, numberdigits, notype, 
+    deptnature, exdate, softname, logo, manifesto, deptman, sn, cox, coy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_department
+    where deptid = #{deptid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_department
+    where deptid = #{deptid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaDepartment" >
+    insert into ta_department (deptid, cityid, dsid, 
+      piceareaid, deptno, depmanid, 
+      pid, depname, layer, 
+      tepttype, flagsale, header, 
+      tel, address, deptgroup, 
+      depttype, brokerno, spell, 
+      flagdeleted, flagtrashed, deldate, 
+      delperson, moddate, briefintroduction, 
+      numberdigits, notype, deptnature, 
+      exdate, softname, logo, 
+      manifesto, deptman, sn, 
+      cox, coy)
+    values (#{deptid,jdbcType=VARCHAR}, #{cityid,jdbcType=VARCHAR}, #{dsid,jdbcType=VARCHAR}, 
+      #{piceareaid,jdbcType=VARCHAR}, #{deptno,jdbcType=VARCHAR}, #{depmanid,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=VARCHAR}, #{depname,jdbcType=VARCHAR}, #{layer,jdbcType=VARCHAR}, 
+      #{tepttype,jdbcType=VARCHAR}, #{flagsale,jdbcType=VARCHAR}, #{header,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{deptgroup,jdbcType=VARCHAR}, 
+      #{depttype,jdbcType=VARCHAR}, #{brokerno,jdbcType=VARCHAR}, #{spell,jdbcType=VARCHAR}, 
+      #{flagdeleted,jdbcType=VARCHAR}, #{flagtrashed,jdbcType=VARCHAR}, #{deldate,jdbcType=TIMESTAMP}, 
+      #{delperson,jdbcType=VARCHAR}, #{moddate,jdbcType=TIMESTAMP}, #{briefintroduction,jdbcType=VARCHAR}, 
+      #{numberdigits,jdbcType=DECIMAL}, #{notype,jdbcType=VARCHAR}, #{deptnature,jdbcType=VARCHAR}, 
+      #{exdate,jdbcType=TIMESTAMP}, #{softname,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{manifesto,jdbcType=VARCHAR}, #{deptman,jdbcType=DECIMAL}, #{sn,jdbcType=INTEGER}, 
+      #{cox,jdbcType=DECIMAL}, #{coy,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaDepartment" >
+    insert into ta_department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptid != null" >
+        deptid,
+      </if>
+      <if test="cityid != null" >
+        cityid,
+      </if>
+      <if test="dsid != null" >
+        dsid,
+      </if>
+      <if test="piceareaid != null" >
+        piceareaid,
+      </if>
+      <if test="deptno != null" >
+        deptno,
+      </if>
+      <if test="depmanid != null" >
+        depmanid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="depname != null" >
+        depname,
+      </if>
+      <if test="layer != null" >
+        layer,
+      </if>
+      <if test="tepttype != null" >
+        tepttype,
+      </if>
+      <if test="flagsale != null" >
+        flagsale,
+      </if>
+      <if test="header != null" >
+        header,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="deptgroup != null" >
+        deptgroup,
+      </if>
+      <if test="depttype != null" >
+        depttype,
+      </if>
+      <if test="brokerno != null" >
+        brokerno,
+      </if>
+      <if test="spell != null" >
+        spell,
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted,
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed,
+      </if>
+      <if test="deldate != null" >
+        deldate,
+      </if>
+      <if test="delperson != null" >
+        delperson,
+      </if>
+      <if test="moddate != null" >
+        moddate,
+      </if>
+      <if test="briefintroduction != null" >
+        briefintroduction,
+      </if>
+      <if test="numberdigits != null" >
+        numberdigits,
+      </if>
+      <if test="notype != null" >
+        notype,
+      </if>
+      <if test="deptnature != null" >
+        deptnature,
+      </if>
+      <if test="exdate != null" >
+        exdate,
+      </if>
+      <if test="softname != null" >
+        softname,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="manifesto != null" >
+        manifesto,
+      </if>
+      <if test="deptman != null" >
+        deptman,
+      </if>
+      <if test="sn != null" >
+        sn,
+      </if>
+      <if test="cox != null" >
+        cox,
+      </if>
+      <if test="coy != null" >
+        coy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptid != null" >
+        #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=VARCHAR},
+      </if>
+      <if test="dsid != null" >
+        #{dsid,jdbcType=VARCHAR},
+      </if>
+      <if test="piceareaid != null" >
+        #{piceareaid,jdbcType=VARCHAR},
+      </if>
+      <if test="deptno != null" >
+        #{deptno,jdbcType=VARCHAR},
+      </if>
+      <if test="depmanid != null" >
+        #{depmanid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="depname != null" >
+        #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null" >
+        #{layer,jdbcType=VARCHAR},
+      </if>
+      <if test="tepttype != null" >
+        #{tepttype,jdbcType=VARCHAR},
+      </if>
+      <if test="flagsale != null" >
+        #{flagsale,jdbcType=VARCHAR},
+      </if>
+      <if test="header != null" >
+        #{header,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="deptgroup != null" >
+        #{deptgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="depttype != null" >
+        #{depttype,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerno != null" >
+        #{brokerno,jdbcType=VARCHAR},
+      </if>
+      <if test="spell != null" >
+        #{spell,jdbcType=VARCHAR},
+      </if>
+      <if test="flagdeleted != null" >
+        #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="deldate != null" >
+        #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delperson != null" >
+        #{delperson,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="briefintroduction != null" >
+        #{briefintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="numberdigits != null" >
+        #{numberdigits,jdbcType=DECIMAL},
+      </if>
+      <if test="notype != null" >
+        #{notype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptnature != null" >
+        #{deptnature,jdbcType=VARCHAR},
+      </if>
+      <if test="exdate != null" >
+        #{exdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="softname != null" >
+        #{softname,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="manifesto != null" >
+        #{manifesto,jdbcType=VARCHAR},
+      </if>
+      <if test="deptman != null" >
+        #{deptman,jdbcType=DECIMAL},
+      </if>
+      <if test="sn != null" >
+        #{sn,jdbcType=INTEGER},
+      </if>
+      <if test="cox != null" >
+        #{cox,jdbcType=DECIMAL},
+      </if>
+      <if test="coy != null" >
+        #{coy,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaDepartment" >
+    update ta_department
+    <set >
+      <if test="cityid != null" >
+        cityid = #{cityid,jdbcType=VARCHAR},
+      </if>
+      <if test="dsid != null" >
+        dsid = #{dsid,jdbcType=VARCHAR},
+      </if>
+      <if test="piceareaid != null" >
+        piceareaid = #{piceareaid,jdbcType=VARCHAR},
+      </if>
+      <if test="deptno != null" >
+        deptno = #{deptno,jdbcType=VARCHAR},
+      </if>
+      <if test="depmanid != null" >
+        depmanid = #{depmanid,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="depname != null" >
+        depname = #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null" >
+        layer = #{layer,jdbcType=VARCHAR},
+      </if>
+      <if test="tepttype != null" >
+        tepttype = #{tepttype,jdbcType=VARCHAR},
+      </if>
+      <if test="flagsale != null" >
+        flagsale = #{flagsale,jdbcType=VARCHAR},
+      </if>
+      <if test="header != null" >
+        header = #{header,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="deptgroup != null" >
+        deptgroup = #{deptgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="depttype != null" >
+        depttype = #{depttype,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerno != null" >
+        brokerno = #{brokerno,jdbcType=VARCHAR},
+      </if>
+      <if test="spell != null" >
+        spell = #{spell,jdbcType=VARCHAR},
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="flagtrashed != null" >
+        flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      </if>
+      <if test="deldate != null" >
+        deldate = #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delperson != null" >
+        delperson = #{delperson,jdbcType=VARCHAR},
+      </if>
+      <if test="moddate != null" >
+        moddate = #{moddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="briefintroduction != null" >
+        briefintroduction = #{briefintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="numberdigits != null" >
+        numberdigits = #{numberdigits,jdbcType=DECIMAL},
+      </if>
+      <if test="notype != null" >
+        notype = #{notype,jdbcType=VARCHAR},
+      </if>
+      <if test="deptnature != null" >
+        deptnature = #{deptnature,jdbcType=VARCHAR},
+      </if>
+      <if test="exdate != null" >
+        exdate = #{exdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="softname != null" >
+        softname = #{softname,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="manifesto != null" >
+        manifesto = #{manifesto,jdbcType=VARCHAR},
+      </if>
+      <if test="deptman != null" >
+        deptman = #{deptman,jdbcType=DECIMAL},
+      </if>
+      <if test="sn != null" >
+        sn = #{sn,jdbcType=INTEGER},
+      </if>
+      <if test="cox != null" >
+        cox = #{cox,jdbcType=DECIMAL},
+      </if>
+      <if test="coy != null" >
+        coy = #{coy,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where deptid = #{deptid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaDepartment" >
+    update ta_department
+    set cityid = #{cityid,jdbcType=VARCHAR},
+      dsid = #{dsid,jdbcType=VARCHAR},
+      piceareaid = #{piceareaid,jdbcType=VARCHAR},
+      deptno = #{deptno,jdbcType=VARCHAR},
+      depmanid = #{depmanid,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      depname = #{depname,jdbcType=VARCHAR},
+      layer = #{layer,jdbcType=VARCHAR},
+      tepttype = #{tepttype,jdbcType=VARCHAR},
+      flagsale = #{flagsale,jdbcType=VARCHAR},
+      header = #{header,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      deptgroup = #{deptgroup,jdbcType=VARCHAR},
+      depttype = #{depttype,jdbcType=VARCHAR},
+      brokerno = #{brokerno,jdbcType=VARCHAR},
+      spell = #{spell,jdbcType=VARCHAR},
+      flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+      flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+      deldate = #{deldate,jdbcType=TIMESTAMP},
+      delperson = #{delperson,jdbcType=VARCHAR},
+      moddate = #{moddate,jdbcType=TIMESTAMP},
+      briefintroduction = #{briefintroduction,jdbcType=VARCHAR},
+      numberdigits = #{numberdigits,jdbcType=DECIMAL},
+      notype = #{notype,jdbcType=VARCHAR},
+      deptnature = #{deptnature,jdbcType=VARCHAR},
+      exdate = #{exdate,jdbcType=TIMESTAMP},
+      softname = #{softname,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      manifesto = #{manifesto,jdbcType=VARCHAR},
+      deptman = #{deptman,jdbcType=DECIMAL},
+      sn = #{sn,jdbcType=INTEGER},
+      cox = #{cox,jdbcType=DECIMAL},
+      coy = #{coy,jdbcType=DECIMAL}
+    where deptid = #{deptid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1573,7 +1573,7 @@
 			SELECT
 				tht.houseid
 			FROM
-				ta_house_tooutside tht
+				kingtree_ta_house_tooutside tht
 			WHERE
 				tht.is_delete = 0
 		) LIMIT #{start}, #{length}
@@ -1589,7 +1589,7 @@
 			SELECT
 				tht.houseid
 			FROM
-				ta_house_tooutside tht
+				kingtree_ta_house_tooutside tht
 			WHERE
 				tht.is_delete = 0
 		)

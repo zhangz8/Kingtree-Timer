@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaCompany" >
+    <id column="comid" property="comid" jdbcType="VARCHAR" />
+    <result column="companyname" property="companyname" jdbcType="VARCHAR" />
+    <result column="companydesc" property="companydesc" jdbcType="VARCHAR" />
+    <result column="adress" property="adress" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="connecter" property="connecter" jdbcType="VARCHAR" />
+    <result column="maincompanyids" property="maincompanyids" jdbcType="VARCHAR" />
+    <result column="isfinance" property="isfinance" jdbcType="VARCHAR" />
+    <result column="demo" property="demo" jdbcType="VARCHAR" />
+    <result column="pcnum" property="pcnum" jdbcType="INTEGER" />
+    <result column="stopflag" property="stopflag" jdbcType="VARCHAR" />
+    <result column="delflag" property="delflag" jdbcType="VARCHAR" />
+    <result column="apikey" property="apikey" jdbcType="VARCHAR" />
+    <result column="secretkey" property="secretkey" jdbcType="VARCHAR" />
+    <result column="manifesto" property="manifesto" jdbcType="VARCHAR" />
+    <result column="briefintroduction" property="briefintroduction" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="supervisoryphone" property="supervisoryphone" jdbcType="VARCHAR" />
+    <result column="cox" property="cox" jdbcType="DECIMAL" />
+    <result column="coy" property="coy" jdbcType="DECIMAL" />
+    <result column="indexpage" property="indexpage" jdbcType="VARCHAR" />
+    <result column="accountsid" property="accountsid" jdbcType="VARCHAR" />
+    <result column="accounttoken" property="accounttoken" jdbcType="VARCHAR" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="wxappid" property="wxappid" jdbcType="VARCHAR" />
+    <result column="wxappsecret" property="wxappsecret" jdbcType="VARCHAR" />
+    <result column="wxtemplateid" property="wxtemplateid" jdbcType="VARCHAR" />
+    <result column="caasappid" property="caasappid" jdbcType="VARCHAR" />
+    <result column="caasims" property="caasims" jdbcType="VARCHAR" />
+    <result column="caaskey" property="caaskey" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comid, companyname, companydesc, adress, URL, phone, connecter, maincompanyids, isfinance, 
+    demo, pcnum, stopflag, delflag, apikey, secretkey, manifesto, briefintroduction, 
+    logo, supervisoryphone, cox, coy, indexpage, accountsid, accounttoken, appid, wxappid, 
+    wxappsecret, wxtemplateid, caasappid, caasims, caaskey
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_company
+    where comid = #{comid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_company
+    where comid = #{comid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaCompany" >
+    insert into ta_company (comid, companyname, companydesc, 
+      adress, URL, phone, 
+      connecter, maincompanyids, isfinance, 
+      demo, pcnum, stopflag, 
+      delflag, apikey, secretkey, 
+      manifesto, briefintroduction, logo, 
+      supervisoryphone, cox, coy, 
+      indexpage, accountsid, accounttoken, 
+      appid, wxappid, wxappsecret, 
+      wxtemplateid, caasappid, caasims, 
+      caaskey)
+    values (#{comid,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, #{companydesc,jdbcType=VARCHAR}, 
+      #{adress,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{connecter,jdbcType=VARCHAR}, #{maincompanyids,jdbcType=VARCHAR}, #{isfinance,jdbcType=VARCHAR}, 
+      #{demo,jdbcType=VARCHAR}, #{pcnum,jdbcType=INTEGER}, #{stopflag,jdbcType=VARCHAR}, 
+      #{delflag,jdbcType=VARCHAR}, #{apikey,jdbcType=VARCHAR}, #{secretkey,jdbcType=VARCHAR}, 
+      #{manifesto,jdbcType=VARCHAR}, #{briefintroduction,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{supervisoryphone,jdbcType=VARCHAR}, #{cox,jdbcType=DECIMAL}, #{coy,jdbcType=DECIMAL}, 
+      #{indexpage,jdbcType=VARCHAR}, #{accountsid,jdbcType=VARCHAR}, #{accounttoken,jdbcType=VARCHAR}, 
+      #{appid,jdbcType=VARCHAR}, #{wxappid,jdbcType=VARCHAR}, #{wxappsecret,jdbcType=VARCHAR}, 
+      #{wxtemplateid,jdbcType=VARCHAR}, #{caasappid,jdbcType=VARCHAR}, #{caasims,jdbcType=VARCHAR}, 
+      #{caaskey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaCompany" >
+    insert into ta_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="comid != null" >
+        comid,
+      </if>
+      <if test="companyname != null" >
+        companyname,
+      </if>
+      <if test="companydesc != null" >
+        companydesc,
+      </if>
+      <if test="adress != null" >
+        adress,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="connecter != null" >
+        connecter,
+      </if>
+      <if test="maincompanyids != null" >
+        maincompanyids,
+      </if>
+      <if test="isfinance != null" >
+        isfinance,
+      </if>
+      <if test="demo != null" >
+        demo,
+      </if>
+      <if test="pcnum != null" >
+        pcnum,
+      </if>
+      <if test="stopflag != null" >
+        stopflag,
+      </if>
+      <if test="delflag != null" >
+        delflag,
+      </if>
+      <if test="apikey != null" >
+        apikey,
+      </if>
+      <if test="secretkey != null" >
+        secretkey,
+      </if>
+      <if test="manifesto != null" >
+        manifesto,
+      </if>
+      <if test="briefintroduction != null" >
+        briefintroduction,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="supervisoryphone != null" >
+        supervisoryphone,
+      </if>
+      <if test="cox != null" >
+        cox,
+      </if>
+      <if test="coy != null" >
+        coy,
+      </if>
+      <if test="indexpage != null" >
+        indexpage,
+      </if>
+      <if test="accountsid != null" >
+        accountsid,
+      </if>
+      <if test="accounttoken != null" >
+        accounttoken,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="wxappid != null" >
+        wxappid,
+      </if>
+      <if test="wxappsecret != null" >
+        wxappsecret,
+      </if>
+      <if test="wxtemplateid != null" >
+        wxtemplateid,
+      </if>
+      <if test="caasappid != null" >
+        caasappid,
+      </if>
+      <if test="caasims != null" >
+        caasims,
+      </if>
+      <if test="caaskey != null" >
+        caaskey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="comid != null" >
+        #{comid,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="companydesc != null" >
+        #{companydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="connecter != null" >
+        #{connecter,jdbcType=VARCHAR},
+      </if>
+      <if test="maincompanyids != null" >
+        #{maincompanyids,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinance != null" >
+        #{isfinance,jdbcType=VARCHAR},
+      </if>
+      <if test="demo != null" >
+        #{demo,jdbcType=VARCHAR},
+      </if>
+      <if test="pcnum != null" >
+        #{pcnum,jdbcType=INTEGER},
+      </if>
+      <if test="stopflag != null" >
+        #{stopflag,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="apikey != null" >
+        #{apikey,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="manifesto != null" >
+        #{manifesto,jdbcType=VARCHAR},
+      </if>
+      <if test="briefintroduction != null" >
+        #{briefintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisoryphone != null" >
+        #{supervisoryphone,jdbcType=VARCHAR},
+      </if>
+      <if test="cox != null" >
+        #{cox,jdbcType=DECIMAL},
+      </if>
+      <if test="coy != null" >
+        #{coy,jdbcType=DECIMAL},
+      </if>
+      <if test="indexpage != null" >
+        #{indexpage,jdbcType=VARCHAR},
+      </if>
+      <if test="accountsid != null" >
+        #{accountsid,jdbcType=VARCHAR},
+      </if>
+      <if test="accounttoken != null" >
+        #{accounttoken,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxappid != null" >
+        #{wxappid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxappsecret != null" >
+        #{wxappsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtemplateid != null" >
+        #{wxtemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="caasappid != null" >
+        #{caasappid,jdbcType=VARCHAR},
+      </if>
+      <if test="caasims != null" >
+        #{caasims,jdbcType=VARCHAR},
+      </if>
+      <if test="caaskey != null" >
+        #{caaskey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaCompany" >
+    update ta_company
+    <set >
+      <if test="companyname != null" >
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="companydesc != null" >
+        companydesc = #{companydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        adress = #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="connecter != null" >
+        connecter = #{connecter,jdbcType=VARCHAR},
+      </if>
+      <if test="maincompanyids != null" >
+        maincompanyids = #{maincompanyids,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinance != null" >
+        isfinance = #{isfinance,jdbcType=VARCHAR},
+      </if>
+      <if test="demo != null" >
+        demo = #{demo,jdbcType=VARCHAR},
+      </if>
+      <if test="pcnum != null" >
+        pcnum = #{pcnum,jdbcType=INTEGER},
+      </if>
+      <if test="stopflag != null" >
+        stopflag = #{stopflag,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        delflag = #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="apikey != null" >
+        apikey = #{apikey,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        secretkey = #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="manifesto != null" >
+        manifesto = #{manifesto,jdbcType=VARCHAR},
+      </if>
+      <if test="briefintroduction != null" >
+        briefintroduction = #{briefintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisoryphone != null" >
+        supervisoryphone = #{supervisoryphone,jdbcType=VARCHAR},
+      </if>
+      <if test="cox != null" >
+        cox = #{cox,jdbcType=DECIMAL},
+      </if>
+      <if test="coy != null" >
+        coy = #{coy,jdbcType=DECIMAL},
+      </if>
+      <if test="indexpage != null" >
+        indexpage = #{indexpage,jdbcType=VARCHAR},
+      </if>
+      <if test="accountsid != null" >
+        accountsid = #{accountsid,jdbcType=VARCHAR},
+      </if>
+      <if test="accounttoken != null" >
+        accounttoken = #{accounttoken,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxappid != null" >
+        wxappid = #{wxappid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxappsecret != null" >
+        wxappsecret = #{wxappsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtemplateid != null" >
+        wxtemplateid = #{wxtemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="caasappid != null" >
+        caasappid = #{caasappid,jdbcType=VARCHAR},
+      </if>
+      <if test="caasims != null" >
+        caasims = #{caasims,jdbcType=VARCHAR},
+      </if>
+      <if test="caaskey != null" >
+        caaskey = #{caaskey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comid = #{comid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaCompany" >
+    update ta_company
+    set companyname = #{companyname,jdbcType=VARCHAR},
+      companydesc = #{companydesc,jdbcType=VARCHAR},
+      adress = #{adress,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      connecter = #{connecter,jdbcType=VARCHAR},
+      maincompanyids = #{maincompanyids,jdbcType=VARCHAR},
+      isfinance = #{isfinance,jdbcType=VARCHAR},
+      demo = #{demo,jdbcType=VARCHAR},
+      pcnum = #{pcnum,jdbcType=INTEGER},
+      stopflag = #{stopflag,jdbcType=VARCHAR},
+      delflag = #{delflag,jdbcType=VARCHAR},
+      apikey = #{apikey,jdbcType=VARCHAR},
+      secretkey = #{secretkey,jdbcType=VARCHAR},
+      manifesto = #{manifesto,jdbcType=VARCHAR},
+      briefintroduction = #{briefintroduction,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      supervisoryphone = #{supervisoryphone,jdbcType=VARCHAR},
+      cox = #{cox,jdbcType=DECIMAL},
+      coy = #{coy,jdbcType=DECIMAL},
+      indexpage = #{indexpage,jdbcType=VARCHAR},
+      accountsid = #{accountsid,jdbcType=VARCHAR},
+      accounttoken = #{accounttoken,jdbcType=VARCHAR},
+      appid = #{appid,jdbcType=VARCHAR},
+      wxappid = #{wxappid,jdbcType=VARCHAR},
+      wxappsecret = #{wxappsecret,jdbcType=VARCHAR},
+      wxtemplateid = #{wxtemplateid,jdbcType=VARCHAR},
+      caasappid = #{caasappid,jdbcType=VARCHAR},
+      caasims = #{caasims,jdbcType=VARCHAR},
+      caaskey = #{caaskey,jdbcType=VARCHAR}
+    where comid = #{comid,jdbcType=VARCHAR}
+  </update>
+</mapper>

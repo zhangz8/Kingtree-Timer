@@ -2,7 +2,7 @@ package com.kingtree.timer.entity;
 
 import java.util.Date;
 
-public class TaHouseTooutside {
+public class KingtreeTaHouseTooutside {
     private Integer id;
 
     private String houseid;

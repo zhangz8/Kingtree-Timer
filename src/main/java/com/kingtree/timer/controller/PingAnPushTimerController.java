@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kingtree.timer.entity.TaHouse;
-import com.kingtree.timer.service.TaHouseService;
+import com.kingtree.timer.service.KingtreeTaHouseService;
 import com.kingtree.timer.util.ConstantsUtil;
 import com.kingtree.timer.util.PageUtil;
 
@@ -34,7 +34,7 @@ public class PingAnPushTimerController {
 	private static final int PAGE_SIZE = 20;
 
 	@Resource
-	private TaHouseService taHouseService;
+	private KingtreeTaHouseService taHouseService;
 
 	/**
 	 * @throws IOException

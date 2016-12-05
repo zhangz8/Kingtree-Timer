@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaEmployeeMapper">
+	<resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaEmployee">
+		<id column="empid" property="empid" jdbcType="VARCHAR" />
+		<result column="deptid" property="deptid" jdbcType="VARCHAR" />
+		<result column="uid" property="uid" jdbcType="VARCHAR" />
+		<result column="empno" property="empno" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="native" property="nativ" jdbcType="VARCHAR" />
+		<result column="folk" property="folk" jdbcType="VARCHAR" />
+		<result column="polity" property="polity" jdbcType="VARCHAR" />
+		<result column="eduation" property="eduation" jdbcType="VARCHAR" />
+		<result column="graduate" property="graduate" jdbcType="VARCHAR" />
+		<result column="speciality" property="speciality" jdbcType="VARCHAR" />
+		<result column="idcard" property="idcard" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+		<result column="joindate" property="joindate" jdbcType="TIMESTAMP" />
+		<result column="awaydate" property="awaydate" jdbcType="TIMESTAMP" />
+		<result column="source" property="source" jdbcType="VARCHAR" />
+		<result column="techtitle" property="techtitle" jdbcType="VARCHAR" />
+		<result column="archives" property="archives" jdbcType="VARCHAR" />
+		<result column="idio" property="idio" jdbcType="VARCHAR" />
+		<result column="brief" property="brief" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="bankname" property="bankname" jdbcType="VARCHAR" />
+		<result column="bankacct" property="bankacct" jdbcType="VARCHAR" />
+		<result column="flagdeleted" property="flagdeleted" jdbcType="VARCHAR" />
+		<result column="flagtrashed" property="flagtrashed" jdbcType="VARCHAR" />
+		<result column="deldate" property="deldate" jdbcType="TIMESTAMP" />
+		<result column="delperson" property="delperson" jdbcType="VARCHAR" />
+		<result column="moddate" property="moddate" jdbcType="TIMESTAMP" />
+		<result column="exdate" property="exdate" jdbcType="TIMESTAMP" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="weixin" property="weixin" jdbcType="VARCHAR" />
+		<result column="housefoldflag" property="housefoldflag" jdbcType="TINYINT" />
+		<result column="inquiryflodflag" property="inquiryflodflag" jdbcType="TINYINT" />
+		<result column="contractfloadflag" property="contractfloadflag" jdbcType="TINYINT" />
+		<result column="headerflodflag" property="headerflodflag" jdbcType="TINYINT" />
+		<result column="leftflodflag" property="leftflodflag" jdbcType="TINYINT" />
+		<result column="skin" property="skin" jdbcType="VARCHAR" />
+		<result column="flagprincipal" property="flagprincipal" jdbcType="BIT" />
+		<result column="contactname" property="contactname" jdbcType="VARCHAR" />
+		<result column="contacttel" property="contacttel" jdbcType="VARCHAR" />
+		<result column="refereeid" property="refereeid" jdbcType="VARCHAR" />
+		<result column="refereeDeptid" property="refereedeptid" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		empid, deptid, uid, empno, status, native, folk, polity, eduation, graduate, speciality,
+		idcard, address, birthday, joindate, awaydate,
+		source, techtitle, archives, idio,
+		brief, remark, bankname, bankacct, flagdeleted, flagtrashed, deldate, delperson,
+		moddate, exdate, qq, weixin,
+		housefoldflag, inquiryflodflag, contractfloadflag, headerflodflag,
+		leftflodflag, skin, flagprincipal, contactname, contacttel, refereeid,
+		refereeDeptid
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from ta_emplyee
+		where empid = #{empid,jdbcType=VARCHAR}
+	</select>
+	<select id="selectByUserId" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ta_emplyee
+		where uid = #{userId, jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from ta_emplyee
+		where empid = #{empid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.kingtree.timer.entity.TaEmployee">
+		insert into ta_emplyee (empid, deptid, uid,
+		empno, status, native,
+		folk, polity, eduation,
+		graduate,
+		speciality, idcard,
+		address, birthday, joindate,
+		awaydate, source, techtitle,
+		archives, idio, brief,
+		remark, bankname, bankacct,
+		flagdeleted,
+		flagtrashed, deldate,
+		delperson, moddate, exdate,
+		qq, weixin, housefoldflag,
+		inquiryflodflag, contractfloadflag, headerflodflag,
+		leftflodflag, skin,
+		flagprincipal,
+		contactname, contacttel, refereeid,
+		refereeDeptid)
+		values (#{empid,jdbcType=VARCHAR}, #{deptid,jdbcType=VARCHAR},
+		#{uid,jdbcType=VARCHAR},
+		#{empno,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{nativ,jdbcType=VARCHAR},
+		#{folk,jdbcType=VARCHAR},
+		#{polity,jdbcType=VARCHAR}, #{eduation,jdbcType=VARCHAR},
+		#{graduate,jdbcType=VARCHAR}, #{speciality,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{joindate,jdbcType=TIMESTAMP},
+		#{awaydate,jdbcType=TIMESTAMP},
+		#{source,jdbcType=VARCHAR}, #{techtitle,jdbcType=VARCHAR},
+		#{archives,jdbcType=VARCHAR}, #{idio,jdbcType=VARCHAR}, #{brief,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR}, #{bankname,jdbcType=VARCHAR}, #{bankacct,jdbcType=VARCHAR},
+		#{flagdeleted,jdbcType=VARCHAR},
+		#{flagtrashed,jdbcType=VARCHAR}, #{deldate,jdbcType=TIMESTAMP},
+		#{delperson,jdbcType=VARCHAR}, #{moddate,jdbcType=TIMESTAMP},
+		#{exdate,jdbcType=TIMESTAMP},
+		#{qq,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, #{housefoldflag,jdbcType=TINYINT},
+		#{inquiryflodflag,jdbcType=TINYINT}, #{contractfloadflag,jdbcType=TINYINT}, #{headerflodflag,jdbcType=TINYINT},
+		#{leftflodflag,jdbcType=TINYINT},
+		#{skin,jdbcType=VARCHAR}, #{flagprincipal,jdbcType=BIT},
+		#{contactname,jdbcType=VARCHAR}, #{contacttel,jdbcType=VARCHAR},
+		#{refereeid,jdbcType=VARCHAR},
+		#{refereedeptid,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaEmployee">
+		insert into ta_emplyee
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="empid != null">
+				empid,
+			</if>
+			<if test="deptid != null">
+				deptid,
+			</if>
+			<if test="uid != null">
+				uid,
+			</if>
+			<if test="empno != null">
+				empno,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="nativ != null">
+				native,
+			</if>
+			<if test="folk != null">
+				folk,
+			</if>
+			<if test="polity != null">
+				polity,
+			</if>
+			<if test="eduation != null">
+				eduation,
+			</if>
+			<if test="graduate != null">
+				graduate,
+			</if>
+			<if test="speciality != null">
+				speciality,
+			</if>
+			<if test="idcard != null">
+				idcard,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="joindate != null">
+				joindate,
+			</if>
+			<if test="awaydate != null">
+				awaydate,
+			</if>
+			<if test="source != null">
+				source,
+			</if>
+			<if test="techtitle != null">
+				techtitle,
+			</if>
+			<if test="archives != null">
+				archives,
+			</if>
+			<if test="idio != null">
+				idio,
+			</if>
+			<if test="brief != null">
+				brief,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="bankname != null">
+				bankname,
+			</if>
+			<if test="bankacct != null">
+				bankacct,
+			</if>
+			<if test="flagdeleted != null">
+				flagdeleted,
+			</if>
+			<if test="flagtrashed != null">
+				flagtrashed,
+			</if>
+			<if test="deldate != null">
+				deldate,
+			</if>
+			<if test="delperson != null">
+				delperson,
+			</if>
+			<if test="moddate != null">
+				moddate,
+			</if>
+			<if test="exdate != null">
+				exdate,
+			</if>
+			<if test="qq != null">
+				qq,
+			</if>
+			<if test="weixin != null">
+				weixin,
+			</if>
+			<if test="housefoldflag != null">
+				housefoldflag,
+			</if>
+			<if test="inquiryflodflag != null">
+				inquiryflodflag,
+			</if>
+			<if test="contractfloadflag != null">
+				contractfloadflag,
+			</if>
+			<if test="headerflodflag != null">
+				headerflodflag,
+			</if>
+			<if test="leftflodflag != null">
+				leftflodflag,
+			</if>
+			<if test="skin != null">
+				skin,
+			</if>
+			<if test="flagprincipal != null">
+				flagprincipal,
+			</if>
+			<if test="contactname != null">
+				contactname,
+			</if>
+			<if test="contacttel != null">
+				contacttel,
+			</if>
+			<if test="refereeid != null">
+				refereeid,
+			</if>
+			<if test="refereedeptid != null">
+				refereeDeptid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="empid != null">
+				#{empid,jdbcType=VARCHAR},
+			</if>
+			<if test="deptid != null">
+				#{deptid,jdbcType=VARCHAR},
+			</if>
+			<if test="uid != null">
+				#{uid,jdbcType=VARCHAR},
+			</if>
+			<if test="empno != null">
+				#{empno,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="nativ != null">
+				#{nativ,jdbcType=VARCHAR},
+			</if>
+			<if test="folk != null">
+				#{folk,jdbcType=VARCHAR},
+			</if>
+			<if test="polity != null">
+				#{polity,jdbcType=VARCHAR},
+			</if>
+			<if test="eduation != null">
+				#{eduation,jdbcType=VARCHAR},
+			</if>
+			<if test="graduate != null">
+				#{graduate,jdbcType=VARCHAR},
+			</if>
+			<if test="speciality != null">
+				#{speciality,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				#{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="joindate != null">
+				#{joindate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="awaydate != null">
+				#{awaydate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="source != null">
+				#{source,jdbcType=VARCHAR},
+			</if>
+			<if test="techtitle != null">
+				#{techtitle,jdbcType=VARCHAR},
+			</if>
+			<if test="archives != null">
+				#{archives,jdbcType=VARCHAR},
+			</if>
+			<if test="idio != null">
+				#{idio,jdbcType=VARCHAR},
+			</if>
+			<if test="brief != null">
+				#{brief,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="bankname != null">
+				#{bankname,jdbcType=VARCHAR},
+			</if>
+			<if test="bankacct != null">
+				#{bankacct,jdbcType=VARCHAR},
+			</if>
+			<if test="flagdeleted != null">
+				#{flagdeleted,jdbcType=VARCHAR},
+			</if>
+			<if test="flagtrashed != null">
+				#{flagtrashed,jdbcType=VARCHAR},
+			</if>
+			<if test="deldate != null">
+				#{deldate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="delperson != null">
+				#{delperson,jdbcType=VARCHAR},
+			</if>
+			<if test="moddate != null">
+				#{moddate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="exdate != null">
+				#{exdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin != null">
+				#{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="housefoldflag != null">
+				#{housefoldflag,jdbcType=TINYINT},
+			</if>
+			<if test="inquiryflodflag != null">
+				#{inquiryflodflag,jdbcType=TINYINT},
+			</if>
+			<if test="contractfloadflag != null">
+				#{contractfloadflag,jdbcType=TINYINT},
+			</if>
+			<if test="headerflodflag != null">
+				#{headerflodflag,jdbcType=TINYINT},
+			</if>
+			<if test="leftflodflag != null">
+				#{leftflodflag,jdbcType=TINYINT},
+			</if>
+			<if test="skin != null">
+				#{skin,jdbcType=VARCHAR},
+			</if>
+			<if test="flagprincipal != null">
+				#{flagprincipal,jdbcType=BIT},
+			</if>
+			<if test="contactname != null">
+				#{contactname,jdbcType=VARCHAR},
+			</if>
+			<if test="contacttel != null">
+				#{contacttel,jdbcType=VARCHAR},
+			</if>
+			<if test="refereeid != null">
+				#{refereeid,jdbcType=VARCHAR},
+			</if>
+			<if test="refereedeptid != null">
+				#{refereedeptid,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaEmployee">
+		update ta_emplyee
+		<set>
+			<if test="deptid != null">
+				deptid = #{deptid,jdbcType=VARCHAR},
+			</if>
+			<if test="uid != null">
+				uid = #{uid,jdbcType=VARCHAR},
+			</if>
+			<if test="empno != null">
+				empno = #{empno,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="nativ != null">
+				native = #{nativ,jdbcType=VARCHAR},
+			</if>
+			<if test="folk != null">
+				folk = #{folk,jdbcType=VARCHAR},
+			</if>
+			<if test="polity != null">
+				polity = #{polity,jdbcType=VARCHAR},
+			</if>
+			<if test="eduation != null">
+				eduation = #{eduation,jdbcType=VARCHAR},
+			</if>
+			<if test="graduate != null">
+				graduate = #{graduate,jdbcType=VARCHAR},
+			</if>
+			<if test="speciality != null">
+				speciality = #{speciality,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				idcard = #{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="joindate != null">
+				joindate = #{joindate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="awaydate != null">
+				awaydate = #{awaydate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="source != null">
+				source = #{source,jdbcType=VARCHAR},
+			</if>
+			<if test="techtitle != null">
+				techtitle = #{techtitle,jdbcType=VARCHAR},
+			</if>
+			<if test="archives != null">
+				archives = #{archives,jdbcType=VARCHAR},
+			</if>
+			<if test="idio != null">
+				idio = #{idio,jdbcType=VARCHAR},
+			</if>
+			<if test="brief != null">
+				brief = #{brief,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="bankname != null">
+				bankname = #{bankname,jdbcType=VARCHAR},
+			</if>
+			<if test="bankacct != null">
+				bankacct = #{bankacct,jdbcType=VARCHAR},
+			</if>
+			<if test="flagdeleted != null">
+				flagdeleted = #{flagdeleted,jdbcType=VARCHAR},
+			</if>
+			<if test="flagtrashed != null">
+				flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+			</if>
+			<if test="deldate != null">
+				deldate = #{deldate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="delperson != null">
+				delperson = #{delperson,jdbcType=VARCHAR},
+			</if>
+			<if test="moddate != null">
+				moddate = #{moddate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="exdate != null">
+				exdate = #{exdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="qq != null">
+				qq = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin != null">
+				weixin = #{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="housefoldflag != null">
+				housefoldflag = #{housefoldflag,jdbcType=TINYINT},
+			</if>
+			<if test="inquiryflodflag != null">
+				inquiryflodflag = #{inquiryflodflag,jdbcType=TINYINT},
+			</if>
+			<if test="contractfloadflag != null">
+				contractfloadflag = #{contractfloadflag,jdbcType=TINYINT},
+			</if>
+			<if test="headerflodflag != null">
+				headerflodflag = #{headerflodflag,jdbcType=TINYINT},
+			</if>
+			<if test="leftflodflag != null">
+				leftflodflag = #{leftflodflag,jdbcType=TINYINT},
+			</if>
+			<if test="skin != null">
+				skin = #{skin,jdbcType=VARCHAR},
+			</if>
+			<if test="flagprincipal != null">
+				flagprincipal = #{flagprincipal,jdbcType=BIT},
+			</if>
+			<if test="contactname != null">
+				contactname = #{contactname,jdbcType=VARCHAR},
+			</if>
+			<if test="contacttel != null">
+				contacttel = #{contacttel,jdbcType=VARCHAR},
+			</if>
+			<if test="refereeid != null">
+				refereeid = #{refereeid,jdbcType=VARCHAR},
+			</if>
+			<if test="refereedeptid != null">
+				refereeDeptid = #{refereedeptid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where empid = #{empid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaEmployee">
+		update ta_emplyee
+		set deptid = #{deptid,jdbcType=VARCHAR},
+		uid = #{uid,jdbcType=VARCHAR},
+		empno =
+		#{empno,jdbcType=VARCHAR},
+		status = #{status,jdbcType=VARCHAR},
+		native = #{nativ,jdbcType=VARCHAR},
+		folk = #{folk,jdbcType=VARCHAR},
+		polity =
+		#{polity,jdbcType=VARCHAR},
+		eduation = #{eduation,jdbcType=VARCHAR},
+		graduate = #{graduate,jdbcType=VARCHAR},
+		speciality =
+		#{speciality,jdbcType=VARCHAR},
+		idcard = #{idcard,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		birthday = #{birthday,jdbcType=TIMESTAMP},
+		joindate = #{joindate,jdbcType=TIMESTAMP},
+		awaydate = #{awaydate,jdbcType=TIMESTAMP},
+		source = #{source,jdbcType=VARCHAR},
+		techtitle =
+		#{techtitle,jdbcType=VARCHAR},
+		archives = #{archives,jdbcType=VARCHAR},
+		idio = #{idio,jdbcType=VARCHAR},
+		brief = #{brief,jdbcType=VARCHAR},
+		remark =
+		#{remark,jdbcType=VARCHAR},
+		bankname = #{bankname,jdbcType=VARCHAR},
+		bankacct = #{bankacct,jdbcType=VARCHAR},
+		flagdeleted =
+		#{flagdeleted,jdbcType=VARCHAR},
+		flagtrashed = #{flagtrashed,jdbcType=VARCHAR},
+		deldate = #{deldate,jdbcType=TIMESTAMP},
+		delperson =
+		#{delperson,jdbcType=VARCHAR},
+		moddate = #{moddate,jdbcType=TIMESTAMP},
+		exdate = #{exdate,jdbcType=TIMESTAMP},
+		qq = #{qq,jdbcType=VARCHAR},
+		weixin =
+		#{weixin,jdbcType=VARCHAR},
+		housefoldflag = #{housefoldflag,jdbcType=TINYINT},
+		inquiryflodflag = #{inquiryflodflag,jdbcType=TINYINT},
+		contractfloadflag = #{contractfloadflag,jdbcType=TINYINT},
+		headerflodflag = #{headerflodflag,jdbcType=TINYINT},
+		leftflodflag =
+		#{leftflodflag,jdbcType=TINYINT},
+		skin = #{skin,jdbcType=VARCHAR},
+		flagprincipal = #{flagprincipal,jdbcType=BIT},
+		contactname =
+		#{contactname,jdbcType=VARCHAR},
+		contacttel = #{contacttel,jdbcType=VARCHAR},
+		refereeid = #{refereeid,jdbcType=VARCHAR},
+		refereeDeptid =
+		#{refereedeptid,jdbcType=VARCHAR}
+		where empid = #{empid,jdbcType=VARCHAR}
+	</update>
+</mapper>

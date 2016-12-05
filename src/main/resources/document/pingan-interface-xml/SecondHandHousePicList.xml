@@ -9,7 +9,9 @@
     <second_hand_house_pic>
         <image_id>3222</image_id>无
         <pic_type>2</pic_type>
-        <url>http://www.google.co.jp/another.gif</url>
+        <url>http://www.google.co.jp/another.gif</url>ta_house.houseid/ta_attachment.belongid/
+																		ta_attachment.phototype			===>ta_attachment.attachurl
+																		ta_reference.id
         <house_id>2</house_id>ta_house.houseid
     </second_hand_house_pic>
     <second_hand_house_pic>

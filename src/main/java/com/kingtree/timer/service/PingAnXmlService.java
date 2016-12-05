@@ -4,11 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.dom4j.Document;
-import org.dom4j.Element;
 
 public interface PingAnXmlService {
- 
-	Document getSecondHandHouseOffline(List<Map<String, String>> data); 
+
+	Document getSecondHandHouseOffline(List<Map<String, String>> data);
 
 	Document getSecondHandHouseRefresh(List<Map<String, String>> data);
 

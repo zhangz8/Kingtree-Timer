@@ -1,9 +1,9 @@
 package com.kingtree.timer.service;
 
-import com.kingtree.timer.entity.TaPicearea;
+import com.kingtree.timer.service.vo.TaPiceareaVO;
 
 public interface TaPiceareaService {
 
-	TaPicearea get(String piceAreaId);
+	TaPiceareaVO get(String piceAreaId);
 
 }

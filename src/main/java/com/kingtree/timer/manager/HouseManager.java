@@ -2,7 +2,7 @@ package com.kingtree.timer.manager;
 
 import java.util.List;
 
-import com.kingtree.timer.manager.vo.HouseVO;
+import com.kingtree.timer.manager.bo.HouseBO;
 
 public interface HouseManager {
 
@@ -12,7 +12,7 @@ public interface HouseManager {
 	 * @param houseId
 	 * @return
 	 */
-	HouseVO get(String houseId);
+	HouseBO get(String houseId);
 
 	/**
 	 * 获取房子信息
@@ -21,13 +21,13 @@ public interface HouseManager {
 	 * @param length
 	 * @return
 	 */
-	List<HouseVO> gets(int start, int length);
+	List<HouseBO> gets(int start, int length);
 
 	/**
 	 * 处理房子信息
 	 * 
 	 * @param houseVO
 	 */
-	void process(List<HouseVO> houseVOList);
+	void process(List<HouseBO> houseVOList);
 
 }

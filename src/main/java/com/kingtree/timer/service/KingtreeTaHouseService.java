@@ -3,10 +3,11 @@ package com.kingtree.timer.service;
 import java.util.List;
 
 import com.kingtree.timer.entity.TaHouse;
+import com.kingtree.timer.service.vo.TaHouseVO;
 
 public interface KingtreeTaHouseService {
 
-	List<TaHouse> get(TaHouse taHouse, int start, int length);
+	List<TaHouseVO> get(TaHouse taHouse, int start, int length);
 
 	int count(TaHouse taHouse);
 
@@ -24,7 +25,7 @@ public interface KingtreeTaHouseService {
 	 * @param length
 	 * @return
 	 */
-	List<TaHouse> getOutSide(int start, int length);
+	List<TaHouseVO> getOutSide(int start, int length);
 
-	TaHouse get(String houseId);
+	TaHouseVO get(String houseId);
 }

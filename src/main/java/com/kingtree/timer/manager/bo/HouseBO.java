@@ -1,12 +1,12 @@
-package com.kingtree.timer.manager.vo;
+package com.kingtree.timer.manager.bo;
 
 import java.io.Serializable;
 
 import com.kingtree.timer.entity.TaCompany;
-import com.kingtree.timer.entity.TaDepartment;
 import com.kingtree.timer.entity.TaEstate;
-import com.kingtree.timer.entity.TaHouse;
-import com.kingtree.timer.entity.TaPicearea;
+import com.kingtree.timer.service.vo.TaDepartmentVO;
+import com.kingtree.timer.service.vo.TaHouseVO;
+import com.kingtree.timer.service.vo.TaPiceareaVO;
 import com.kingtree.timer.util.ConstantsUtil;
 
 /**
@@ -15,7 +15,7 @@ import com.kingtree.timer.util.ConstantsUtil;
  * @author youchuan
  *
  */
-public class HouseVO implements Serializable {
+public class HouseBO implements Serializable {
 
 	/**
 	 * 
@@ -76,12 +76,12 @@ public class HouseVO implements Serializable {
 	private String communitySubRegionName;// 小区所在子区县
 	private String communityAddress;// 小区地址
 
-	public HouseVO() {
+	public HouseBO() {
 
 	}
 
-	public HouseVO(TaHouse taHouse, TaEstate taEstate, TaDepartment taDepartment, TaCompany taCompany, TaPicearea taPicearea) {
-		this.houseId = taHouse.getHouseid();
+	public HouseBO(TaHouseVO taHouse, TaEstate taEstate, TaDepartmentVO taDepartment, TaCompany taCompany, TaPiceareaVO taPicearea) {
+		this.houseId = taHouse.getId() + "";
 		this.title = taHouse.getTitle();
 		this.roomCount = taHouse.getCountf();
 		this.hallCount = taHouse.getCountt();
@@ -97,7 +97,7 @@ public class HouseVO implements Serializable {
 		this.createTime = taHouse.getRegdate().getTime() + "";
 		this.buildingYear = taEstate.getCompleteyear();
 		this.roomNO = taHouse.getRoomno();
-		this.deptId = taDepartment.getDeptid();
+		this.deptId = taDepartment.getId() + "";
 		this.deptName = taDepartment.getDepname();
 		this.deptAddress = taDepartment.getAddress();
 		this.parentDeptId = taDepartment.getPid();

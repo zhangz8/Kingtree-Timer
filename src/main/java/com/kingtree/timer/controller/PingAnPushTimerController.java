@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kingtree.timer.entity.TaHouse;
 import com.kingtree.timer.service.KingtreeTaHouseService;
+import com.kingtree.timer.service.vo.TaHouseVO;
 import com.kingtree.timer.util.ConstantsUtil;
 import com.kingtree.timer.util.PageUtil;
 
@@ -50,12 +51,12 @@ public class PingAnPushTimerController {
 		taHouse.setTooutside(true);
 		int page = 0;
 		for (;;) {
-			List<TaHouse> taHouseList = taHouseService.getOutSide(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			List<TaHouseVO> taHouseList = taHouseService.getOutSide(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
 			if (taHouseList == null || taHouseList.isEmpty()) {
 				break;
 			}
 
-			for (TaHouse item : taHouseList) {
+			for (TaHouseVO item : taHouseList) {
 				try {
 					logger.info(item.getTitle());
 					successCount++;

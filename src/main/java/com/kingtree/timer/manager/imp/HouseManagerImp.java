@@ -17,12 +17,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.kingtree.timer.entity.TaCompany;
-import com.kingtree.timer.entity.TaDepartment;
 import com.kingtree.timer.entity.TaEstate;
-import com.kingtree.timer.entity.TaHouse;
-import com.kingtree.timer.entity.TaPicearea;
 import com.kingtree.timer.manager.HouseManager;
-import com.kingtree.timer.manager.vo.HouseVO;
+import com.kingtree.timer.manager.bo.HouseBO;
 import com.kingtree.timer.service.KingtreeTaHouseService;
 import com.kingtree.timer.service.PingAnXmlService;
 import com.kingtree.timer.service.PingAnXmlWriterService;
@@ -31,6 +28,9 @@ import com.kingtree.timer.service.TaDepartmentService;
 import com.kingtree.timer.service.TaEmployeeService;
 import com.kingtree.timer.service.TaEstateService;
 import com.kingtree.timer.service.TaPiceareaService;
+import com.kingtree.timer.service.vo.TaDepartmentVO;
+import com.kingtree.timer.service.vo.TaHouseVO;
+import com.kingtree.timer.service.vo.TaPiceareaVO;
 
 @Service
 public class HouseManagerImp implements HouseManager {
@@ -57,11 +57,12 @@ public class HouseManagerImp implements HouseManager {
 	private static final String COMPANY_ID = "10";
 
 	@Override
-	public HouseVO get(String houseId) {
+	public HouseBO get(String houseId) {
 		if (StringUtils.isBlank(houseId)) {
 			return null;
 		}
-		TaHouse taHouse = kingtreeTaHouseService.get(houseId);
+		TaHouseVO taHouse = kingtreeTaHouseService.get(houseId);
+
 		if (taHouse == null) {
 			return null;
 		}
@@ -69,41 +70,41 @@ public class HouseManagerImp implements HouseManager {
 		if (taEstate == null) {
 			return null;
 		}
-		TaDepartment taDepartment = taDepartmentService.get(taHouse.getGsdeptid());
+		TaDepartmentVO taDepartment = taDepartmentService.get(taHouse.getGsdeptid());
 		if (taDepartment == null) {
 			return null;
 		}
-		TaPicearea taPicearea = taPiceareaService.get(taHouse.getPiceareaid());
+		TaPiceareaVO taPicearea = taPiceareaService.get(taHouse.getPiceareaid());
 		TaCompany taCompany = taCompanyService.get(COMPANY_ID);
-		return new HouseVO(taHouse, taEstate, taDepartment, taCompany, taPicearea);
+		return new HouseBO(taHouse, taEstate, taDepartment, taCompany, taPicearea);
 	}
 
 	@Override
-	public List<HouseVO> gets(int start, int length) {
-		List<TaHouse> outSideHouseList = kingtreeTaHouseService.getOutSide(start, length);
+	public List<HouseBO> gets(int start, int length) {
+		List<TaHouseVO> outSideHouseList = kingtreeTaHouseService.getOutSide(start, length);
 		if (outSideHouseList == null || outSideHouseList.isEmpty()) {
 			return Collections.emptyList();
 		}
-		List<HouseVO> houseVOList = new ArrayList<HouseVO>();
-		for (TaHouse item : outSideHouseList) {
-			houseVOList.add(get(item.getHouseid()));
+		List<HouseBO> houseBOList = new ArrayList<HouseBO>();
+		for (TaHouseVO item : outSideHouseList) {
+			houseBOList.add(get(item.getHouseid()));
 		}
-		return houseVOList;
+		return houseBOList;
 	}
 
 	@Override
-	public void process(List<HouseVO> houseVOList) {
-		if (houseVOList == null) {
+	public void process(List<HouseBO> houseBOList) {
+		if (houseBOList == null) {
 			return;
 		}
-		List<Map<String, String>> brokers = getBroker(houseVOList);
-		List<Map<String, String>> brokerDepts = getBrokerDept(houseVOList);
-		List<Map<String, String>> brokerCompanys = getBrokerCompany(houseVOList);
-		List<Map<String, String>> communitys = getCommunity(houseVOList);
-		List<Map<String, String>> houses = getHouse(houseVOList);
-		List<Map<String, String>> houseOffLines = getHouseOfLine(houseVOList);
-		List<Map<String, String>> housePictures = getHousePicture(houseVOList);
-		List<Map<String, String>> houseRefreshs = getHouseRefresh(houseVOList);
+		List<Map<String, String>> brokers = getBroker(houseBOList);
+		List<Map<String, String>> brokerDepts = getBrokerDept(houseBOList);
+		List<Map<String, String>> brokerCompanys = getBrokerCompany(houseBOList);
+		List<Map<String, String>> communitys = getCommunity(houseBOList);
+		List<Map<String, String>> houses = getHouse(houseBOList);
+		List<Map<String, String>> houseOffLines = getHouseOfLine(houseBOList);
+		List<Map<String, String>> housePictures = getHousePicture(houseBOList);
+		List<Map<String, String>> houseRefreshs = getHouseRefresh(houseBOList);
 
 		try {
 			pingAnXmlWriterService.write(pingAnXmlService.getBroker(brokers));
@@ -148,20 +149,20 @@ public class HouseManagerImp implements HouseManager {
 
 	}
 
-	private List<Map<String, String>> getHouseRefresh(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getHouseRefresh(List<HouseBO> houseBOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseBO : houseBOList) {
 			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", houseVO.getHouseId());
-			map.put("user_id", houseVO.getUserId());
+			map.put("id", houseBO.getHouseId());
+			map.put("user_id", houseBO.getUserId());
 			list.add(map);
 		}
 		return list;
 	}
 
-	private List<Map<String, String>> getHousePicture(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getHousePicture(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("image_id", houseVO.getInnerImgId());
 			map.put("url", houseVO.getInnerImg());
@@ -170,9 +171,9 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getHouseOfLine(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getHouseOfLine(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("id", houseVO.getHouseId());
 			list.add(map);
@@ -180,9 +181,9 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getHouse(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getHouse(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("id", houseVO.getHouseId());
 			map.put("loupan_id", houseVO.getHouseId());
@@ -208,9 +209,9 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getCommunity(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getCommunity(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("name", houseVO.getCommunityName());
 			map.put("city_name", houseVO.getCommunityCityName());
@@ -222,9 +223,9 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getBrokerCompany(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getBrokerCompany(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("company_id", houseVO.getCompanyId());
 			map.put("city_name", houseVO.getCompanyCity());
@@ -235,9 +236,9 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getBrokerDept(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getBrokerDept(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("dept_id", houseVO.getDeptId());
 			map.put("name", houseVO.getDeptName());
@@ -249,9 +250,9 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getBroker(List<HouseVO> houseVOList) {
+	private List<Map<String, String>> getBroker(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (HouseVO houseVO : houseVOList) {
+		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("user_id", houseVO.getUserId());
 			map.put("user_name", houseVO.getBrokerName());

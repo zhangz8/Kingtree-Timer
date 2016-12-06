@@ -1,8 +1,8 @@
 package com.kingtree.timer.service;
 
-import com.kingtree.timer.entity.TaDepartment;
+import com.kingtree.timer.service.vo.TaDepartmentVO;
 
 public interface TaDepartmentService {
 
-	TaDepartment get(String departmentId);
+	TaDepartmentVO get(String departmentId);
 }

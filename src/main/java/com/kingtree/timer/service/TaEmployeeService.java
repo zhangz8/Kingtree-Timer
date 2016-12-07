@@ -1,8 +1,8 @@
 package com.kingtree.timer.service;
 
-import com.kingtree.timer.entity.TaEmployee;
+import com.kingtree.timer.service.vo.TaEmployeeVO;
 
 public interface TaEmployeeService {
 
-	TaEmployee get(String userId);
+	TaEmployeeVO get(String employeeId);
 }

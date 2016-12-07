@@ -1,10 +1,13 @@
 package com.kingtree.timer.manager.bo;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Random;
 
 import com.kingtree.timer.entity.TaCompany;
-import com.kingtree.timer.entity.TaEstate;
 import com.kingtree.timer.service.vo.TaDepartmentVO;
+import com.kingtree.timer.service.vo.TaEmployeeVO;
+import com.kingtree.timer.service.vo.TaEstateVO;
 import com.kingtree.timer.service.vo.TaHouseVO;
 import com.kingtree.timer.service.vo.TaPiceareaVO;
 import com.kingtree.timer.util.ConstantsUtil;
@@ -49,6 +52,7 @@ public class HouseBO implements Serializable {
 	private String layoutImg;// 户型图
 	private String layoutImgId;// 户型图编号
 
+	private String brokerId;// 经纪人编号
 	private String brokerName;// 经纪人姓名
 	private String brokerMobile;// 经纪人电话
 	private String brokerBankCard;// 经纪人银行帐号
@@ -70,6 +74,7 @@ public class HouseBO implements Serializable {
 	private String parentDeptId;// 上级部门
 	private String companyIdOfDept;// 部门所在公司
 
+	private String communityId;
 	private String communityName;// 小区名
 	private String communityCityName;// 小区所在城市
 	private String communityRegionName;// 小区所在区县
@@ -80,17 +85,26 @@ public class HouseBO implements Serializable {
 
 	}
 
-	public HouseBO(TaHouseVO taHouse, TaEstate taEstate, TaDepartmentVO taDepartment, TaCompany taCompany, TaPiceareaVO taPicearea) {
+	public HouseBO(TaHouseVO taHouse, TaEstateVO taEstate, TaDepartmentVO taDepartment, TaCompany taCompany, TaPiceareaVO taPicearea,
+			TaEmployeeVO taEmployeeVO) {
+		Random random1 = new Random(99999999);
+		Random random2 = new Random(99999998);
+		Random random3 = new Random(99999899);
+		this.userId = taHouse.getUserId() + "";
 		this.houseId = taHouse.getId() + "";
 		this.title = taHouse.getTitle();
 		this.roomCount = taHouse.getCountf();
 		this.hallCount = taHouse.getCountt();
 		this.toiletCount = taHouse.getCountw();
-		this.innerImg = ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto();
-		this.outterImg = ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto();
+		this.innerImg = taHouse.getCoverphoto() == null ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto());
+		this.outterImg = taHouse.getCoverphoto() == null ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto());
+		this.layoutImg = taHouse.getLayoutImg() == null ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getLayoutImg());
+		this.innerImgId = random1.nextInt() + "";
+		this.outterImgId = random2.nextInt() + "";
+		this.layoutImgId = random3.nextInt() + "";
 		this.description = taHouse.getPropdesc();
-		this.price = taEstate.getPrice().toString();
-		this.space = taEstate.getSquare().toString();
+		this.price = taEstate.getPrice() == null ? "" : taEstate.getPrice().toString();
+		this.space = taHouse.getSquare() == null ? "" : taHouse.getSquare().toString();
 		this.currentFloor = taHouse.getFloor();
 		this.totalFloor = taHouse.getFloorall();
 		this.doorPlate = taEstate.getAddress();
@@ -100,13 +114,43 @@ public class HouseBO implements Serializable {
 		this.deptId = taDepartment.getId() + "";
 		this.deptName = taDepartment.getDepname();
 		this.deptAddress = taDepartment.getAddress();
-		this.parentDeptId = taDepartment.getPid();
+		this.parentDeptId = taDepartment.getParentId() + "";
+
+		this.brokerName = taEmployeeVO.getUserName();
+		this.brokerMobile = taEmployeeVO.getMobile();
+		this.brokerIdentityCard = taEmployeeVO.getIdcard();
+		this.brokerStoreId = taPicearea.getId() + "";
+		this.brokerCompanyId = taCompany.getComid();
+		this.brokerId = taEmployeeVO.getId() + "";
+
 		this.companyIdOfDept = taCompany.getComid();
 		this.communityName = taEstate.getEstatename();
+		this.communityId = taEstate.getId() + "";
 		this.communityCityName = "郑州";
 		this.communityRegionName = taPicearea.getAreaname();
 		this.communitySubRegionName = taPicearea.getAreaname();
 		this.communityAddress = taEstate.getAddress();
+
+		this.companyName = taCompany.getCompanyname();
+		this.companyFullName = taCompany.getCompanyname();
+		this.companyCity = "郑州";
+		this.companyId = taCompany.getComid();
+	}
+
+	public String getCommunityId() {
+		return communityId;
+	}
+
+	public String getBrokerId() {
+		return brokerId;
+	}
+
+	public void setBrokerId(String brokerId) {
+		this.brokerId = brokerId;
+	}
+
+	public void setCommunityId(String communityId) {
+		this.communityId = communityId;
 	}
 
 	public String getUniqueId() {

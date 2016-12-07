@@ -9,16 +9,14 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kingtree.timer.entity.TaHouse;
-import com.kingtree.timer.service.KingtreeTaHouseService;
-import com.kingtree.timer.service.vo.TaHouseVO;
-import com.kingtree.timer.util.ConstantsUtil;
+import com.kingtree.timer.manager.HouseManager;
+import com.kingtree.timer.manager.bo.HouseBO;
 import com.kingtree.timer.util.PageUtil;
 
 /**
@@ -31,18 +29,18 @@ import com.kingtree.timer.util.PageUtil;
 public class PingAnPushTimerController {
 
 	private static Logger logger = LoggerFactory.getLogger(PingAnPushTimerController.class);
-	private static SimpleDateFormat sdft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private static final int PAGE_SIZE = 20;
+	private static SimpleDateFormat sdft = new SimpleDateFormat("yyyyMMdd");
+	private static final int PAGE_SIZE = 2;
 
 	@Resource
-	private KingtreeTaHouseService taHouseService;
+	private HouseManager houseManager;
 
 	/**
 	 * @throws IOException
 	 * 
 	 */
 	@ResponseBody
-	@Scheduled(cron = "0/60 * * * * ?")
+	// @Scheduled(cron = "0/60 * * * * ?")
 	@RequestMapping(value = "/run", method = { RequestMethod.GET, RequestMethod.POST })
 	public void run() throws IOException {
 		int successCount = 0;
@@ -50,21 +48,16 @@ public class PingAnPushTimerController {
 		TaHouse taHouse = new TaHouse();
 		taHouse.setTooutside(true);
 		int page = 0;
+		String baseFilePath = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "document/pinganxml/"
+				+ sdft.format(new Date());
 		for (;;) {
-			List<TaHouseVO> taHouseList = taHouseService.getOutSide(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
-			if (taHouseList == null || taHouseList.isEmpty()) {
+			List<HouseBO> houseBOList = houseManager.gets(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			if (houseBOList.isEmpty()) {
 				break;
 			}
+			houseManager.process(houseBOList, baseFilePath);
+			logger.info("已处理:" + houseBOList.size());
 
-			for (TaHouseVO item : taHouseList) {
-				try {
-					logger.info(item.getTitle());
-					successCount++;
-				} catch (Exception e) {
-					logger.info(ConstantsUtil.ERROR + item.getHouseid());
-					failureCount++;
-				}
-			}
 			page++;
 		}
 		logger.info(sdft.format(new Date()) + "定时任务执行结束，SUCCESS:" + successCount + ",FAILURE:" + failureCount);

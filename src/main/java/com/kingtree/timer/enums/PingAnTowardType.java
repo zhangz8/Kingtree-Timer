@@ -39,4 +39,14 @@ public enum PingAnTowardType {
 		return null;
 	}
 
+	public static PingAnTowardType nameOf(String name) {
+		PingAnTowardType[] values = PingAnTowardType.values();
+		for (PingAnTowardType item : values) {
+			if (item.getName().equals(name)) {
+				return item;
+			}
+		}
+		return null;
+	}
+
 }

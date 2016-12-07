@@ -16,6 +16,8 @@ public class TaHouseVO implements Serializable {
 
 	private int id;
 
+	private int userId;
+
 	private String houseid;
 
 	private String hwid;
@@ -182,6 +184,16 @@ public class TaHouseVO implements Serializable {
 
 	private Date privydate;
 
+	private String layoutImg;
+
+	public String getLayoutImg() {
+		return layoutImg;
+	}
+
+	public void setLayoutImg(String layoutImg) {
+		this.layoutImg = layoutImg;
+	}
+
 	public TaHouseVO() {
 	}
 
@@ -193,6 +205,14 @@ public class TaHouseVO implements Serializable {
 		TaHouseVO taHouseVO = new TaHouseVO(id);
 		BeanUtil.copyFields(taHouseVO, taHouse);
 		return taHouseVO;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getId() {

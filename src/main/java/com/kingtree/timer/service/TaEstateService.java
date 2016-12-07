@@ -1,9 +1,9 @@
 package com.kingtree.timer.service;
 
-import com.kingtree.timer.entity.TaEstate;
+import com.kingtree.timer.service.vo.TaEstateVO;
 
 public interface TaEstateService {
 
-	TaEstate get(String estId);
+	TaEstateVO get(String estateId);
 
 }

@@ -28,6 +28,6 @@ public interface HouseManager {
 	 * 
 	 * @param houseVO
 	 */
-	void process(List<HouseBO> houseVOList);
+	void process(List<HouseBO> houseVOList, String baseFilePath);
 
 }

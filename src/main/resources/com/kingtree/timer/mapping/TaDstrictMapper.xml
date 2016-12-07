@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaDstrictMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaDstrict" >
+    <id column="dsid" property="dsid" jdbcType="VARCHAR" />
+    <result column="areaid" property="areaid" jdbcType="VARCHAR" />
+    <result column="districtno" property="districtno" jdbcType="VARCHAR" />
+    <result column="dstrictname" property="dstrictname" jdbcType="VARCHAR" />
+    <result column="lngx" property="lngx" jdbcType="DOUBLE" />
+    <result column="laty" property="laty" jdbcType="DOUBLE" />
+    <result column="cdesc" property="cdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dsid, areaid, districtno, dstrictname, lngx, laty, cdesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_dstrict
+    where dsid = #{dsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_dstrict
+    where dsid = #{dsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaDstrict" >
+    insert into ta_dstrict (dsid, areaid, districtno, 
+      dstrictname, lngx, laty, 
+      cdesc)
+    values (#{dsid,jdbcType=VARCHAR}, #{areaid,jdbcType=VARCHAR}, #{districtno,jdbcType=VARCHAR}, 
+      #{dstrictname,jdbcType=VARCHAR}, #{lngx,jdbcType=DOUBLE}, #{laty,jdbcType=DOUBLE}, 
+      #{cdesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaDstrict" >
+    insert into ta_dstrict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dsid != null" >
+        dsid,
+      </if>
+      <if test="areaid != null" >
+        areaid,
+      </if>
+      <if test="districtno != null" >
+        districtno,
+      </if>
+      <if test="dstrictname != null" >
+        dstrictname,
+      </if>
+      <if test="lngx != null" >
+        lngx,
+      </if>
+      <if test="laty != null" >
+        laty,
+      </if>
+      <if test="cdesc != null" >
+        cdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dsid != null" >
+        #{dsid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="districtno != null" >
+        #{districtno,jdbcType=VARCHAR},
+      </if>
+      <if test="dstrictname != null" >
+        #{dstrictname,jdbcType=VARCHAR},
+      </if>
+      <if test="lngx != null" >
+        #{lngx,jdbcType=DOUBLE},
+      </if>
+      <if test="laty != null" >
+        #{laty,jdbcType=DOUBLE},
+      </if>
+      <if test="cdesc != null" >
+        #{cdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaDstrict" >
+    update ta_dstrict
+    <set >
+      <if test="areaid != null" >
+        areaid = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="districtno != null" >
+        districtno = #{districtno,jdbcType=VARCHAR},
+      </if>
+      <if test="dstrictname != null" >
+        dstrictname = #{dstrictname,jdbcType=VARCHAR},
+      </if>
+      <if test="lngx != null" >
+        lngx = #{lngx,jdbcType=DOUBLE},
+      </if>
+      <if test="laty != null" >
+        laty = #{laty,jdbcType=DOUBLE},
+      </if>
+      <if test="cdesc != null" >
+        cdesc = #{cdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dsid = #{dsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaDstrict" >
+    update ta_dstrict
+    set areaid = #{areaid,jdbcType=VARCHAR},
+      districtno = #{districtno,jdbcType=VARCHAR},
+      dstrictname = #{dstrictname,jdbcType=VARCHAR},
+      lngx = #{lngx,jdbcType=DOUBLE},
+      laty = #{laty,jdbcType=DOUBLE},
+      cdesc = #{cdesc,jdbcType=VARCHAR}
+    where dsid = #{dsid,jdbcType=VARCHAR}
+  </update>
+</mapper>

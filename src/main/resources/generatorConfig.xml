@@ -31,7 +31,7 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- 要生成哪些表 -->
-		<table tableName="kingtree_ta_systemuser" domainObjectName="KingtreeTaSystemuser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		<table tableName="ta_attachment" domainObjectName="TaAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"></table>
 	</context>
 </generatorConfiguration>  

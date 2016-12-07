@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingtree.timer.dao.TaAttachmentMapper" >
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaAttachment" >
+    <id column="attachmentid" property="attachmentid" jdbcType="VARCHAR" />
+    <result column="attachname" property="attachname" jdbcType="VARCHAR" />
+    <result column="uploadip" property="uploadip" jdbcType="VARCHAR" />
+    <result column="uploaddate" property="uploaddate" jdbcType="TIMESTAMP" />
+    <result column="attachsize" property="attachsize" jdbcType="DECIMAL" />
+    <result column="attachurl" property="attachurl" jdbcType="VARCHAR" />
+    <result column="smallurl" property="smallurl" jdbcType="VARCHAR" />
+    <result column="attachtype" property="attachtype" jdbcType="VARCHAR" />
+    <result column="belongtablename" property="belongtablename" jdbcType="VARCHAR" />
+    <result column="belongid" property="belongid" jdbcType="VARCHAR" />
+    <result column="phototype" property="phototype" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="flagdeleted" property="flagdeleted" jdbcType="BIT" />
+    <result column="delperson" property="delperson" jdbcType="VARCHAR" />
+    <result column="deldate" property="deldate" jdbcType="TIMESTAMP" />
+    <result column="emcsmallurl" property="emcsmallurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attachmentid, attachname, uploadip, uploaddate, attachsize, attachurl, smallurl, 
+    attachtype, belongtablename, belongid, phototype, empid, empname, createtime, flagdeleted, 
+    delperson, deldate, emcsmallurl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_attachment
+    where attachmentid = #{attachmentid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByBelongId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ta_attachment
+    where belongid = #{belongId,jdbcType=VARCHAR}
+  </select>  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ta_attachment
+    where attachmentid = #{attachmentid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaAttachment" >
+    insert into ta_attachment (attachmentid, attachname, uploadip, 
+      uploaddate, attachsize, attachurl, 
+      smallurl, attachtype, belongtablename, 
+      belongid, phototype, empid, 
+      empname, createtime, flagdeleted, 
+      delperson, deldate, emcsmallurl
+      )
+    values (#{attachmentid,jdbcType=VARCHAR}, #{attachname,jdbcType=VARCHAR}, #{uploadip,jdbcType=VARCHAR}, 
+      #{uploaddate,jdbcType=TIMESTAMP}, #{attachsize,jdbcType=DECIMAL}, #{attachurl,jdbcType=VARCHAR}, 
+      #{smallurl,jdbcType=VARCHAR}, #{attachtype,jdbcType=VARCHAR}, #{belongtablename,jdbcType=VARCHAR}, 
+      #{belongid,jdbcType=VARCHAR}, #{phototype,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, 
+      #{empname,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{flagdeleted,jdbcType=BIT}, 
+      #{delperson,jdbcType=VARCHAR}, #{deldate,jdbcType=TIMESTAMP}, #{emcsmallurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaAttachment" >
+    insert into ta_attachment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attachmentid != null" >
+        attachmentid,
+      </if>
+      <if test="attachname != null" >
+        attachname,
+      </if>
+      <if test="uploadip != null" >
+        uploadip,
+      </if>
+      <if test="uploaddate != null" >
+        uploaddate,
+      </if>
+      <if test="attachsize != null" >
+        attachsize,
+      </if>
+      <if test="attachurl != null" >
+        attachurl,
+      </if>
+      <if test="smallurl != null" >
+        smallurl,
+      </if>
+      <if test="attachtype != null" >
+        attachtype,
+      </if>
+      <if test="belongtablename != null" >
+        belongtablename,
+      </if>
+      <if test="belongid != null" >
+        belongid,
+      </if>
+      <if test="phototype != null" >
+        phototype,
+      </if>
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted,
+      </if>
+      <if test="delperson != null" >
+        delperson,
+      </if>
+      <if test="deldate != null" >
+        deldate,
+      </if>
+      <if test="emcsmallurl != null" >
+        emcsmallurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attachmentid != null" >
+        #{attachmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="attachname != null" >
+        #{attachname,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadip != null" >
+        #{uploadip,jdbcType=VARCHAR},
+      </if>
+      <if test="uploaddate != null" >
+        #{uploaddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachsize != null" >
+        #{attachsize,jdbcType=DECIMAL},
+      </if>
+      <if test="attachurl != null" >
+        #{attachurl,jdbcType=VARCHAR},
+      </if>
+      <if test="smallurl != null" >
+        #{smallurl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachtype != null" >
+        #{attachtype,jdbcType=VARCHAR},
+      </if>
+      <if test="belongtablename != null" >
+        #{belongtablename,jdbcType=VARCHAR},
+      </if>
+      <if test="belongid != null" >
+        #{belongid,jdbcType=VARCHAR},
+      </if>
+      <if test="phototype != null" >
+        #{phototype,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagdeleted != null" >
+        #{flagdeleted,jdbcType=BIT},
+      </if>
+      <if test="delperson != null" >
+        #{delperson,jdbcType=VARCHAR},
+      </if>
+      <if test="deldate != null" >
+        #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emcsmallurl != null" >
+        #{emcsmallurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaAttachment" >
+    update ta_attachment
+    <set >
+      <if test="attachname != null" >
+        attachname = #{attachname,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadip != null" >
+        uploadip = #{uploadip,jdbcType=VARCHAR},
+      </if>
+      <if test="uploaddate != null" >
+        uploaddate = #{uploaddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachsize != null" >
+        attachsize = #{attachsize,jdbcType=DECIMAL},
+      </if>
+      <if test="attachurl != null" >
+        attachurl = #{attachurl,jdbcType=VARCHAR},
+      </if>
+      <if test="smallurl != null" >
+        smallurl = #{smallurl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachtype != null" >
+        attachtype = #{attachtype,jdbcType=VARCHAR},
+      </if>
+      <if test="belongtablename != null" >
+        belongtablename = #{belongtablename,jdbcType=VARCHAR},
+      </if>
+      <if test="belongid != null" >
+        belongid = #{belongid,jdbcType=VARCHAR},
+      </if>
+      <if test="phototype != null" >
+        phototype = #{phototype,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        empid = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagdeleted != null" >
+        flagdeleted = #{flagdeleted,jdbcType=BIT},
+      </if>
+      <if test="delperson != null" >
+        delperson = #{delperson,jdbcType=VARCHAR},
+      </if>
+      <if test="deldate != null" >
+        deldate = #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emcsmallurl != null" >
+        emcsmallurl = #{emcsmallurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where attachmentid = #{attachmentid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaAttachment" >
+    update ta_attachment
+    set attachname = #{attachname,jdbcType=VARCHAR},
+      uploadip = #{uploadip,jdbcType=VARCHAR},
+      uploaddate = #{uploaddate,jdbcType=TIMESTAMP},
+      attachsize = #{attachsize,jdbcType=DECIMAL},
+      attachurl = #{attachurl,jdbcType=VARCHAR},
+      smallurl = #{smallurl,jdbcType=VARCHAR},
+      attachtype = #{attachtype,jdbcType=VARCHAR},
+      belongtablename = #{belongtablename,jdbcType=VARCHAR},
+      belongid = #{belongid,jdbcType=VARCHAR},
+      phototype = #{phototype,jdbcType=VARCHAR},
+      empid = #{empid,jdbcType=VARCHAR},
+      empname = #{empname,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      flagdeleted = #{flagdeleted,jdbcType=BIT},
+      delperson = #{delperson,jdbcType=VARCHAR},
+      deldate = #{deldate,jdbcType=TIMESTAMP},
+      emcsmallurl = #{emcsmallurl,jdbcType=VARCHAR}
+    where attachmentid = #{attachmentid,jdbcType=VARCHAR}
+  </update>
+</mapper>

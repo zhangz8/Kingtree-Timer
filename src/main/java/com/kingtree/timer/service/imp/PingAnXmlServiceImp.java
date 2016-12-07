@@ -2,6 +2,7 @@ package com.kingtree.timer.service.imp;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -18,12 +19,12 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 		if (data == null) {
 			return null;
 		}
-		String[] keys = { "broker_company_list", "broker_company",
-				"company_id", "city_name", "company_name", "company_full_name" };
+		String[] keys = { "broker_company_list", "broker_company", "company_id", "city_name", "company_name", "company_full_name" };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/broker_company");
 
 		for (Map<String, String> item : data) {
+			format(item);
 			Element broker_company = root.addElement(keys[1]);
 			Element company_id = broker_company.addElement(keys[2]);
 			Element city_name = broker_company.addElement(keys[3]);
@@ -49,13 +50,12 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 		if (data == null) {
 			return null;
 		}
-		String[] keys = { "broker_department_list", "broker_department",
-				"dept_id", "name", "dept_address", "company_id",
-				"parent_dept_id" };
+		String[] keys = { "broker_department_list", "broker_department", "dept_id", "name", "dept_address", "company_id", "parent_dept_id" };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/broker_department");
 
 		for (Map<String, String> item : data) {
+			format(item);
 			Element broker_department = root.addElement(keys[1]);
 			Element dept_id = broker_department.addElement(keys[2]);
 			Element name = broker_department.addElement(keys[3]);
@@ -84,13 +84,13 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 		if (data == null) {
 			return null;
 		}
-		String[] keys = { "broker_list", "broker", "user_id", "user_name",
-				"user_mobile", "user_bankcard_no", "user_card_no", "city_name",
+		String[] keys = { "broker_list", "broker", "user_id", "user_name", "user_mobile", "user_bankcard_no", "user_card_no", "city_name",
 				"area_name", "block_name", "company_id", "store_id" };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/broker");
 
 		for (Map<String, String> item : data) {
+			format(item);
 			Element broker = root.addElement(keys[1]);
 			Element user_id = broker.addElement(keys[2]);
 			Element user_name = broker.addElement(keys[3]);
@@ -135,12 +135,12 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			return null;
 		}
 
-		String[] keys = { "community_list", "community", "id", "name",
-				"city_name", "region_name", "sub_region_name", "address" };
+		String[] keys = { "community_list", "community", "id", "name", "city_name", "region_name", "sub_region_name", "address" };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/community");
 
 		for (Map<String, String> item : data) {
+			format(item);
 			Element community = root.addElement(keys[1]);
 			Element id = community.addElement(keys[2]);
 			Element name = community.addElement(keys[3]);
@@ -173,14 +173,13 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			return null;
 		}
 
-		String[] keys = { "second_hand_house_list", "second_hand_house", "id",
-				"loupan_id", "user_id", "unique_id", "title", "desc", "price",
-				"room_num", "hall_num", "toilet_num", "current_floor",
-				"total_floor", "space", "house_type", "decoration", "toward",
-				"building_year", "door_plate", "room_no", "tag", "create_time", };
+		String[] keys = { "second_hand_house_list", "second_hand_house", "id", "loupan_id", "user_id", "unique_id", "title", "desc", "price",
+				"room_num", "hall_num", "toilet_num", "current_floor", "total_floor", "space", "house_type", "decoration", "toward", "building_year",
+				"door_plate", "room_no", "tag", "create_time", };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/second_hand_house");
 		for (Map<String, String> item : data) {
+			format(item);
 			Element second_house = root.addElement(keys[1]);
 			Element id = second_house.addElement(keys[2]);
 			Element loupan_id = second_house.addElement(keys[3]);
@@ -257,12 +256,11 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			return null;
 		}
 
-		String[] keys = { "second_hand_house_offline_list",
-				"second_hand_house_offline", "id" };
+		String[] keys = { "second_hand_house_offline_list", "second_hand_house_offline", "id" };
 		Element root = DocumentHelper.createElement(keys[0]);
-		root.addNamespace("",
-				"http://www.pinganfang.com/second_hand_house_offline");
+		root.addNamespace("", "http://www.pinganfang.com/second_hand_house_offline");
 		for (Map<String, String> item : data) {
+			format(item);
 			Element offline = root.addElement(keys[1]);
 			Element id = offline.addElement(keys[2]);
 
@@ -278,13 +276,11 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 		if (data == null) {
 			return null;
 		}
-		String[] keys = { "second_hand_house_pic_list",
-				"second_hand_house_pic", "image_id", "pic_type", "url",
-				"house_id" };
+		String[] keys = { "second_hand_house_pic_list", "second_hand_house_pic", "image_id", "pic_type", "url", "house_id" };
 		Element root = DocumentHelper.createElement(keys[0]);
-		root.addNamespace("",
-				"http://www.pinganfang.com/second_hand_house_pics");
+		root.addNamespace("", "http://www.pinganfang.com/second_hand_house_pics");
 		for (Map<String, String> item : data) {
+			format(item);
 			Element house_pic = root.addElement(keys[1]);
 			Element image_id = house_pic.addElement(keys[2]);
 			Element pic_type = house_pic.addElement(keys[3]);
@@ -310,12 +306,11 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			return null;
 		}
 
-		String[] keys = { "second_hand_house_refresh_list",
-				"second_hand_house_refresh", "id", "user_id" };
+		String[] keys = { "second_hand_house_refresh_list", "second_hand_house_refresh", "id", "user_id" };
 		Element root = DocumentHelper.createElement(keys[0]);
-		root.addNamespace("",
-				"http://www.pinganfang.com/second_hand_house_refresh");
+		root.addNamespace("", "http://www.pinganfang.com/second_hand_house_refresh");
 		for (Map<String, String> item : data) {
+			format(item);
 			Element refresh = root.addElement(keys[1]);
 			Element id = refresh.addElement(keys[2]);
 			Element userId = refresh.addElement(keys[3]);
@@ -327,6 +322,15 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			userId.setText(userIText);
 		}
 		return DocumentHelper.createDocument(root);
+	}
+
+	private void format(Map<String, String> map) {
+		Set<String> keySet = map.keySet();
+		for (String key : keySet) {
+			String value = map.get(key);
+			value = value == null || "null".equals(value) ? "" : value;
+			map.put(key, value);
+		}
 	}
 
 }

@@ -83,9 +83,6 @@ public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 			return Collections.emptyList();
 		}
 		List<TaHouse> taHouseList = taHouseMapper.selectByTooutside(start, length);
-		if (taHouseList == null) {
-			return Collections.emptyList();
-		}
 		List<TaHouseVO> taHouseVOList = new ArrayList<TaHouseVO>();
 		for (TaHouse item : taHouseList) {
 			taHouseVOList.add(get(item.getHouseid()));

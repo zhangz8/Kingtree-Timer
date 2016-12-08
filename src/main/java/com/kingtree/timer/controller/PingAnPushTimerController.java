@@ -30,7 +30,7 @@ public class PingAnPushTimerController {
 
 	private static Logger logger = LoggerFactory.getLogger(PingAnPushTimerController.class);
 	private static SimpleDateFormat sdft = new SimpleDateFormat("yyyyMMdd");
-	private static final int PAGE_SIZE = 20;
+	private static final int PAGE_SIZE = 10000;
 
 	@Resource
 	private HouseManager houseManager;
@@ -49,11 +49,16 @@ public class PingAnPushTimerController {
 		int page = 0;
 		String baseFilePath = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "document/pinganxml/"
 				+ sdft.format(new Date());
-
+		logger.info("baseXmlPath:" + baseFilePath);
 		for (;;) {
 			List<HouseBO> houseBOList = houseManager.gets(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			logger.info("等待发布到外网的房子数量：" + houseBOList.size());
 			if (houseBOList.isEmpty()) {
 				break;
+			}
+			logger.info("等待发布到外网的房子：");
+			for (HouseBO item : houseBOList) {
+				logger.info(item.getTitle() + "|" + item.getTaHouseId());
 			}
 			houseManager.process(houseBOList, baseFilePath);
 			page++;
@@ -61,9 +66,14 @@ public class PingAnPushTimerController {
 
 		page = 0;
 		for (;;) {
-			List<HouseBO> offLineHoseBOList = houseManager.getsOffLine(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			List<HouseBO> offLineHoseBOList = houseManager
+					.getsOffLine(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
 			if (offLineHoseBOList.isEmpty()) {
 				break;
+			}
+			logger.info("等待下架的房子：");
+			for (HouseBO item : offLineHoseBOList) {
+				logger.info(item.getTitle() + "|" + item.getTaHouseId());
 			}
 			houseManager.process(offLineHoseBOList, baseFilePath);
 			page++;

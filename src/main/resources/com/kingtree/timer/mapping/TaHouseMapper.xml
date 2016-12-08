@@ -1567,15 +1567,17 @@
 			<include refid="Base_Column_List" />
 		FROM
 			ta_house t
+		JOIN ta_reference r ON r.refid = t.tradestatus
 		WHERE
 			t.tooutside = 1
+		AND r.refnamecn NOT IN ('已售', '已租', '无效')
 		AND t.houseid NOT IN (
 			SELECT
 				tht.houseid
 			FROM
 				kingtree_ta_house_tooutside tht
 			WHERE
-				tht.is_delete = 0
+				tht.is_delete = 0				
 		) LIMIT #{start}, #{length}
 	</select>
 	<select id="countByTooutside" resultType="int">
@@ -1599,9 +1601,16 @@
 			h.*
 		FROM
 			ta_house h
-		LEFT JOIN kingtree_ta_house_tooutside kht ON kht.houseid = h.houseid
+		JOIN kingtree_ta_house_tooutside kht ON kht.houseid = h.houseid
+		JOIN ta_reference r ON r.refid = h.tradestatus
 		WHERE
 			h.tooutside = 1
-		AND kht.houseid IS NULL;
+		AND r.refnamecn IN ('已售', '已租', '无效')
+		AND h.houseid IN (
+			SELECT
+				t.houseid
+			FROM
+				kingtree_ta_house_tooutside t
+		)
 	</select>	
 </mapper>

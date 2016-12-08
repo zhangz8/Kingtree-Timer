@@ -186,6 +186,8 @@ public class TaHouseVO implements Serializable {
 
 	private String layoutImg;
 
+	private boolean isOffLine;
+
 	public String getLayoutImg() {
 		return layoutImg;
 	}
@@ -205,6 +207,14 @@ public class TaHouseVO implements Serializable {
 		TaHouseVO taHouseVO = new TaHouseVO(id);
 		BeanUtil.copyFields(taHouseVO, taHouse);
 		return taHouseVO;
+	}
+
+	public boolean getIsOffLine() {
+		return isOffLine;
+	}
+
+	public void setIsOffLine(boolean isOffLine) {
+		this.isOffLine = isOffLine;
 	}
 
 	public int getUserId() {

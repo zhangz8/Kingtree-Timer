@@ -28,4 +28,15 @@ public interface KingtreeTaHouseService {
 	List<TaHouseVO> getOutSide(int start, int length);
 
 	TaHouseVO get(String houseId);
+
+	int add(TaHouseVO taHouse);
+
+	/**
+	 * 获取下架房子
+	 * 
+	 * @param start
+	 * @param length
+	 * @return
+	 */
+	List<TaHouseVO> getOffLine(int start, int length);
 }

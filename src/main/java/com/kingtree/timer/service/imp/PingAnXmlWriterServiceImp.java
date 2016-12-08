@@ -9,12 +9,16 @@ import java.util.Date;
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.kingtree.timer.service.PingAnXmlWriterService;
 
 @Service
 public class PingAnXmlWriterServiceImp implements PingAnXmlWriterService {
+
+	private static Logger logger = LoggerFactory.getLogger(PingAnXmlWriterServiceImp.class);
 
 	@Override
 	public void write(Document document) throws IOException {
@@ -31,6 +35,7 @@ public class PingAnXmlWriterServiceImp implements PingAnXmlWriterService {
 		if (document == null || file == null) {
 			return;
 		}
+		logger.info("正在生成" + file);
 		OutputFormat format = OutputFormat.createPrettyPrint();
 		format.setEncoding("UTF-8");
 		XMLWriter writer = new XMLWriter(new FileWriter(file), format);

@@ -1594,4 +1594,14 @@
 				tht.is_delete = 0
 		)
 	</select>
+	<select id="selectOffLine" resultMap="BaseResultMap">
+		SELECT
+			h.*
+		FROM
+			ta_house h
+		LEFT JOIN kingtree_ta_house_tooutside kht ON kht.houseid = h.houseid
+		WHERE
+			h.tooutside = 1
+		AND kht.houseid IS NULL;
+	</select>	
 </mapper>

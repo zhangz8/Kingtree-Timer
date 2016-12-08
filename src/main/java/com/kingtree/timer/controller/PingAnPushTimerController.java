@@ -30,7 +30,7 @@ public class PingAnPushTimerController {
 
 	private static Logger logger = LoggerFactory.getLogger(PingAnPushTimerController.class);
 	private static SimpleDateFormat sdft = new SimpleDateFormat("yyyyMMdd");
-	private static final int PAGE_SIZE = 2;
+	private static final int PAGE_SIZE = 20;
 
 	@Resource
 	private HouseManager houseManager;
@@ -43,24 +43,32 @@ public class PingAnPushTimerController {
 	// @Scheduled(cron = "0/60 * * * * ?")
 	@RequestMapping(value = "/run", method = { RequestMethod.GET, RequestMethod.POST })
 	public void run() throws IOException {
-		int successCount = 0;
-		int failureCount = 0;
+		logger.info(sdft.format(new Date()) + "定时任务执行开始...");
 		TaHouse taHouse = new TaHouse();
 		taHouse.setTooutside(true);
 		int page = 0;
 		String baseFilePath = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "document/pinganxml/"
 				+ sdft.format(new Date());
+
 		for (;;) {
 			List<HouseBO> houseBOList = houseManager.gets(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
 			if (houseBOList.isEmpty()) {
 				break;
 			}
 			houseManager.process(houseBOList, baseFilePath);
-			logger.info("已处理:" + houseBOList.size());
-
 			page++;
 		}
-		logger.info(sdft.format(new Date()) + "定时任务执行结束，SUCCESS:" + successCount + ",FAILURE:" + failureCount);
+
+		page = 0;
+		for (;;) {
+			List<HouseBO> offLineHoseBOList = houseManager.getsOffLine(PageUtil.getStart(page, PAGE_SIZE), PageUtil.getEnd(page, PAGE_SIZE));
+			if (offLineHoseBOList.isEmpty()) {
+				break;
+			}
+			houseManager.process(offLineHoseBOList, baseFilePath);
+			page++;
+		}
+		logger.info(sdft.format(new Date()) + "定时任务执行结束!!!");
 	}
 
 }

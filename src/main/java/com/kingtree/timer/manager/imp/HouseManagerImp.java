@@ -1,7 +1,11 @@
 package com.kingtree.timer.manager.imp;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -114,7 +118,7 @@ public class HouseManagerImp implements HouseManager {
 		if (dirctionType != null) {
 			houseBO.setTowardType(PingAnTowardType.nameOf(dirctionType.getRefnamecn()).getValue() + "");
 		}
-		
+
 		houseBO.setBrokerBlock(taPicearea.getAreaname());
 		return houseBO;
 	}
@@ -122,6 +126,19 @@ public class HouseManagerImp implements HouseManager {
 	@Override
 	public List<HouseBO> gets(int start, int length) {
 		List<TaHouseVO> outSideHouseList = kingtreeTaHouseService.getOutSide(start, length);
+		if (outSideHouseList == null || outSideHouseList.isEmpty()) {
+			return Collections.emptyList();
+		}
+		List<HouseBO> houseBOList = new ArrayList<HouseBO>();
+		for (TaHouseVO item : outSideHouseList) {
+			houseBOList.add(get(item.getHouseid()));
+		}
+		return houseBOList;
+	}
+
+	@Override
+	public List<HouseBO> getsOffLine(int start, int length) {
+		List<TaHouseVO> outSideHouseList = kingtreeTaHouseService.getOffLine(start, length);
 		if (outSideHouseList == null || outSideHouseList.isEmpty()) {
 			return Collections.emptyList();
 		}
@@ -191,7 +208,14 @@ public class HouseManagerImp implements HouseManager {
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating secondHandHouseRefresh.xml was error!!!");
 		}
+		formatXml(baseFilePath);
+		markPublished(houseBOList);
+	}
 
+	private void markPublished(List<HouseBO> houseBOList) {
+		for (HouseBO item : houseBOList) {
+			kingtreeTaHouseService.add(kingtreeTaHouseService.get(item.getTaHouseId()));
+		}
 	}
 
 	private void initDirectory(String baseFilePath) {
@@ -201,15 +225,45 @@ public class HouseManagerImp implements HouseManager {
 		}
 	}
 
+	/**
+	 * 删除多余属性
+	 * 
+	 * @param baseFilePath
+	 */
+	private void formatXml(String baseFilePath) {
+		File file = new File(baseFilePath);
+		File[] listFiles = file.listFiles();
+		for (File item : listFiles) {
+			try {
+				String xmlContent = "";
+				InputStream is = new FileInputStream(item);
+				byte[] cache = new byte[(int) item.length()];
+				while (is.read(cache) != -1) {
+					xmlContent = new String(cache);
+				}
+				xmlContent = xmlContent.replaceAll(" xmlns=\"\"", "");
+				is.close();
+				OutputStream os = new FileOutputStream(item);
+				os.write(xmlContent.getBytes());
+				os.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+
 	private List<Map<String, String>> getHouseRefresh(List<HouseBO> houseBOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for (HouseBO houseBO : houseBOList) {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", houseBO.getHouseId());
-			map.put("user_id", houseBO.getUserId());
-			list.add(map);
+			if (houseBO.getIsOffLine()) {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("id", houseBO.getHouseId());
+				map.put("user_id", houseBO.getUserId());
+				list.add(map);
+			}
 		}
-		return list;
+		return list.isEmpty() ? null : list;
 	}
 
 	private List<Map<String, String>> getHousePicture(List<HouseBO> houseVOList) {

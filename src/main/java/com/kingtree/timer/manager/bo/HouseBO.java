@@ -1,8 +1,9 @@
 package com.kingtree.timer.manager.bo;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Random;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.kingtree.timer.entity.TaCompany;
 import com.kingtree.timer.service.vo.TaDepartmentVO;
@@ -26,6 +27,7 @@ public class HouseBO implements Serializable {
 	private static final long serialVersionUID = 4720710550523441591L;
 
 	private String houseId;// 房子编号
+	private String taHouseId;// taHouse编号
 	private String userId;// 用户编号
 	private String description;// 房子描述
 	private String uniqueId;// 重复标识
@@ -81,6 +83,8 @@ public class HouseBO implements Serializable {
 	private String communitySubRegionName;// 小区所在子区县
 	private String communityAddress;// 小区地址
 
+	private boolean isOffLine;
+
 	public HouseBO() {
 
 	}
@@ -91,14 +95,15 @@ public class HouseBO implements Serializable {
 		Random random2 = new Random(99999998);
 		Random random3 = new Random(99999899);
 		this.userId = taHouse.getUserId() + "";
+		this.taHouseId = taHouse.getHouseid();
 		this.houseId = taHouse.getId() + "";
 		this.title = taHouse.getTitle();
 		this.roomCount = taHouse.getCountf();
 		this.hallCount = taHouse.getCountt();
 		this.toiletCount = taHouse.getCountw();
-		this.innerImg = taHouse.getCoverphoto() == null ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto());
-		this.outterImg = taHouse.getCoverphoto() == null ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto());
-		this.layoutImg = taHouse.getLayoutImg() == null ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getLayoutImg());
+		this.innerImg = StringUtils.isBlank(taHouse.getCoverphoto()) ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto());
+		this.outterImg = StringUtils.isBlank(taEstate.getCoverphoto()) ? "" : (ConstantsUtil.IMAGE_SERVER + taEstate.getCoverphoto());
+		this.layoutImg = StringUtils.isBlank(taHouse.getLayoutImg()) ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getLayoutImg());
 		this.innerImgId = random1.nextInt() + "";
 		this.outterImgId = random2.nextInt() + "";
 		this.layoutImgId = random3.nextInt() + "";
@@ -135,10 +140,20 @@ public class HouseBO implements Serializable {
 		this.companyFullName = taCompany.getCompanyname();
 		this.companyCity = "郑州";
 		this.companyId = taCompany.getComid();
+
+		this.isOffLine = taHouse.getIsOffLine();
 	}
 
 	public String getCommunityId() {
 		return communityId;
+	}
+
+	public boolean getIsOffLine() {
+		return isOffLine;
+	}
+
+	public void setIsOffLine(boolean isOffLine) {
+		this.isOffLine = isOffLine;
 	}
 
 	public String getBrokerId() {
@@ -255,6 +270,14 @@ public class HouseBO implements Serializable {
 
 	public void setCurrentFloor(String currentFloor) {
 		this.currentFloor = currentFloor;
+	}
+
+	public String getTaHouseId() {
+		return taHouseId;
+	}
+
+	public void setTaHouseId(String taHouseId) {
+		this.taHouseId = taHouseId;
 	}
 
 	public String getTotalFloor() {

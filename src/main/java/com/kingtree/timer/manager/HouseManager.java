@@ -30,4 +30,13 @@ public interface HouseManager {
 	 */
 	void process(List<HouseBO> houseVOList, String baseFilePath);
 
+	/**
+	 * 获取下架房子
+	 * 
+	 * @param start
+	 * @param length
+	 * @return
+	 */
+	List<HouseBO> getsOffLine(int start, int length);
+
 }

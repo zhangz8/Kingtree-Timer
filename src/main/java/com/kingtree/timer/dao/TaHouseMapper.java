@@ -27,4 +27,6 @@ public interface TaHouseMapper {
 
 	List<TaHouse> selectByTooutside(@Param("start") int start, @Param("length") int length);
 
+	List<TaHouse> selectOffLine(@Param("start") int start, @Param("length") int length);
+
 }

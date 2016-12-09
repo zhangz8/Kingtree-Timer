@@ -1,5 +1,6 @@
 package com.kingtree.timer.manager;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.kingtree.timer.manager.bo.HouseBO;
@@ -28,7 +29,7 @@ public interface HouseManager {
 	 * 
 	 * @param houseVO
 	 */
-	void process(List<HouseBO> houseVOList, String baseFilePath);
+	void processPublish(List<HouseBO> houseVOList, String baseFilePath);
 
 	/**
 	 * 获取下架房子
@@ -38,5 +39,11 @@ public interface HouseManager {
 	 * @return
 	 */
 	List<HouseBO> getsOffLine(int start, int length);
+
+	void processOffLine(List<HouseBO> offLineHoseBOList, String baseFilePath);
+
+	List<HouseBO> getsRefresh(Timestamp start, Timestamp end);
+
+	void processRefresh(List<HouseBO> refreshHoseBOList, String baseFilePath);
 
 }

@@ -1,5 +1,6 @@
 package com.kingtree.timer.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -28,5 +29,7 @@ public interface TaHouseMapper {
 	List<TaHouse> selectByTooutside(@Param("start") int start, @Param("length") int length);
 
 	List<TaHouse> selectOffLine(@Param("start") int start, @Param("length") int length);
+
+	List<TaHouse> selectRefreshBroker(@Param("start") Timestamp start, @Param("end") Timestamp end);
 
 }

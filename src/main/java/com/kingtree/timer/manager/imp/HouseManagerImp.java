@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +18,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -150,21 +152,26 @@ public class HouseManagerImp implements HouseManager {
 	}
 
 	@Override
-	public void process(List<HouseBO> houseBOList, String baseFilePath) {
-		if (houseBOList == null || StringUtils.isBlank(baseFilePath)) {
+	public void processPublish(List<HouseBO> houseBOList, String baseFilePath) {
+		if (houseBOList == null || houseBOList.isEmpty() || StringUtils.isBlank(baseFilePath)) {
 			return;
 		}
+		initDirectory(baseFilePath);
+
+		generatePublishXml(houseBOList, baseFilePath);
+
+		formatXml(baseFilePath);
+
+		markPublished(houseBOList);
+	}
+
+	private void generatePublishXml(List<HouseBO> houseBOList, String baseFilePath) {
 		List<Map<String, String>> brokers = getBroker(houseBOList);
 		List<Map<String, String>> brokerDepts = getBrokerDept(houseBOList);
 		List<Map<String, String>> brokerCompanys = getBrokerCompany(houseBOList);
 		List<Map<String, String>> communitys = getCommunity(houseBOList);
 		List<Map<String, String>> houses = getHouse(houseBOList);
-		List<Map<String, String>> houseOffLines = getHouseOfLine(houseBOList);
 		List<Map<String, String>> housePictures = getHousePicture(houseBOList);
-		List<Map<String, String>> houseRefreshs = getHouseRefresh(houseBOList);
-
-		initDirectory(baseFilePath);
-
 		try {
 			pingAnXmlWriterService.write(pingAnXmlService.getBroker(brokers), new File(baseFilePath + "/BrokerList.xml"));
 		} catch (IOException e) {
@@ -176,7 +183,8 @@ public class HouseManagerImp implements HouseManager {
 			logger.info(sdft.format(new Date()) + "generating brokerDepartList.xml was error!!!");
 		}
 		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getBrokerCompany(brokerCompanys), new File(baseFilePath + "/BrokerCompanyList.xml"));
+			pingAnXmlWriterService.write(pingAnXmlService.getBrokerCompany(brokerCompanys), new File(baseFilePath
+					+ "/BrokerCompanyList.xml"));
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating brokerCompanyList.xml was error!!!");
 		}
@@ -191,30 +199,22 @@ public class HouseManagerImp implements HouseManager {
 			logger.info(sdft.format(new Date()) + "generating secondHandHouseList.xml was error!!!");
 		}
 		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHouseOffline(houseOffLines),
-					new File(baseFilePath + "/SecondHandHouseOffLineList.xml"));
-		} catch (IOException e) {
-			logger.info(sdft.format(new Date()) + "generating secondHandHouseOffLineList.xml was error!!!");
-		}
-		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHousePic(housePictures),
-					new File(baseFilePath + "/SecondHandHousePicList.xml"));
+			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHousePic(housePictures), new File(baseFilePath
+					+ "/SecondHandHousePicList.xml"));
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating secondHandHousePicList.xml was error!!!");
 		}
-		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHouseRefresh(houseRefreshs),
-					new File(baseFilePath + "/SecondHandHouseRefresh.xml"));
-		} catch (IOException e) {
-			logger.info(sdft.format(new Date()) + "generating secondHandHouseRefresh.xml was error!!!");
-		}
-		formatXml(baseFilePath);
-		markPublished(houseBOList);
 	}
 
 	private void markPublished(List<HouseBO> houseBOList) {
 		for (HouseBO item : houseBOList) {
 			kingtreeTaHouseService.add(kingtreeTaHouseService.get(item.getTaHouseId()));
+		}
+	}
+
+	private void offLine(List<HouseBO> houseBOList) {
+		for (HouseBO item : houseBOList) {
+			kingtreeTaHouseService.remove(NumberUtils.toInt(item.getHouseId()));
 		}
 	}
 
@@ -256,12 +256,10 @@ public class HouseManagerImp implements HouseManager {
 	private List<Map<String, String>> getHouseRefresh(List<HouseBO> houseBOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for (HouseBO houseBO : houseBOList) {
-			if (houseBO.getIsOffLine()) {
-				Map<String, String> map = new HashMap<String, String>();
-				map.put("id", houseBO.getHouseId());
-				map.put("user_id", houseBO.getUserId());
-				list.add(map);
-			}
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", houseBO.getHouseId());
+			map.put("user_id", houseBO.getUserId());
+			list.add(map);
 		}
 		return list.isEmpty() ? null : list;
 	}
@@ -294,7 +292,7 @@ public class HouseManagerImp implements HouseManager {
 		return list;
 	}
 
-	private List<Map<String, String>> getHouseOfLine(List<HouseBO> houseVOList) {
+	private List<Map<String, String>> getHouseOffLine(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
@@ -394,6 +392,46 @@ public class HouseManagerImp implements HouseManager {
 			list.add(map);
 		}
 		return list;
+	}
+
+	@Override
+	public void processOffLine(List<HouseBO> offLineHoseBOList, String baseFilePath) {
+		initDirectory(baseFilePath);
+		List<Map<String, String>> houseOffLineList = getHouseOffLine(offLineHoseBOList);
+		try {
+			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHouseOffline(houseOffLineList), new File(baseFilePath
+					+ "/SecondHandHouseOffLineList.xml"));
+		} catch (IOException e) {
+			logger.info(sdft.format(new Date()) + "generating secondHandHouseOffLineList.xml was error!!!");
+		}
+		offLine(offLineHoseBOList);
+	}
+
+	@Override
+	public List<HouseBO> getsRefresh(Timestamp start, Timestamp end) {
+		if (start == null || end == null || start.after(end)) {
+			return Collections.emptyList();
+		}
+		List<TaHouseVO> refreshBrokerList = kingtreeTaHouseService.getRefreshBroker(start, end);
+		List<HouseBO> houseBOList = new ArrayList<HouseBO>();
+		for (TaHouseVO item : refreshBrokerList) {
+			houseBOList.add(get(item.getHouseid()));
+		}
+		return houseBOList;
+	}
+
+	@Override
+	public void processRefresh(List<HouseBO> refreshHoseBOList, String baseFilePath) {
+		if (refreshHoseBOList == null || refreshHoseBOList.isEmpty() || StringUtils.isBlank(baseFilePath)) {
+			return;
+		}
+		List<Map<String, String>> houseRefreshList = getHouseRefresh(refreshHoseBOList);
+		try {
+			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHouseRefresh(houseRefreshList), new File(baseFilePath
+					+ "/SecondHandHouseRefresh.xml"));
+		} catch (IOException e) {
+			logger.info(sdft.format(new Date()) + "generating secondHandHouseRefresh.xml was error!!!");
+		}
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.kingtree.timer.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.kingtree.timer.entity.TaHouse;
@@ -39,4 +40,15 @@ public interface KingtreeTaHouseService {
 	 * @return
 	 */
 	List<TaHouseVO> getOffLine(int start, int length);
+
+	void remove(int kingtreeHouseId);
+
+	/**
+	 * 获取更新经纪人的房源
+	 * 
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	List<TaHouseVO> getRefreshBroker(Timestamp start, Timestamp end);
 }

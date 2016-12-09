@@ -1564,7 +1564,7 @@
 	</select>
 	<select id="selectByTooutside" resultMap="BaseResultMap">
 		SELECT
-			<include refid="Base_Column_List" />
+			t.*
 		FROM
 			ta_house t
 		JOIN ta_reference r ON r.refid = t.tradestatus
@@ -1601,16 +1601,31 @@
 			h.*
 		FROM
 			ta_house h
-		JOIN kingtree_ta_house_tooutside kht ON kht.houseid = h.houseid
-		JOIN ta_reference r ON r.refid = h.tradestatus
+		INNER JOIN kingtree_ta_house_tooutside kht ON kht.houseid = h.houseid
+		INNER JOIN ta_reference r ON r.refid = h.tradestatus
 		WHERE
-			h.tooutside = 1
+			1 = 1
+		AND h.tooutside = 1
 		AND r.refnamecn IN ('已售', '已租', '无效')
 		AND h.houseid IN (
 			SELECT
 				t.houseid
 			FROM
 				kingtree_ta_house_tooutside t
-		)
+		) LIMIT #{start, jdbcType=INTEGER}, #{length, jdbcType=INTEGER}
 	</select>	
+	<select id="selectRefreshBroker" resultMap="BaseResultMap">
+		SELECT
+			DISTINCT h.*
+		FROM
+			ta_house h
+		JOIN kingtree_ta_house_tooutside kht ON h.houseid = kht.houseid
+		JOIN kingtree_house_broker khb ON khb.house_id = h.houseid
+		WHERE
+			h.tooutside = 1
+		AND kht.is_delete = 0
+		AND khb.IS_DELETE = 0
+		AND khb.GMT_CREATE >= #{start, jdbcType=TIMESTAMP}
+		AND khb.GMT_CREATE &lt; #{end, jdbcType=TIMESTAMP}
+	</select>		
 </mapper>

@@ -1,5 +1,6 @@
 package com.kingtree.timer.service.imp;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -103,15 +104,15 @@ public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 		KingtreeTaHouseowner kingtreeTaHouseowner = kingtreeTaHouseownerMapper.selectByHoseownerId(taHouse.getHwid());
 		if (kingtreeTaHouse != null) {
 			TaHouseVO taHouseVO = TaHouseVO.build(kingtreeTaHouse.getId(), taHouse);
-			TaReference offLineRef = taReferenceService.get(taHouseVO.getTradestatus());
-			if (offLineRef != null) {
-				KingtreeHouseStatus houseStatus = KingtreeHouseStatus.nameOf(offLineRef.getRefnamecn());
-				if (houseStatus != null) {
-					taHouseVO.setIsOffLine(true);
-				}
-			}
 			if (kingtreeTaHouseowner != null) {
 				taHouseVO.setUserId(kingtreeTaHouseowner.getId());
+			}
+			TaReference refTrede = taReferenceService.get(taHouseVO.getTradestatus());
+			if (refTrede != null) {
+				KingtreeHouseStatus offLineStatus = KingtreeHouseStatus.nameOf(refTrede.getRefnamecn());
+				if (offLineStatus != null) {
+					taHouseVO.setIsOffLine(true);
+				}
 			}
 			List<TaAttachment> taAttachmentList = taAttachmentMapper.selectByBelongId(taHouse.getHouseid());
 			if (taAttachmentList != null) {
@@ -141,9 +142,30 @@ public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 		if (start < 0 || length <= 0) {
 			return Collections.emptyList();
 		}
-		List<TaHouse> selectOffLine = taHouseMapper.selectOffLine(start, length);
+		List<TaHouse> houseOffLine = taHouseMapper.selectOffLine(start, length);
 		List<TaHouseVO> taHouseVOList = new ArrayList<TaHouseVO>();
-		for (TaHouse item : selectOffLine) {
+		for (TaHouse item : houseOffLine) {
+			taHouseVOList.add(get(item.getHouseid()));
+		}
+		return taHouseVOList;
+	}
+
+	@Override
+	public void remove(int kingtreeHouseId) {
+		if (kingtreeHouseId <= 0) {
+			return;
+		}
+		kingtreeTaHouseTooutsideMapper.deleteByPrimaryKey(kingtreeHouseId);
+	}
+
+	@Override
+	public List<TaHouseVO> getRefreshBroker(Timestamp start, Timestamp end) {
+		if (start == null || end == null || start.after(end)) {
+			return Collections.emptyList();
+		}
+		List<TaHouse> refreshedTaHouseList = taHouseMapper.selectRefreshBroker(start, end);
+		List<TaHouseVO> taHouseVOList = new ArrayList<TaHouseVO>();
+		for (TaHouse item : refreshedTaHouseList) {
 			taHouseVOList.add(get(item.getHouseid()));
 		}
 		return taHouseVOList;

@@ -244,7 +244,7 @@ public class HouseManagerImp implements HouseManager {
 				xmlContent = xmlContent.replaceAll(" xmlns=\"\"", "");
 				is.close();
 				OutputStream os = new FileOutputStream(item);
-				os.write(xmlContent.getBytes());
+				os.write(xmlContent.getBytes("UTF8"));
 				os.close();
 			} catch (IOException e) {
 				e.printStackTrace();

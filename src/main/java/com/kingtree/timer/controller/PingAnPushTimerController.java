@@ -36,7 +36,7 @@ public class PingAnPushTimerController {
 	private HouseManager houseManager;
 
 	@ResponseBody
-	@Scheduled(cron = "0 50 23 ? * *")
+	@Scheduled(cron = "0 0 18 ? * *")
 	@RequestMapping(value = "/run", method = { RequestMethod.GET, RequestMethod.POST })
 	public void run() {
 		long start = System.currentTimeMillis();

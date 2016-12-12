@@ -2,7 +2,9 @@ package com.kingtree.timer.service.vo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.kingtree.timer.entity.TaHouse;
 import com.kingtree.timer.util.BeanUtil;
@@ -188,6 +190,8 @@ public class TaHouseVO implements Serializable {
 
 	private boolean isOffLine;
 
+	private List<String> innerImgList = new ArrayList<String>();
+
 	public String getLayoutImg() {
 		return layoutImg;
 	}
@@ -211,6 +215,14 @@ public class TaHouseVO implements Serializable {
 
 	public boolean getIsOffLine() {
 		return isOffLine;
+	}
+
+	public List<String> getInnerImgList() {
+		return innerImgList;
+	}
+
+	public void setInnerImgList(List<String> innerImgList) {
+		this.innerImgList = innerImgList;
 	}
 
 	public void setIsOffLine(boolean isOffLine) {

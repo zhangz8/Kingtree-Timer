@@ -116,11 +116,15 @@ public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 			}
 			List<TaAttachment> taAttachmentList = taAttachmentMapper.selectByBelongId(taHouse.getHouseid());
 			if (taAttachmentList != null) {
+				List<String> innerImgList = new ArrayList<String>();
 				for (TaAttachment item : taAttachmentList) {
 					if (LAYOUT_IMG_TYPE.equals(item.getPhototype())) {
 						taHouseVO.setLayoutImg(item.getAttachurl());
+					} else {
+						innerImgList.add(item.getAttachurl());
 					}
 				}
+				taHouseVO.setInnerImgList(innerImgList);
 			}
 			return taHouseVO;
 		}

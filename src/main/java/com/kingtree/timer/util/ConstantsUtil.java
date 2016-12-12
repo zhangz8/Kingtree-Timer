@@ -22,4 +22,6 @@ public class ConstantsUtil {
 	public static final String HOST_NAME = "http://zjinghong.hzlysoft.cn/";
 
 	public static final String IMAGE_SERVER = HOST_NAME + "upload/";
+
+	public static final String CITY_NAME_ZZ = "郑州市";
 }

@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -119,6 +120,10 @@ public class HouseManagerImp implements HouseManager {
 		TaReference dirctionType = taReferenceService.get(taHouse.getPropertydirction());
 		if (dirctionType != null) {
 			houseBO.setTowardType(PingAnTowardType.nameOf(dirctionType.getRefnamecn()).getValue() + "");
+		}
+		TaReference complateYear = taReferenceService.get(taEstate.getCompleteyear());
+		if (complateYear != null) {
+			houseBO.setBuildingYear(complateYear.getRefnamecn() + "1231");
 		}
 
 		houseBO.setBrokerBlock(taPicearea.getAreaname());
@@ -267,17 +272,29 @@ public class HouseManagerImp implements HouseManager {
 	private List<Map<String, String>> getHousePicture(List<HouseBO> houseVOList) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for (HouseBO houseVO : houseVOList) {
-			Map<String, String> innerImgMap = new HashMap<String, String>();
-			innerImgMap.put("image_id", houseVO.getInnerImgId());
-			innerImgMap.put("url", houseVO.getInnerImg());
-			innerImgMap.put("house_id", houseVO.getHouseId());
-			innerImgMap.put("pic_type", PingAnHouseImageType.INNER.getValue() + "");
+			List<String> innerImgList = houseVO.getInnerImgList();
+			for (String ttr : innerImgList) {
+				Map<String, String> innerImgMap = new HashMap<String, String>();
+				Random r = new Random();
+				innerImgMap.put("image_id", Math.abs(r.nextInt(10000000)) + "");
+				innerImgMap.put("url", ttr);
+				innerImgMap.put("house_id", houseVO.getHouseId());
+				innerImgMap.put("pic_type", PingAnHouseImageType.INNER.getValue() + "");
+				list.add(innerImgMap);
+			}
+			// Map<String, String> innerImgMap = new HashMap<String, String>();
+			// innerImgMap.put("image_id", houseVO.getInnerImgId());
+			// innerImgMap.put("url", houseVO.getInnerImg());
+			// innerImgMap.put("house_id", houseVO.getHouseId());
+			// innerImgMap.put("pic_type", PingAnHouseImageType.INNER.getValue()
+			// + "");
 
-			Map<String, String> outterImgMap = new HashMap<String, String>();
-			outterImgMap.put("image_id", houseVO.getOutterImgId());
-			outterImgMap.put("url", houseVO.getOutterImg());
-			outterImgMap.put("pic_type", PingAnHouseImageType.OUTTER.getValue() + "");
-			outterImgMap.put("house_id", houseVO.getHouseId());
+			// Map<String, String> outterImgMap = new HashMap<String, String>();
+			// outterImgMap.put("image_id", houseVO.getOutterImgId());
+			// outterImgMap.put("url", houseVO.getOutterImg());
+			// outterImgMap.put("pic_type",
+			// PingAnHouseImageType.OUTTER.getValue() + "");
+			// outterImgMap.put("house_id", houseVO.getHouseId());
 
 			Map<String, String> layoutImgMap = new HashMap<String, String>();
 			layoutImgMap.put("image_id", houseVO.getLayoutImgId());
@@ -286,8 +303,8 @@ public class HouseManagerImp implements HouseManager {
 			layoutImgMap.put("house_id", houseVO.getHouseId());
 
 			list.add(layoutImgMap);
-			list.add(outterImgMap);
-			list.add(innerImgMap);
+			// list.add(outterImgMap);
+			// list.add(innerImgMap);
 		}
 		return list;
 	}
@@ -357,6 +374,7 @@ public class HouseManagerImp implements HouseManager {
 			map.put("company_name", houseVO.getCompanyName());
 			map.put("company_full_name", houseVO.getCompanyFullName());
 			list.add(map);
+			break;// 只加入第一个元素
 		}
 		return list;
 	}
@@ -365,11 +383,11 @@ public class HouseManagerImp implements HouseManager {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
-			map.put("dept_id", houseVO.getDeptId());
+			map.put("dept_id", houseVO.getBrokerStoreId());// 平安dept_id指的是门店编号
 			map.put("name", houseVO.getDeptName());
 			map.put("dept_address", houseVO.getDeptAddress());
 			map.put("company_id", houseVO.getCompanyIdOfDept());
-			map.put("parent_dept_id", houseVO.getParentDeptId());
+			map.put("parent_dept_id", 0 + "");
 			list.add(map);
 		}
 		return list;

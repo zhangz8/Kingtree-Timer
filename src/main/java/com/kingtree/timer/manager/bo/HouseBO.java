@@ -1,6 +1,8 @@
 package com.kingtree.timer.manager.bo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
@@ -49,6 +51,7 @@ public class HouseBO implements Serializable {
 	private String createTime;// 创建时间
 	private String innerImg;// 室内图
 	private String innerImgId;// 室内图编号
+	private List<String> innerImgList = new ArrayList<String>();
 	private String outterImg;// 小区图
 	private String outterImgId;// 小区图编号
 	private String layoutImg;// 户型图
@@ -91,9 +94,7 @@ public class HouseBO implements Serializable {
 
 	public HouseBO(TaHouseVO taHouse, TaEstateVO taEstate, TaDepartmentVO taDepartment, TaCompany taCompany, TaPiceareaVO taPicearea,
 			TaEmployeeVO taEmployeeVO) {
-		Random random1 = new Random(99999999);
-		Random random2 = new Random(99999998);
-		Random random3 = new Random(99999899);
+		Random random1 = new Random();
 		this.userId = taHouse.getUserId() + "";
 		this.taHouseId = taHouse.getHouseid();
 		this.houseId = taHouse.getId() + "";
@@ -104,16 +105,19 @@ public class HouseBO implements Serializable {
 		this.innerImg = StringUtils.isBlank(taHouse.getCoverphoto()) ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getCoverphoto());
 		this.outterImg = StringUtils.isBlank(taEstate.getCoverphoto()) ? "" : (ConstantsUtil.IMAGE_SERVER + taEstate.getCoverphoto());
 		this.layoutImg = StringUtils.isBlank(taHouse.getLayoutImg()) ? "" : (ConstantsUtil.IMAGE_SERVER + taHouse.getLayoutImg());
-		this.innerImgId = random1.nextInt() + "";
-		this.outterImgId = random2.nextInt() + "";
-		this.layoutImgId = random3.nextInt() + "";
+		for (String str : taHouse.getInnerImgList()) {
+			innerImgList.add(ConstantsUtil.IMAGE_SERVER + str);
+		}
+		this.innerImgId = random1.nextInt(22222222) + "";
+		this.outterImgId = random1.nextInt(3333333) + "";
+		this.layoutImgId = random1.nextInt(44444444) + "";
 		this.description = taHouse.getPropdesc();
 		this.price = taEstate.getPrice() == null ? "" : taEstate.getPrice().toString();
 		this.space = taHouse.getSquare() == null ? "" : taHouse.getSquare().toString();
 		this.currentFloor = taHouse.getFloor();
 		this.totalFloor = taHouse.getFloorall();
 		this.doorPlate = taEstate.getAddress();
-		this.createTime = taHouse.getRegdate().getTime() + "";
+		this.createTime = (taHouse.getRegdate().getTime() + "").substring(0, 10);
 		this.buildingYear = taEstate.getCompleteyear();
 		this.roomNO = taHouse.getRoomno();
 		this.deptId = taDepartment.getId() + "";
@@ -127,18 +131,19 @@ public class HouseBO implements Serializable {
 		this.brokerStoreId = taPicearea.getId() + "";
 		this.brokerCompanyId = taCompany.getComid();
 		this.brokerId = taEmployeeVO.getId() + "";
+		this.brokerCity = ConstantsUtil.CITY_NAME_ZZ;
 
 		this.companyIdOfDept = taCompany.getComid();
 		this.communityName = taEstate.getEstatename();
 		this.communityId = taEstate.getId() + "";
-		this.communityCityName = "郑州";
+		this.communityCityName = ConstantsUtil.CITY_NAME_ZZ;
 		this.communityRegionName = taPicearea.getAreaname();
 		this.communitySubRegionName = taPicearea.getAreaname();
 		this.communityAddress = taEstate.getAddress();
 
 		this.companyName = taCompany.getCompanyname();
 		this.companyFullName = taCompany.getCompanyname();
-		this.companyCity = "郑州";
+		this.companyCity = ConstantsUtil.CITY_NAME_ZZ;
 		this.companyId = taCompany.getComid();
 
 		this.isOffLine = taHouse.getIsOffLine();
@@ -158,6 +163,14 @@ public class HouseBO implements Serializable {
 
 	public String getBrokerId() {
 		return brokerId;
+	}
+
+	public List<String> getInnerImgList() {
+		return innerImgList;
+	}
+
+	public void setInnerImgList(List<String> innerImgList) {
+		this.innerImgList = innerImgList;
 	}
 
 	public void setBrokerId(String brokerId) {

@@ -15,11 +15,13 @@ import com.kingtree.timer.dao.KingtreeTaHouseTooutsideMapper;
 import com.kingtree.timer.dao.KingtreeTaHouseownerMapper;
 import com.kingtree.timer.dao.TaAttachmentMapper;
 import com.kingtree.timer.dao.TaHouseMapper;
+import com.kingtree.timer.dao.TaHousePriceMapper;
 import com.kingtree.timer.entity.KingtreeTaHouse;
 import com.kingtree.timer.entity.KingtreeTaHouseTooutside;
 import com.kingtree.timer.entity.KingtreeTaHouseowner;
 import com.kingtree.timer.entity.TaAttachment;
 import com.kingtree.timer.entity.TaHouse;
+import com.kingtree.timer.entity.TaHousePrice;
 import com.kingtree.timer.entity.TaReference;
 import com.kingtree.timer.enums.KingtreeHouseStatus;
 import com.kingtree.timer.service.KingtreeTaHouseService;
@@ -47,6 +49,8 @@ public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 	private TaAttachmentMapper taAttachmentMapper;
 	@Resource
 	private KingtreeTaHouseTooutsideMapper kingtreeTaHouseTooutsideMapper;
+	@Resource
+	private TaHousePriceMapper taHousePriceMapper;
 	private static final String LAYOUT_IMG_TYPE = "586ff86e3fe1084f013fea52f930001a";// 无关联表，暂时这样处理
 
 	@Override
@@ -125,6 +129,11 @@ public class KingtreeTaHouseServiceImp implements KingtreeTaHouseService {
 					}
 				}
 				taHouseVO.setInnerImgList(innerImgList);
+			}
+			TaHousePrice housePrice = taHousePriceMapper.selectByHouseId(houseId);
+			if (housePrice != null) {
+				taHouseVO.setSellPrice(housePrice.getSellprice() == null ? 0.0 : Double.valueOf(housePrice.getSellprice()
+						.toString()));
 			}
 			return taHouseVO;
 		}

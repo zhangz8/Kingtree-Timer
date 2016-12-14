@@ -112,7 +112,7 @@ public class HouseBO implements Serializable {
 		this.outterImgId = random1.nextInt(3333333) + "";
 		this.layoutImgId = random1.nextInt(44444444) + "";
 		this.description = taHouse.getPropdesc();
-		this.price = taEstate.getPrice() == null ? "" : taEstate.getPrice().toString();
+		this.price = taHouse.getSellPrice() + "";
 		this.space = taHouse.getSquare() == null ? "" : taHouse.getSquare().toString();
 		this.currentFloor = taHouse.getFloor();
 		this.totalFloor = taHouse.getFloorall();

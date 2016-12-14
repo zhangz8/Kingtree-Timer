@@ -123,7 +123,7 @@ public class HouseManagerImp implements HouseManager {
 		}
 		TaReference complateYear = taReferenceService.get(taEstate.getCompleteyear());
 		if (complateYear != null) {
-			houseBO.setBuildingYear(complateYear.getRefnamecn() + "1231");
+			houseBO.setBuildingYear(complateYear.getRefnamecn());
 		}
 
 		houseBO.setBrokerBlock(taPicearea.getAreaname());
@@ -183,7 +183,8 @@ public class HouseManagerImp implements HouseManager {
 			logger.info(sdft.format(new Date()) + "generating brokerList.xml was error!!!");
 		}
 		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getBrokerDepart(brokerDepts), new File(baseFilePath + "/BrokerDepartList.xml"));
+			pingAnXmlWriterService.write(pingAnXmlService.getBrokerDepart(brokerDepts), new File(baseFilePath
+					+ "/BrokerDepartList.xml"));
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating brokerDepartList.xml was error!!!");
 		}
@@ -194,12 +195,14 @@ public class HouseManagerImp implements HouseManager {
 			logger.info(sdft.format(new Date()) + "generating brokerCompanyList.xml was error!!!");
 		}
 		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getCommunity(communitys), new File(baseFilePath + "/CommunityList.xml"));
+			pingAnXmlWriterService
+					.write(pingAnXmlService.getCommunity(communitys), new File(baseFilePath + "/CommunityList.xml"));
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating communityList.xml was error!!!");
 		}
 		try {
-			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHouse(houses), new File(baseFilePath + "/SecondHandHouseList.xml"));
+			pingAnXmlWriterService.write(pingAnXmlService.getSecondHandHouse(houses), new File(baseFilePath
+					+ "/SecondHandHouseList.xml"));
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating secondHandHouseList.xml was error!!!");
 		}

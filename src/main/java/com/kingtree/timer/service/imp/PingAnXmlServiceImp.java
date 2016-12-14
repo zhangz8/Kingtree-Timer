@@ -50,7 +50,8 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 		if (data == null) {
 			return null;
 		}
-		String[] keys = { "broker_department_list", "broker_department", "dept_id", "name", "dept_address", "company_id", "parent_dept_id" };
+		String[] keys = { "broker_department_list", "broker_department", "dept_id", "name", "dept_address", "company_id",
+				"parent_dept_id" };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/broker_department");
 
@@ -84,8 +85,8 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 		if (data == null) {
 			return null;
 		}
-		String[] keys = { "broker_list", "broker", "user_id", "user_name", "user_mobile", "user_bankcard_no", "user_card_no", "city_name",
-				"area_name", "block_name", "company_id", "store_id" };
+		String[] keys = { "broker_list", "broker", "user_id", "user_name", "user_mobile", "user_bankcard_no", "user_card_no",
+				"city_name", "area_name", "block_name", "company_id", "store_id" };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/broker");
 
@@ -95,7 +96,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			Element user_id = broker.addElement(keys[2]);
 			Element user_name = broker.addElement(keys[3]);
 			Element user_mobile = broker.addElement(keys[4]);
-			Element user_bankcard_no = broker.addElement(keys[5]);
+			// Element user_bankcard_no = broker.addElement(keys[5]);
 			Element user_card_no = broker.addElement(keys[6]);
 			Element city_name = broker.addElement(keys[7]);
 			Element area_name = broker.addElement(keys[8]);
@@ -106,7 +107,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			String user_id_text = item.get(keys[2]);
 			String user_name_text = item.get(keys[3]);
 			String user_mobile_text = item.get(keys[4]);
-			String user_bankcard_no_text = item.get(keys[5]);
+			// String user_bankcard_no_text = item.get(keys[5]);
 			String user_card_no_text = item.get(keys[6]);
 			String city_name_text = item.get(keys[7]);
 			String area_name_text = item.get(keys[8]);
@@ -117,7 +118,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			user_id.setText(user_id_text);
 			user_name.setText(user_name_text);
 			user_mobile.setText(user_mobile_text);
-			user_bankcard_no.setText(user_bankcard_no_text);
+			// user_bankcard_no.setText(user_bankcard_no_text);
 			user_card_no.setText(user_card_no_text);
 			city_name.setText(city_name_text);
 			area_name.setText(area_name_text);
@@ -173,9 +174,9 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			return null;
 		}
 
-		String[] keys = { "second_hand_house_list", "second_hand_house", "id", "loupan_id", "user_id", "unique_id", "title", "desc", "price",
-				"room_num", "hall_num", "toilet_num", "current_floor", "total_floor", "space", "house_type", "decoration", "toward", "building_year",
-				"door_plate", "room_no", "tag", "create_time", };
+		String[] keys = { "second_hand_house_list", "second_hand_house", "id", "loupan_id", "user_id", "unique_id", "title",
+				"desc", "price", "room_num", "hall_num", "toilet_num", "current_floor", "total_floor", "space", "house_type",
+				"decoration", "toward", "building_year", "door_plate", "room_no", "tag", "create_time", };
 		Element root = DocumentHelper.createElement(keys[0]);
 		root.addNamespace("", "http://www.pinganfang.com/second_hand_house");
 		for (Map<String, String> item : data) {
@@ -199,7 +200,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			Element toward = second_house.addElement(keys[17]);
 			Element building_year = second_house.addElement(keys[18]);
 			Element door_plate = second_house.addElement(keys[19]);
-			Element room_no = second_house.addElement(keys[20]);
+			// Element room_no = second_house.addElement(keys[20]);
 			Element tag = second_house.addElement(keys[21]);
 			Element create_time = second_house.addElement(keys[22]);
 
@@ -221,7 +222,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			String toward_text = item.get(keys[17]);
 			String building_year_text = item.get(keys[18]);
 			String door_plate_text = item.get(keys[19]);
-			String room_no_text = item.get(keys[20]);
+			// String room_no_text = item.get(keys[20]);
 			String tag_text = item.get(keys[21]);
 			String create_time_text = item.get(keys[22]);
 
@@ -243,7 +244,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			toward.setText(toward_text);
 			building_year.setText(building_year_text);
 			door_plate.setText(door_plate_text);
-			room_no.setText(room_no_text);
+			// room_no.setText(room_no_text);
 			tag.setText(tag_text);
 			create_time.setText(create_time_text);
 		}

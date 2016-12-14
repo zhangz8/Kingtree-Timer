@@ -190,6 +190,8 @@ public class TaHouseVO implements Serializable {
 
 	private boolean isOffLine;
 
+	private double sellPrice;
+
 	private List<String> innerImgList = new ArrayList<String>();
 
 	public String getLayoutImg() {
@@ -215,6 +217,14 @@ public class TaHouseVO implements Serializable {
 
 	public boolean getIsOffLine() {
 		return isOffLine;
+	}
+
+	public double getSellPrice() {
+		return sellPrice;
+	}
+
+	public void setSellPrice(double sellPrice) {
+		this.sellPrice = sellPrice;
 	}
 
 	public List<String> getInnerImgList() {

@@ -201,7 +201,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			Element building_year = second_house.addElement(keys[18]);
 			Element door_plate = second_house.addElement(keys[19]);
 			// Element room_no = second_house.addElement(keys[20]);
-			Element tag = second_house.addElement(keys[21]);
+			// Element tag = second_house.addElement(keys[21]);
 			Element create_time = second_house.addElement(keys[22]);
 
 			String id_text = item.get(keys[2]);
@@ -223,7 +223,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			String building_year_text = item.get(keys[18]);
 			String door_plate_text = item.get(keys[19]);
 			// String room_no_text = item.get(keys[20]);
-			String tag_text = item.get(keys[21]);
+			// String tag_text = item.get(keys[21]);
 			String create_time_text = item.get(keys[22]);
 
 			id.setText(id_text);
@@ -245,7 +245,7 @@ public class PingAnXmlServiceImp implements PingAnXmlService {
 			building_year.setText(building_year_text);
 			door_plate.setText(door_plate_text);
 			// room_no.setText(room_no_text);
-			tag.setText(tag_text);
+			// tag.setText(tag_text);
 			create_time.setText(create_time_text);
 		}
 		return DocumentHelper.createDocument(root);

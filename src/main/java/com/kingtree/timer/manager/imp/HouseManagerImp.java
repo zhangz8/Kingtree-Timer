@@ -327,7 +327,7 @@ public class HouseManagerImp implements HouseManager {
 		for (HouseBO houseVO : houseVOList) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("id", houseVO.getHouseId());
-			map.put("loupan_id", houseVO.getHouseId());
+			map.put("loupan_id", houseVO.getCommunityId());
 			map.put("user_id", houseVO.getUserId());
 			map.put("unique_id", houseVO.getHouseId());
 			map.put("title", houseVO.getTitle());

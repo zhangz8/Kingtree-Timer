@@ -19,6 +19,13 @@ public class PageUtil {
 		if (page < 0 || pageSize <= 0) {
 			return 0;
 		}
-		return page <= 0 ? pageSize : page * pageSize + pageSize;
+		return pageSize;
+	}
+
+	public static int getTotalPage(int pageSize, int total) {
+		if (total <= 0 || pageSize <= 0) {
+			return 0;
+		}
+		return total % pageSize == 0 ? total / pageSize : total / pageSize + 1;
 	}
 }

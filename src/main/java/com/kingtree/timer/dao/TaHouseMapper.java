@@ -32,4 +32,10 @@ public interface TaHouseMapper {
 
 	List<TaHouse> selectRefreshBroker(@Param("start") Timestamp start, @Param("end") Timestamp end);
 
+	List<TaHouse> selectByUpdateTime(@Param("updateTime") Timestamp updateTime, @Param("start") int start, @Param("length") int length);
+
+	List<TaHouse> selectAllEffeciveHouse(@Param("start") int start, @Param("length") int length);
+
+	int count();
+
 }

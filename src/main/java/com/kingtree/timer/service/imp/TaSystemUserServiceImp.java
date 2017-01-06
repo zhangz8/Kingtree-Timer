@@ -6,8 +6,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.kingtree.timer.dao.KingtreeTaSystemuserMapper;
+import com.kingtree.timer.dao.TaEmployeeMapper;
 import com.kingtree.timer.dao.TaSystemUserMapper;
 import com.kingtree.timer.entity.KingtreeTaSystemuser;
+import com.kingtree.timer.entity.TaEmployee;
 import com.kingtree.timer.entity.TaSystemUser;
 import com.kingtree.timer.service.TaSystemUserService;
 import com.kingtree.timer.service.vo.TaSystemUserVO;
@@ -19,6 +21,8 @@ public class TaSystemUserServiceImp implements TaSystemUserService {
 	private TaSystemUserMapper taSystemUserMapper;
 	@Resource
 	private KingtreeTaSystemuserMapper kingtreeTaSystemuserMapper;
+	@Resource
+	private TaEmployeeMapper taEmployeeMapper;
 
 	@Override
 	public TaSystemUserVO get(String userId) {
@@ -30,6 +34,17 @@ public class TaSystemUserServiceImp implements TaSystemUserService {
 			KingtreeTaSystemuser kingtreeTaSystemuser = kingtreeTaSystemuserMapper.selectByUserId(userId);
 			if (kingtreeTaSystemuser != null) {
 				return TaSystemUserVO.build(kingtreeTaSystemuser.getId(), taSystemUser);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public TaSystemUserVO getByEmployeeId(String employeeId) {
+		if (StringUtils.isNotBlank(employeeId)) {
+			TaEmployee emp = taEmployeeMapper.selectByPrimaryKey(employeeId);
+			if (emp != null) {
+				return get(emp.getUid());
 			}
 		}
 		return null;

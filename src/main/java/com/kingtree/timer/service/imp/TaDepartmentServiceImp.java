@@ -1,5 +1,8 @@
 package com.kingtree.timer.service.imp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
@@ -38,6 +41,26 @@ public class TaDepartmentServiceImp implements TaDepartmentService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public List<TaDepartmentVO> gets(String departmentId) {
+		if (StringUtils.isBlank(departmentId)) {
+			return null;
+		}
+		List<TaDepartmentVO> deptList = new ArrayList<TaDepartmentVO>();
+		for (;;) {
+			TaDepartmentVO deptVO = get(departmentId);
+			if (deptVO == null) {
+				break;
+			}
+			deptList.add(deptVO);
+			if (StringUtils.isBlank(deptVO.getPid()) || departmentId.equals(deptVO.getPid())) {
+				break;
+			}
+			departmentId = deptVO.getPid();
+		}
+		return deptList;
 	}
 
 }

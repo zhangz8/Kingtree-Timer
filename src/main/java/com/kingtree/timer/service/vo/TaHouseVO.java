@@ -192,6 +192,10 @@ public class TaHouseVO implements Serializable {
 
 	private double sellPrice;
 
+	private String houseOwnerName;
+
+	private String houseOwnerTel;
+
 	private List<String> innerImgList = new ArrayList<String>();
 
 	public String getLayoutImg() {
@@ -203,6 +207,22 @@ public class TaHouseVO implements Serializable {
 	}
 
 	public TaHouseVO() {
+	}
+
+	public String getHouseOwnerName() {
+		return houseOwnerName;
+	}
+
+	public void setHouseOwnerName(String houseOwnerName) {
+		this.houseOwnerName = houseOwnerName;
+	}
+
+	public String getHouseOwnerTel() {
+		return houseOwnerTel;
+	}
+
+	public void setHouseOwnerTel(String houseOwnerTel) {
+		this.houseOwnerTel = houseOwnerTel;
 	}
 
 	public TaHouseVO(int id) {

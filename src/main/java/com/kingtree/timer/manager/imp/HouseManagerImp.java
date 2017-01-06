@@ -425,6 +425,7 @@ public class HouseManagerImp implements HouseManager {
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating secondHandHouseOffLineList.xml was error!!!");
 		}
+		formatXml(baseFilePath);
 		offLine(offLineHoseBOList);
 	}
 
@@ -453,6 +454,7 @@ public class HouseManagerImp implements HouseManager {
 		} catch (IOException e) {
 			logger.info(sdft.format(new Date()) + "generating secondHandHouseRefresh.xml was error!!!");
 		}
+		formatXml(baseFilePath);
 	}
 
 }

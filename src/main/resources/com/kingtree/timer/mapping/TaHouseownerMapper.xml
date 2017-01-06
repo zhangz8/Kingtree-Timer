@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingtree.timer.dao.TaHouseownerMapper">
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.TaHouseowner">
+    <id column="hwid" jdbcType="VARCHAR" property="hwid" />
+    <result column="owername" jdbcType="VARCHAR" property="owername" />
+    <result column="ownemobile" jdbcType="VARCHAR" property="ownemobile" />
+    <result column="ownertel" jdbcType="VARCHAR" property="ownertel" />
+    <result column="adress" jdbcType="VARCHAR" property="adress" />
+    <result column="ownercard" jdbcType="VARCHAR" property="ownercard" />
+    <result column="ownercountry" jdbcType="VARCHAR" property="ownercountry" />
+    <result column="ownerzip" jdbcType="VARCHAR" property="ownerzip" />
+    <result column="other" jdbcType="VARCHAR" property="other" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="modidate" jdbcType="TIMESTAMP" property="modidate" />
+    <result column="deldate" jdbcType="TIMESTAMP" property="deldate" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="purposehouseing" jdbcType="VARCHAR" property="purposehouseing" />
+    <result column="housecount" jdbcType="INTEGER" property="housecount" />
+    <result column="recommendnum" jdbcType="INTEGER" property="recommendnum" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="maritalstatus" jdbcType="VARCHAR" property="maritalstatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hwid, owername, ownemobile, ownertel, adress, ownercard, ownercountry, ownerzip, 
+    other, createdate, modidate, deldate, email, qq, wechat, purposehouseing, housecount, 
+    recommendnum, sex, maritalstatus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ta_houseower
+    where hwid = #{hwid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ta_houseower
+    where hwid = #{hwid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.TaHouseowner">
+    insert into ta_houseower (hwid, owername, ownemobile, 
+      ownertel, adress, ownercard, 
+      ownercountry, ownerzip, other, 
+      createdate, modidate, deldate, 
+      email, qq, wechat, 
+      purposehouseing, housecount, recommendnum, 
+      sex, maritalstatus)
+    values (#{hwid,jdbcType=VARCHAR}, #{owername,jdbcType=VARCHAR}, #{ownemobile,jdbcType=VARCHAR}, 
+      #{ownertel,jdbcType=VARCHAR}, #{adress,jdbcType=VARCHAR}, #{ownercard,jdbcType=VARCHAR}, 
+      #{ownercountry,jdbcType=VARCHAR}, #{ownerzip,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modidate,jdbcType=TIMESTAMP}, #{deldate,jdbcType=TIMESTAMP}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{purposehouseing,jdbcType=VARCHAR}, #{housecount,jdbcType=INTEGER}, #{recommendnum,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{maritalstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.TaHouseowner">
+    insert into ta_houseower
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hwid != null">
+        hwid,
+      </if>
+      <if test="owername != null">
+        owername,
+      </if>
+      <if test="ownemobile != null">
+        ownemobile,
+      </if>
+      <if test="ownertel != null">
+        ownertel,
+      </if>
+      <if test="adress != null">
+        adress,
+      </if>
+      <if test="ownercard != null">
+        ownercard,
+      </if>
+      <if test="ownercountry != null">
+        ownercountry,
+      </if>
+      <if test="ownerzip != null">
+        ownerzip,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="modidate != null">
+        modidate,
+      </if>
+      <if test="deldate != null">
+        deldate,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="purposehouseing != null">
+        purposehouseing,
+      </if>
+      <if test="housecount != null">
+        housecount,
+      </if>
+      <if test="recommendnum != null">
+        recommendnum,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="maritalstatus != null">
+        maritalstatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hwid != null">
+        #{hwid,jdbcType=VARCHAR},
+      </if>
+      <if test="owername != null">
+        #{owername,jdbcType=VARCHAR},
+      </if>
+      <if test="ownemobile != null">
+        #{ownemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="ownertel != null">
+        #{ownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null">
+        #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercard != null">
+        #{ownercard,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercountry != null">
+        #{ownercountry,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerzip != null">
+        #{ownerzip,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modidate != null">
+        #{modidate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deldate != null">
+        #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="purposehouseing != null">
+        #{purposehouseing,jdbcType=VARCHAR},
+      </if>
+      <if test="housecount != null">
+        #{housecount,jdbcType=INTEGER},
+      </if>
+      <if test="recommendnum != null">
+        #{recommendnum,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null">
+        #{maritalstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.TaHouseowner">
+    update ta_houseower
+    <set>
+      <if test="owername != null">
+        owername = #{owername,jdbcType=VARCHAR},
+      </if>
+      <if test="ownemobile != null">
+        ownemobile = #{ownemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="ownertel != null">
+        ownertel = #{ownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null">
+        adress = #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercard != null">
+        ownercard = #{ownercard,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercountry != null">
+        ownercountry = #{ownercountry,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerzip != null">
+        ownerzip = #{ownerzip,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modidate != null">
+        modidate = #{modidate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deldate != null">
+        deldate = #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="purposehouseing != null">
+        purposehouseing = #{purposehouseing,jdbcType=VARCHAR},
+      </if>
+      <if test="housecount != null">
+        housecount = #{housecount,jdbcType=INTEGER},
+      </if>
+      <if test="recommendnum != null">
+        recommendnum = #{recommendnum,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null">
+        maritalstatus = #{maritalstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hwid = #{hwid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.TaHouseowner">
+    update ta_houseower
+    set owername = #{owername,jdbcType=VARCHAR},
+      ownemobile = #{ownemobile,jdbcType=VARCHAR},
+      ownertel = #{ownertel,jdbcType=VARCHAR},
+      adress = #{adress,jdbcType=VARCHAR},
+      ownercard = #{ownercard,jdbcType=VARCHAR},
+      ownercountry = #{ownercountry,jdbcType=VARCHAR},
+      ownerzip = #{ownerzip,jdbcType=VARCHAR},
+      other = #{other,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      modidate = #{modidate,jdbcType=TIMESTAMP},
+      deldate = #{deldate,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      purposehouseing = #{purposehouseing,jdbcType=VARCHAR},
+      housecount = #{housecount,jdbcType=INTEGER},
+      recommendnum = #{recommendnum,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      maritalstatus = #{maritalstatus,jdbcType=VARCHAR}
+    where hwid = #{hwid,jdbcType=VARCHAR}
+  </update>
+</mapper>

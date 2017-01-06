@@ -1627,5 +1627,44 @@
 		AND khb.IS_DELETE = 0
 		AND khb.GMT_CREATE >= #{start, jdbcType=TIMESTAMP}
 		AND khb.GMT_CREATE &lt; #{end, jdbcType=TIMESTAMP}
+	</select>	
+
+	<select id="selectByUpdateTime" resultMap="BaseResultMap">
+		SELECT
+			t.*
+		FROM
+			ta_house t
+		WHERE
+			t.moddate >= #{updateTime, jdbcType=TIMESTAMP}
+		AND t.deldate IS NOT NULL
+		AND t.deldate != ''
+		<if test="start>=0 and length>0">
+			LIMIT #{start}, #{length}
+		</if>
+	</select>
+	
+	<select id="selectAllEffeciveHouse" resultMap="BaseResultMap">
+		SELECT
+			t.*
+		FROM
+			ta_house t
+		WHERE
+			1=1
+		AND t.deldate IS NOT NULL
+		AND t.deldate != ''
+		<if test="start>=0 and length>0">
+			LIMIT #{start}, #{length}
+		</if>
+	</select>	
+	
+	<select id="count" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			ta_house t
+		WHERE
+			1=1
+		AND t.deldate IS NOT NULL
+		AND t.deldate != ''
 	</select>		
 </mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingtree.timer.dao.KingtreeConfigMapper">
+  <resultMap id="BaseResultMap" type="com.kingtree.timer.entity.KingtreeConfig">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="GROUP_ID" jdbcType="VARCHAR" property="groupId" />
+    <result column="KEY" jdbcType="VARCHAR" property="key" />
+    <result column="VALUE" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, GROUP_ID, KEY, VALUE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kingtree_config
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from kingtree_config
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kingtree.timer.entity.KingtreeConfig">
+    insert into kingtree_config (ID, GROUP_ID, KEY, 
+      VALUE)
+    values (#{id,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, 
+      #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingtree.timer.entity.KingtreeConfig">
+    insert into kingtree_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+      <if test="key != null">
+        `KEY`,
+      </if>
+      <if test="value != null">
+        VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingtree.timer.entity.KingtreeConfig">
+    update kingtree_config
+    <set>
+      <if test="groupId != null">
+        GROUP_ID = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        `KEY` = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        VALUE = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingtree.timer.entity.KingtreeConfig">
+    update kingtree_config
+    set GROUP_ID = #{groupId,jdbcType=VARCHAR},
+      `KEY` = #{key,jdbcType=VARCHAR},
+      VALUE = #{value,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByGroupId" resultMap="BaseResultMap">
+  	select * from kingtree_config t where t.group_id = #{groupId, jdbcType=VARCHAR}
+  </select>
+</mapper>

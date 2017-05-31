@@ -28,6 +28,7 @@ import com.kingtree.timer.service.vo.IndexicalHouseVO;
 import com.kingtree.timer.thread.IndexDataProviderThread;
 import com.kingtree.timer.thread.IndexWriterThread;
 import com.kingtree.timer.util.PageUtil;
+import com.kingtree.timer.util.SpringContextUtil;
 
 @Controller
 @RequestMapping("/index_timer")
@@ -110,16 +111,15 @@ public class IndexTimerController {
 		int pageSize = 100;
 		long start = System.currentTimeMillis();
 		BlockingQueue<List<IndexicalHouseVO>> queue = new LinkedBlockingQueue<List<IndexicalHouseVO>>(20);
-		ExecutorService threadPool = Executors.newFixedThreadPool(4);
+		ExecutorService threadPool = Executors.newFixedThreadPool(5);
 		int total = kingtreeTaHouseService.count();
 		totalPage = PageUtil.getTotalPage(pageSize, total);
 
 		logger.info("线程池启动中...");
 		logger.info("totalPage:" + totalPage + ",totalRecord:" + total + ",pageSize:" + pageSize);
 
-		IndexWriterThread indexWriterThread = new IndexWriterThread(queue);
-		Thread indexWriThread = new Thread(indexWriterThread, "indexWriThread");
-		indexWriThread.start();// 索引写线程启动
+		Thread indexWriterThread = new Thread(new IndexWriterThread(queue), "indexWriThread");
+		indexWriterThread.start();// 索引写线程启动
 
 		for (; page < totalPage; page++) {
 			threadPool.execute(new IndexDataProviderThread(page, pageSize, queue, kingtreeTaHouseService));
@@ -128,11 +128,20 @@ public class IndexTimerController {
 
 		while (!threadPool.isTerminated()) {// 调用反馈，为了给浏览器一个执行状态，其实没什么用
 			try {
-				TimeUnit.SECONDS.sleep(1);
+				TimeUnit.SECONDS.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		logger.info("线程池执行结束，耗时：" + ((System.currentTimeMillis() - start) / 1000) + "秒");
+		try {
+			TimeUnit.SECONDS.sleep(10);
+			indexWriterThread.interrupt();
+			logger.info("写索引线程强制关闭中...");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		indexWriterThread = null;
+		queue = null;
 	}
 }

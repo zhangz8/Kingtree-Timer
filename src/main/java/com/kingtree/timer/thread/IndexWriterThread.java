@@ -38,9 +38,10 @@ public class IndexWriterThread implements Runnable {
 		while (true) {
 			try {
 				houses = queue.take();
-				LOGGER.error("缓冲区获取数据take,page:" + page + ",pageSize:" + houses.size());
-			} catch (InterruptedException e1) {
-				LOGGER.error("缓冲区获取数据失败", e1);
+				LOGGER.info("缓冲区获取数据take,page:" + page + ",pageSize:" + houses.size());
+			} catch (InterruptedException e) {
+				LOGGER.error("写索引线程被中断...");
+				return;
 			}
 			if (houses != null && !houses.isEmpty()) {
 				createIndex(houses);

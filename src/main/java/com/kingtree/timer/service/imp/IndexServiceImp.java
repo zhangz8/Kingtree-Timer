@@ -90,12 +90,12 @@ public class IndexServiceImp implements IndexService {
 			IndexWriter indexWriter = getIndexWriter();
 			for (IndexicalHouseVO item : houseList) {
 				Document doc = new Document();
-				doc.add(new TextField("houseId", StringUtils.isBlank(item.getHouseId()) ? "" : item.getHouseId(), Field.Store.YES));
+				doc.add(new StringField("houseId", StringUtils.isBlank(item.getHouseId()) ? "" : item.getHouseId(), Field.Store.YES));
 				doc.add(new TextField("block", StringUtils.isBlank(item.getBlock()) ? "" : item.getBlock(), Field.Store.YES));
-				doc.add(new StringField("brokerName", StringUtils.isBlank(item.getBrokerName()) ? "" : item.getBrokerName(),
+				doc.add(new TextField("brokerName", StringUtils.isBlank(item.getBrokerName()) ? "" : item.getBrokerName(),
 						Field.Store.YES));
 				doc.add(new StringField("brokerTel", StringUtils.isBlank(item.getBrokerTel()) ? "" : item.getBrokerTel(), Field.Store.YES));
-				doc.add(new TextField("communityDesc", StringUtils.isBlank(item.getCommunityDesc()) ? "" : item.getCommunityDesc(),
+				doc.add(new StringField("communityDesc", StringUtils.isBlank(item.getCommunityDesc()) ? "" : item.getCommunityDesc(),
 						Field.Store.YES));
 				doc.add(new TextField("communityName", StringUtils.isBlank(item.getCommunityName()) ? "" : item.getCommunityName(),
 						Field.Store.YES));

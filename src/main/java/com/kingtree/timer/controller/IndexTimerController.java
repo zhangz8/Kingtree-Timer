@@ -45,7 +45,7 @@ public class IndexTimerController {
 	private static Logger logger = LoggerFactory.getLogger(IndexTimerController.class);
 
 	@ResponseBody
-	@Scheduled(cron = "0 0 4 * * *")
+	//@Scheduled(cron = "0 0 4 * * *")
 	@RequestMapping(value = "/house/index_all", method = { RequestMethod.GET, RequestMethod.POST })
 	public void indexAll() {
 		List<KingtreeConfig> configs = kingtreeConfigService.gets(INDEX_UPDATE_TIME);

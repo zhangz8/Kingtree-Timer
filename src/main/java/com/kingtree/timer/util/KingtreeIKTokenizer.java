@@ -24,7 +24,7 @@ public class KingtreeIKTokenizer extends Tokenizer {
 	private int endPosition;
 
 	public KingtreeIKTokenizer(Reader in) {
-		this(in, false);
+		this(in, true);
 	}
 
 	public KingtreeIKTokenizer(Reader in, boolean useSmart) {
